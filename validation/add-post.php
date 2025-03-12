@@ -1,0 +1,62 @@
+<?php
+session_start();
+// var_dump($_SESSION); 
+include '../api/db_connection.php'; 
+$conn = establish_connection();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!isset($_SESSION['id'])) {
+        die("Unauthorized access. Please log in.");
+    }
+
+    $tags = isset($_POST['postTags']) ? explode(',', trim($_POST['postTags'])) : [];
+    $title = trim($_POST['postTitle']);
+    $content = trim($_POST['postContent']);
+    $author_id = $_SESSION['id']; 
+    $post_type = $_POST['postType'] ?? 'regular'; // Default to regular
+    $post_category = null; // Default is NULL for non-announcements
+
+    // If it's an announcement, store the category
+    if ($post_type === "announcement") {
+        $post_category = $_POST['postCategory'] ?? null;
+    }
+
+    if (empty($title) || empty($content)) {
+        die("Title and content cannot be empty.");
+    }
+    $likes = 0;
+
+    if ($post_type === 'announcement' && ($_SESSION['role'] !== 'officer' && $_SESSION['role'] !== 'admin')) {
+        die("You do not have permission to create announcements.");
+    }
+
+
+    $stmt = $conn->prepare("INSERT INTO posts (title, content, author_id, created_at, likes, post_type, post_category) VALUES (?, ?, ?, NOW(), ?, ?, ?)");
+    $stmt->bind_param("ssiiss", $title, $content, $author_id, $likes, $post_type, $post_category);
+    
+    if ($stmt->execute()) {    
+        $new_post_id = $stmt->insert_id; 
+        $stmt->close();
+
+        foreach ($tags as $tag) {
+            $tag = trim($tag);
+            if (empty($tag)) continue;
+            
+            $stmt = $conn->prepare("INSERT INTO tags (name) VALUES (?) ON DUPLICATE KEY UPDATE id=LAST_INSERT_ID(id)");
+            $stmt->bind_param("s", $tag);
+            $stmt->execute();
+            $tag_id = $conn->insert_id;
+            
+            $stmt = $conn->prepare("INSERT INTO post_tags (post_id, tag_id) VALUES (?, ?)");
+            $stmt->bind_param("ii", $new_post_id, $tag_id);
+            $stmt->execute();
+        }
+
+        header("Location: ../pages/post.php?id=" . $new_post_id); 
+        $stmt->close();
+        exit();
+    } else {
+        die("Error: " . $stmt->error);
+    }
+}
+?>

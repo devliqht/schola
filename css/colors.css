@@ -1,0 +1,52 @@
+:root {
+    /* #0e3c00 */
+    /* #b7b01d */
+    --chiase-color-dark: #006d2f;
+    --chiase-color-light: #07ac5c;
+    --ismis-light: #b7b01d;
+    --ismis-dark: #0e3c00;
+    --base-bg: #1b1b1b;
+    --base-bg-one: #202020;
+    --base-bg-two: #2f2f2f;
+
+    /* Tailwind stuff */
+    --color-gray-50: #fcfcfc;
+    --color-gray-100: #f7f7f8;
+    --color-gray-200: #ececee;
+    --color-gray-300: #dcdce1;
+    --color-gray-400: #a8a8b6;
+    --color-gray-500: #868694;
+    --color-gray-600: #656573;
+    --color-gray-700: #525263;
+    --color-gray-800: #3f3f4d;
+    --color-gray-900: #343448;
+    --color-gray-950: #232331;
+
+    --color-zinc-50: #fcfcfc;
+    --color-zinc-100: #f7f7f7;
+    --color-zinc-200: #eaeaeb;
+    --color-zinc-300: #dedee0;
+    --color-zinc-400: #b0b0b6;
+    --color-zinc-500: #8d8d94;
+    --color-zinc-600: #707078;
+    --color-zinc-700: #5e5e64;
+    --color-zinc-800: #47474b;
+    --color-zinc-900: #36363a;
+    --color-zinc-950: #232326;
+}
+
+.base-bg {
+    background: var(--base-bg);
+}
+
+.gradient-text {
+    background-image: linear-gradient(to top, var(--chiase-color-dark), var(--chiase-color-light)); 
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.metallic-background {
+    background: linear-gradient(to bottom, #EEEEEE, #CCCCCC, #d1d1d1);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}

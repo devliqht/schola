@@ -1,0 +1,33 @@
+.password-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding-right: 1rem;
+}
+  
+.password-wrapper input {
+    padding-right: 35px;
+    width: 100%;
+    box-sizing: border-box;
+}
+  
+.password-wrapper button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+}
+  
+.password-wrapper i {
+    font-size: 1.2em;
+    color: #777;
+}
+  
+.password-wrapper input[type="text"] + button i.fa-eye::before {
+    content: "\f070";
+}

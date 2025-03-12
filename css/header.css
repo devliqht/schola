@@ -1,0 +1,194 @@
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    background-color: white;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    width: calc(100% - 2rem);
+    border-bottom: 2px solid #c9c9c9;
+    background-size: cover; /* Ensures it covers the entire header */
+    background-position: left center; /* Center it horizontally */
+    background-repeat: no-repeat; /* Prevent repetition */
+    background-position-y: center; /* Move up or down */
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: url('../assets/usc.jpg') no-repeat center; */
+    background-size: cover;
+    opacity: 0.1; /* Adjust opacity */
+    z-index: -1; /* Keep it behind content */
+}
+
+.branding {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+
+.header-nav-links {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.link-wrapper {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    height: 100%;
+}
+
+.link-wrapper a {
+    text-decoration: none;
+    color: black;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.link-wrapper a:hover {
+    color: var(--chiase-color-dark);
+}
+
+ .link-wrapper a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--chiase-color-light);
+    opacity: 1;
+    transform-origin: center;
+    transition: all 0.1s;
+} 
+
+.link-wrapper a::after {
+    content: '';
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--chiase-color-light);
+    opacity: 0;
+    transform-origin: center;
+    transition: all 0.1s;
+}
+
+.user-info {
+    color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.6rem;
+    transition: background 0.1s;
+}
+
+.user-info:hover {
+    background: #e4e4e4;
+}
+
+.subheader {
+    background: #e3e3e3;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    color: white;
+}
+
+.subheader > div {
+    border-bottom: 2px solid black;
+    padding-bottom: 4px;
+}
+
+.subheader a {
+    color: #242424;
+    text-decoration: none;
+    position: relative;
+    transition: 0.2s all;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-details > a {
+    text-decoration: none;
+    color: var(--chiase-color-light);
+}
+
+.user-details > a:hover {
+    text-decoration: underline !important;
+}
+
+.header-account-picture {
+    height: auto;
+    object-fit: contain;
+    width: 40px;
+    border-radius: 50%;
+}
+
+#header-search-form {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.header-search-input {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+}
+
+.search-results-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.search-results-content {
+    position: relative;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.search-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.search-results-list {
+    color: black;
+    display: flex;
+    flex-direction: column;
+
+}
