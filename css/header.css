@@ -2,14 +2,14 @@
     position: fixed;
     top: 0;
     z-index: 2000;
-    background-color: white;
+    background-color: var(--base-bg-three);
     color: white;
     display: flex;
     align-items: center;
     gap: 1rem;
     justify-content: space-between;
     width: calc(100% - 2rem);
-    border-bottom: 2px solid #c9c9c9;
+    border-bottom: 2px solid var(--border-main-dark);
     background-size: cover; /* Ensures it covers the entire header */
     background-position: left center; /* Center it horizontally */
     background-repeat: no-repeat; /* Prevent repetition */
@@ -50,7 +50,7 @@
 
 .link-wrapper a {
     text-decoration: none;
-    color: black;
+    color: var(--text-light);
     position: relative;
     transition: all 0.3s ease;
 }
@@ -86,37 +86,18 @@
 }
 
 .user-info {
-    color: black;
+    color: var(--text-light);
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.7rem;
     padding: 0.6rem;
     transition: background 0.1s;
+    border-radius: 1rem;
 }
 
 .user-info:hover {
-    background: #e4e4e4;
-}
-
-.subheader {
-    background: #e3e3e3;
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    color: white;
-}
-
-.subheader > div {
-    border-bottom: 2px solid black;
-    padding-bottom: 4px;
-}
-
-.subheader a {
-    color: #242424;
-    text-decoration: none;
-    position: relative;
-    transition: 0.2s all;
+    background: var(--text-dark);
 }
 
 .user-details {
@@ -146,11 +127,36 @@
     gap: 0.5rem;
 }
 
+.header-search-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
 .header-search-input {
-    padding: 8px;
-    width: 200px;
-    border: 1px solid #ccc;
+    width: 100%;
+    padding: 8px 8px 8px 32px; /* Left padding for icon */
+    border: 1px solid var(--border-main-dark);
     border-radius: 2rem;
+    outline: none;
+    color: var(--text-light);
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    color: #888;
+    font-size: 14px;
+}
+
+.clear-search {
+    position: absolute;
+    right: 10px;
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+    display: none; /* Hidden by default */
 }
 
 .search-results-overlay {
@@ -169,7 +175,7 @@
     margin: 50px auto;
     width: 80%;
     max-width: 600px;
-    background: white;
+    background: var(--base-bg-two);
     padding: 20px;
     border-radius: 5px;
     max-height: 80vh;
@@ -190,5 +196,66 @@
     color: black;
     display: flex;
     flex-direction: column;
+}
 
+.profile-name {
+    font-size: 1.5rem; /* 24px */
+    line-height: calc(2 / 1.5); /* 1.333 */
+}
+
+.profile-username {
+    color: var(--text-light);
+    font-size: 1rem; /* 16px */
+    line-height: calc(1.5 / 1); /* 1.5 */
+}
+
+.header-account-container img {
+    cursor: pointer;
+}
+
+.header-account-container {
+    position: relative;
+    transition: 0.1s opacity;
+}
+
+.header-account-container img:hover {
+    opacity: 0.8;
+}
+
+.account-modal {
+    display: none;
+    position: absolute;
+    top: 45px; 
+    right: 0;
+    background-color: var(--base-bg-two);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    padding: 0.6rem;
+    z-index: 1000;
+
+}
+
+.account-modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 0.4rem;
+    min-width: 260px;
+}
+
+.modal-item {
+    color: var(--text-light);
+    text-decoration: none;
+    display: block;
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+    align-items: center;
+    transition: all 0.2s;
+    border-radius: 1rem;
+    padding: 0.6rem;
+}
+
+.modal-item:hover {
+    background-color: var(--text-dark);
 }

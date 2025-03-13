@@ -1,13 +1,22 @@
 :root {
     /* #0e3c00 */
     /* #b7b01d */
-    --chiase-color-dark: #006d2f;
-    --chiase-color-light: #07ac5c;
+    --chiase-color-dark: #017935;
+    --chiase-color-light: #0ac76c;
     --ismis-light: #b7b01d;
     --ismis-dark: #0e3c00;
-    --base-bg: #1b1b1b;
     --base-bg-one: #202020;
-    --base-bg-two: #2f2f2f;
+    --base-bg-two: #272727;
+    --base-bg-three: #292929;
+
+
+    --border-main-light: #c9c9c9;
+    --text-light: #c9c9c9;
+    --text-light-hover: #eaeaea;
+
+    --border-main-dark: #424242;
+    --text-dark: #424242;
+    --text-dark-hover: #626262;
 
     /* Tailwind stuff */
     --color-gray-50: #fcfcfc;

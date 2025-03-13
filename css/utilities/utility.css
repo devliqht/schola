@@ -58,6 +58,10 @@
     justify-content: space-between;
 }
 
+.relative {
+    position: relative;
+}
+
 .gap-4 {
     gap: 1rem;
 }
@@ -95,11 +99,11 @@
 }
 
 .text-white {
-    color: white;
+    color: var(--text-light);
 }
 
 .text-black {
-    color: black;
+    color: var(--text-dark);
 }
 /* Tailwind-like Box Shadows */
 .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }

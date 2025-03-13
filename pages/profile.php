@@ -92,7 +92,7 @@
                 </div>
                 <div class="flex flex-col pr-4">
                     <h1 class="text-lg gradient-text inter-700"><?php echo $row['course']; ?></h1>
-                    <h1 class="text-sm inter-300">Joined <?php echo date("F j, Y", strtotime($row['created_at'])); ?></h1>
+                    <h1 class="text-sm inter-300 text-white">Joined <?php echo date("F j, Y", strtotime($row['created_at'])); ?></h1>
                 </div>
             </div>
             <hr />
@@ -108,8 +108,7 @@
             </div>
             <hr />
             <div class="flex flex-col py-2">
-                <h2 class="text-base inter-300">Posts by <span class="inter-700 gradient-text"><?= htmlspecialchars($row['full_name']) ?></span></h2>
-                <hr class="w-full"/>
+                <h2 class="text-base inter-300 pb-4 text-white">Posts by <span class="inter-700 gradient-text"><?= htmlspecialchars($row['full_name']) ?></span></h2>
                 <?php if ($postRes->num_rows > 0): ?>
                 <?php while ($post = $postRes->fetch_assoc()) {
                     $authorQuery = $conn->prepare("SELECT username, profile_picture from users WHERE id = ?");
@@ -123,12 +122,11 @@
                 }
                 ?>
                 <?php else: ?>
-                    <p class="inter-300">No posts yet.</p>
+                    <p class="inter-300 text-white">No posts yet.</p>
                 <?php endif; ?>
             </div>
             <div class="flex flex-col pt-4">
-            <h2 class="text-base inter-300">Comments by <span class="inter-700 gradient-text"><?= htmlspecialchars($row['full_name']) ?></span></h2>
-            <hr class="w-full" />
+            <h2 class="text-base inter-300 pb-4 text-white">Comments by <span class="inter-700 gradient-text"><?= htmlspecialchars($row['full_name']) ?></span></h2>
             <?php if ($commentRes->num_rows > 0): ?>
                 <?php while ($comment = $commentRes->fetch_assoc()): ?>
                     <div class="profile-comment-item">
@@ -141,7 +139,7 @@
                     </div>
                 <?php endwhile; ?>
                 <?php else: ?>
-                    <p class="inter-300">No comments posted yet.</p>
+                    <p class="inter-300 text-white">No comments posted yet.</p>
                 <?php endif; ?>
             </div>
         </div>

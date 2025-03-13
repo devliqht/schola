@@ -23,7 +23,7 @@
     $posts_result = $posts_stmt->get_result();
     $post = $posts_result->fetch_assoc();
 
-    $comments_query = "SELECT comments.id, comments.user_id, comments.content, comments.created_at, users.username, users.role, users.profile_picture
+    $comments_query = "SELECT comments.id, comments.user_id, comments.content, comments.created_at, users.username, users.full_name, users.role, users.profile_picture
           FROM comments
           JOIN users ON comments.user_id = users.id
           WHERE comments.post_id = ?
@@ -122,11 +122,11 @@
                 <img class="header-account-picture p-2" src="<?php echo $authorProfilePicture; ?>" alt="Author Picture"/>
                 <div class="flex flex-col">
                     <h2 class="text-xl inter-700 gradient-text"><?php echo htmlspecialchars($post['title']); ?></h2>
-                    <a class="text-sm decoration-none text-black inter-300" href="profile.php?id=<?php echo $post['author_id']; ?>">by <?php echo htmlspecialchars($post['username']); ?></a>
+                    <a class="text-sm decoration-none text-white inter-300" href="profile.php?id=<?php echo $post['author_id']; ?>">by <?php echo htmlspecialchars($post['username']); ?></a>
                 </div>
             </div>
             <hr/>
-            <div class="flex flex-col p-4" style="background:rgb(234, 234, 234);">
+            <div class="flex flex-col" style="color: var(--text-light);">
                 <p class="text-base inter-400">
                     <?php echo nl2br(htmlspecialchars($post['content'])); ?>
                 </p>
@@ -166,7 +166,6 @@
                     </a>
                     <div class="flex flex-row interaction text-sm align-center">
                         <i class="fa-regular fa-share-from-square pr-1"></i>
-                        <p class="inter-600">Share</p>
                     </div>
                     <?php if ($_SESSION['id'] == $post['author_id'] || $_SESSION['role'] == "admin"): ?>
                         <a href="edit-post.php?id=<?php echo $post['id']; ?>" class="interaction inter-600 decoration-none text-sm text-black flex flex-row align-center">
@@ -195,7 +194,6 @@
                         <input type="submit" class="submit-comment" id="submit" value="Submit Comment"></input>
                     </form>
                 </div>
-                <hr />
                 <div class="flex flex-col">
                 <?php while ($comment = $comments_result->fetch_assoc()): ?>
                 <?php
@@ -211,12 +209,12 @@
                                     <img class="header-account-picture py-2 pr-2" src="<?php echo $profilePicture; ?>" alt="Pfp"/>
                                     <div class="flex flex-col">
                                         <div class="flex flex-row gap-4 align-center">
-                                            <h2 class="text-lg gradient-text inter-700"><?php echo htmlspecialchars($comment['username']); ?></h2> 
-                                            <h1 class="flex justify-end text-sm inter-400" style="color:rgb(150, 150, 150);">
+                                            <h2 class="text-base gradient-text inter-700"><?php echo htmlspecialchars($comment['full_name']); ?></h2> 
+                                            <h1 class="flex justify-end text-xs inter-400" style="color:rgb(150, 150, 150);">
                                                 <?php echo $formatted_comment_date; ?>
                                             </h1>
                                         </div>
-                                        <p class="text-sm inter-400 text-capitalize"><?php echo htmlspecialchars($comment['role']); ?></p>
+                                        <a href="profile.php?id=<?php echo $comment['user_id']; ?>" class="text-xs inter-400 decoration-none text-white">@<?php echo htmlspecialchars($comment['username']); ?></a>
                                     </div>
                                 </div>
                                 <?php if ($_SESSION['id'] == $comment['user_id'] || $_SESSION['role'] == 'admin'): ?>
@@ -227,7 +225,7 @@
                                     </form>
                                 <?php endif; ?>
                             </div>
-                            <p class="text-base py-2 inter-300 post-content"><?php echo nl2br(htmlspecialchars($comment['content'])); ?></p>
+                            <p class="text-base py-2 inter-300 post-content text-white"><?php echo nl2br(htmlspecialchars($comment['content'])); ?></p>
                         </div>
                     </div>
                 <?php endwhile; ?>

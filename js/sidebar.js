@@ -22,3 +22,22 @@ document.addEventListener("DOMContentLoaded", function() {
     closeBtn.addEventListener("click", closeSidebar);
     overlay.addEventListener("click", closeSidebar);
 });
+
+// JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const profilePic = document.querySelector('.header-account-picture');
+    const modal = document.getElementById('accountModal');
+    
+    // Toggle modal on profile picture click
+    profilePic.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // Close modal when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!profilePic.contains(e.target) && !modal.contains(e.target)) {
+            modal.style.display = 'none';
+        }
+    });
+});

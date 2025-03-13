@@ -2,55 +2,66 @@
 .text-xs {
 font-size: 0.75rem; /* 12px */
 line-height: calc(1 / 0.75); /* 1.333 */
+color: inherit;
 }
 
 .text-sm {
 font-size: 0.875rem; /* 14px */
+color: inherit;
 line-height: calc(1.25 / 0.875); /* 1.429 */
 }
 
 .text-base {
 font-size: 1rem; /* 16px */
+color: inherit;
 line-height: calc(1.5 / 1); /* 1.5 */
 }
 
 .text-lg {
 font-size: 1.125rem; /* 18px */
+color: inherit;
 line-height: calc(1.75 / 1.125); /* 1.556 */
 }
 
 .text-xl {
 font-size: 1.25rem; /* 20px */
+color: inherit;
 line-height: calc(1.75 / 1.25); /* 1.4 */
 }
 
 .text-2xl {
 font-size: 1.5rem; /* 24px */
+color: inherit;
 line-height: calc(2 / 1.5); /* 1.333 */
 }
 
 .text-3xl {
 font-size: 1.875rem; /* 30px */
+color: inherit;
 line-height: calc(2.25 / 1.875); /* 1.2 */
 }
 
 .text-4xl {
 font-size: 2.25rem; /* 36px */
+color: inherit;
 line-height: calc(2.5 / 2.25); /* 1.111 */
 }
 
 .text-5xl {
 font-size: 3rem; /* 48px */
+color: inherit;
 line-height: 1; /* 1 */
 }
 
 .text-6xl {
 font-size: 3.75rem; /* 60px */
+color: inherit;
 line-height: 1; /* 1 */
 }
 
 .text-7xl {
 font-size: 4.5rem; /* 72px */
+color: inherit;
 line-height: 1; /* 1 */
 }
 

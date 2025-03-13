@@ -4,14 +4,14 @@
     gap: 0.5rem;
 }
 .user-card {
-    color: black;
+    color: var(--text-light);
     padding: 0.6rem;
     transition: 0.3s;
-    border: 1px solid rgba(0, 82, 34, 0.17); /* Set border width */
+    border: 1px solid var(--border-main-dark); /* Set border width */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #ffffff;
+    background-color: var(--base-bg-two);
 }
 
 .user-card img {

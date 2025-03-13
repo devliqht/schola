@@ -26,9 +26,9 @@ form {
 
 #submit {
     padding: 8px;
-    color: black;
-    border: 1px solid #c9c9c9;
-    border-radius: 4px;
+    color: var(--text-light);
+    border: 1px solid var(--border-main-dark);
+    border-radius: 1rem;
     cursor: pointer;
 }
 
@@ -39,7 +39,7 @@ form {
 
 input, textarea, select {
     padding: 0.6rem;
-    border: 1px solid #c9c9c9;
+    border: 1px solid var(--border-main-dark);
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     background: rgba(0, 0, 0, 0.024);
@@ -50,6 +50,7 @@ input, textarea, select {
     font-weight: 400;
     width: calc(100% - 20px); 
     max-width: 100%;
+    color: var(--text-light);
 }
 
 input:focus, textarea:focus {

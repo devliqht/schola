@@ -30,13 +30,13 @@
         grid-template-columns: 1fr; 
         grid-template-rows: 1fr;
         position: absolute;
-        top: 3.8rem;
     }    
 }
 
 @media (max-width: 768px) {
     .header {
         align-items: center;
+        padding-top: 0.2rem; padding-bottom: 0.2rem;
     }
 
     .main-content {
@@ -79,6 +79,7 @@
         grid-template-columns: 1fr;
         grid-template-rows: 1fr;
         place-self: center;
+        top: 4.4rem;
     }
 
     .item2 {
@@ -146,6 +147,11 @@
     html, body {
         scrollbar-width: none;
         -ms-overflow-style: none;
+    }
+
+    .interaction {
+        padding: 0.4rem;
+        padding-left: 0.55rem; padding-right: 0.55rem;
     }
 }
 

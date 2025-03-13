@@ -1,14 +1,14 @@
 html, body {
     overflow-y: auto;
-    background-color: white;
+    background-color: var(--base-bg-one);
 }
 
 hr {
-    border-color: #f9f9f96e;
+    border-color: var(--border-main-dark);
 }
 
 .main-content {
-    background-color: white;
+    background-color: var(--base-bg-one);
     overflow-y: auto; 
     overflow-x: hidden;
     grid-row: 1 / 2; 
@@ -45,7 +45,7 @@ hr {
     grid-template-columns: 240px 1fr; 
     grid-template-rows: 1fr;
     position: absolute;
-    top: 3.8rem;
+    top: 4rem;
     width: 100%; /* Ensure Grid spans full viewport width */
 }
 
@@ -81,14 +81,14 @@ hr {
 
 .post {
     padding: 1rem;
-    background-color: #f9f9f9;
-    border-top: 1px solid #ddd;
+    background-color: var(--base-bg-one);
+    border-top: 1px solid var(--border-main-dark);
     transition: 0.1s all;
 }
 
 .post:hover {
     cursor: pointer;
-    background-color: #eaeaea;
+    background-color: var(--base-bg-three);
 }
 
 .post-link {
@@ -106,8 +106,8 @@ hr {
 .latest-post {
     margin-bottom: 1.2rem;
     padding: 1rem;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    background-color: var(--base-bg-two);
+    border: 1px solid var(--border-main-dark);
     width: calc(33.33% - 0.4rem); 
     max-width: 400px; 
     display: flex;
@@ -156,6 +156,7 @@ hr {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    color: var(--text-light);
 }
 
 .renderPost-metadata {
@@ -172,11 +173,13 @@ hr {
 }
 
 .interaction {
-    border: 1px solid #ddd;
-    padding: 8px;
-    border-radius: 0.6rem;
+    border: 1px solid var(--border-main-dark);
+    padding: 0.675rem;
+    padding-right: 0.885rem; padding-left: 0.885rem;
+    border-radius: 1rem;
     transition: 0.1s border;
-    color: black;
+    color: var(--text-light);
+    background-color: var(--base-bg-two);
 }
 
 .interactions-row {
@@ -278,6 +281,7 @@ textarea.comment-textarea {
     transition: all 0.2s;
     border-radius: 0;
     box-shadow: none;
+    color: var(--text-light);
 }
 
 textarea.comment-textarea:focus {
@@ -291,15 +295,14 @@ textarea.comment-textarea:focus {
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ddd;
-
+    background-color: var(--base-bg-two);
+    border-radius: 0.7rem;
     transition: 0.1s all;
 }
 
 .recent-discussion:hover {
     cursor: pointer;
-    background-color: #f2f2f2;
+    background-color: var(--text-dark);
 }
 
 .fetched-content, .announcement-content {
@@ -311,14 +314,15 @@ textarea.comment-textarea:focus {
     box-orient: vertical;     
     overflow: hidden;
     text-overflow: ellipsis;
-    /* max-height: 3em;          */
+    color: var(--text-light);
 }
 
 .breadcrumb {
     font-size: 14px;
     margin-bottom: 16px;
     padding-bottom: 0.4rem;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid var(--border-main-dark);
+    color: var(--text-light);
 }
 
 .breadcrumb a {

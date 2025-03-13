@@ -40,21 +40,8 @@
                 </nav>
 
                 <div class="flex flex-row gap-4 justify-between align-center">
-                    <h2 class="text-xl gradient-text inter-700">ISMIS v2.0</h2>
-                        <a href="create-post.php" ><button class="interaction inter-700">Create Post</button></a>
-                        <div class="modal" id="postModal">
-                            <form action="../validation/add-post.php" method="POST">
-                                <div class="modal-content">
-                                    <span class="close-btn" onclick="closeModal()">&times;</span>
-                                    <h2 class="gradient-text inter-600 text-xl">Create a Post</h2>
-                                    <input type="text" id="postTitle" name="postTitle" placeholder="Post Title" required>
-                                    <textarea id="postContent" name="postContent" placeholder="Post Content" rows="4" required></textarea>
-                                    <input type="submit" class="submit-btn" />
-                                </div>
-                            </form>
-                        </div>
+                    <h2 class="text-xl text-white inter-700 pb-4">Welcome, <span class="gradient-text"><?= $_SESSION['full_name']; ?></span></h2>
                 </div>
-                <hr/>
                 <div class="discussions-wrapper">
                     <?php 
                         $conn = establish_connection();

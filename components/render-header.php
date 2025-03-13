@@ -4,17 +4,20 @@ function render_header() {
     <header class="header px-4"> 
         <div class="flex flex-row align-center" style="gap: 0.4rem;">
             <div class="sidebar-toggle-wrapper">
-                <button id="sidebar-toggle" class="sidebar-toggle"><i class="fa-solid fa-bars fa-xs" style="color: black; text-decoration: none;"></i></button>
+                <button id="sidebar-toggle" class="sidebar-toggle"><i class="fa-solid fa-bars fa-xs text-white" style="text-decoration: none;"></i></button>
             </div>
             <div class="branding p-1">
-                <img class="logo" src="../assets/logo.png" />
-                <div class="header-search-container">
-                    <form id="header-search-form" action="../validation/search.php" method="GET">
-                        <input type="text" class="header-search-input text-sm w-full" style="margin: 0;" placeholder="Search USC..." id="search-input">
-                        <button type="submit" class="interaction inter-400 rounded-full" style="background:rgb(255, 255, 255);"><i class="fa-solid fa-magnifying-glass" style="color: black; text-decoration: none;"></i></button>
-                    </form>
-                </div>
+                <img class="logo" src="../assets/logo.png"/>
             </div>
+        </div>
+        <div class="header-search-container" style="flex-grow: 0.5;">
+            <form id="header-search-form" action="../validation/search.php" method="GET">
+                <div class="header-search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" class="header-search-input text-sm w-full" placeholder="Search USC..." id="search-input">
+                    <i class="fa-solid fa-xmark clear-search" id="clear-search"></i>
+                </div>
+            </form>
         </div>
         <div class="header-nav-links">
             <div class="link-wrapper"><a href="announcements.php" class="text-base inter-600">Announcements</a></div>
@@ -36,9 +39,28 @@ function render_header() {
         ?>
         <div class="flex flex-row align-center gap-4">
             <div class="flex flex-col header-text">
-                <a href="home.php" class="decoration-none"><h1 class="gradient-text inter-700 text-xl tracking-tight">University of San Carlos</h1></a>
+            <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-plus"></i> Create</button></a>
             </div>
-            <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Pfp"/>
+            <div class="header-account-container">
+                <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Profile Picture">
+                <div class="account-modal" id="accountModal">
+                    <div class="account-modal-content">
+                        <h1 class="gradient-text text-lg inter-700">My Account</h1>
+                        <div class="user-info">
+                            <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Pfp"/>
+                                <div class="user-details">
+                                    <a class="text-base inter-700 gradient-text" href="profile.php?id=<?= $_SESSION['id']; ?>">
+                                        <?= htmlspecialchars($_SESSION['full_name']) ?>
+                                    </a>
+                                    <p class="text-xs inter-400 text-white">Profile</p>
+                                </div>
+                            </div>
+                        <a href="account.php" class="modal-item"><i class="fa-solid fa-user-gear"></i>Settings</a>
+                        <a href="../logout.php" class="modal-item"><i class="fa-solid fa-right-from-bracket"></i>Sign out</a>
+                        <!-- Add more menu items here as needed -->
+                    </div>
+                </div>
+            </div>
         </div>  
     </header>
     <?php
