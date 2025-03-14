@@ -1,6 +1,6 @@
 <?php
 session_start();
-// var_dump($_SESSION); 
+
 include '../api/db_connection.php'; 
 $conn = establish_connection();
 
@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $post_type = $_POST['postType'] ?? 'regular'; // Default to regular
     $post_category = null; // Default is NULL for non-announcements
 
-    // If it's an announcement, store the category
     if ($post_type === "announcement") {
         $post_category = $_POST['postCategory'] ?? null;
     }
@@ -24,16 +23,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($title) || empty($content)) {
         die("Title and content cannot be empty.");
     }
-    $likes = 0;
 
     if ($post_type === 'announcement' && ($_SESSION['role'] !== 'officer' && $_SESSION['role'] !== 'admin')) {
         die("You do not have permission to create announcements.");
     }
 
+    $stmt = $conn->prepare("INSERT INTO posts (title, content, author_id, created_at, post_type, post_category) VALUES (?, ?, ?, NOW(), ?, ?)");
+    $stmt->bind_param("ssiss", $title, $content, $author_id, $post_type, $post_category);
 
-    $stmt = $conn->prepare("INSERT INTO posts (title, content, author_id, created_at, likes, post_type, post_category) VALUES (?, ?, ?, NOW(), ?, ?, ?)");
-    $stmt->bind_param("ssiiss", $title, $content, $author_id, $likes, $post_type, $post_category);
-    
     if ($stmt->execute()) {    
         $new_post_id = $stmt->insert_id; 
         $stmt->close();
@@ -51,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param("ii", $new_post_id, $tag_id);
             $stmt->execute();
         }
-
         header("Location: ../pages/post.php?id=" . $new_post_id); 
         $stmt->close();
         exit();
