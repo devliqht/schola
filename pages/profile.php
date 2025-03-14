@@ -7,6 +7,7 @@
     require_once '../components/render-posts.php';
     require_once '../api/level_config.php';
     require_once '../validation/leveling-system.php';
+    require_once '../components/render-achievement.php';
 
     // Check if user is logged in
     if (!isset($_SESSION['role']) || empty($_SESSION['role'])) {
@@ -118,7 +119,15 @@
 
                     <div class="profile-level-container">
                         <h1 class="text-white inter-600 text-lg pb-2">Achievements</h1>
-                        <p class="text-white text-base inter-300">No achievements so far.</p>
+                        <p class="text-sm inter-300 text-white">
+                        <?php 
+                            if ($row['id'] === 2) {
+                                render_achievement("Creator"); 
+                            } else {
+                                echo "No achievements yet.";
+                            }
+                        ?>
+                        </p>
                     </div>
                 </div>
                 <div class="flex flex-col profile-posts-wrapper">

@@ -126,7 +126,7 @@
                 </div>
             </div>
             <div class="flex flex-col" style="color: var(--text-light);">
-                <p class="text-base inter-400">
+                <p class="text-base inter-400 border-1 rounded-lg p-4" style="background: var(--base-bg-two);">
                     <?php echo nl2br(htmlspecialchars($post['content'])); ?>
                 </p>
                 <div class="post-tags pt-4">
