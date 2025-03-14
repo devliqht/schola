@@ -12,6 +12,10 @@
 <html>
 <head>
     <title>Forum Dashboard</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <link rel="stylesheet" href="../css/utilities/fonts.css" />
     <link rel="stylesheet" href="../css/utilities/util-text.css" />
     <link rel="stylesheet" href="../css/utilities/util-padding.css" />
@@ -34,7 +38,7 @@
         <?php  render_header();?>
         <div class="grid-container">
             <?php render_sidebar(); ?>
-            <div class="main-content">
+            <div class="main-content animate__animated animate__fadeIn animate__faster">
                 <nav class="breadcrumb">
                     <?php echo get_breadcrumbs(); ?>
                 </nav>
