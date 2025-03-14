@@ -83,36 +83,45 @@
             </nav>
             <div class="cover-photo"></div>
             <div class="profile-details py-4">
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-row gap-4 profile-info-container">
-                        <div class="profile-picture">
-                            <img class="account-img" src="<?= htmlspecialchars($profilePicture) ?>" alt="Profile Picture">
-                        </div>
-                        <div class="flex flex-col">
-                            <h1 class="gradient-text inter-700 profile-name"><?= htmlspecialchars($row['full_name']) ?></h1>
-                            <h2 class="inter-500 profile-username">@<?= htmlspecialchars($row['username']) ?></h2>
-                        </div>
+                <div class="profile-info-container">
+                    <div class="profile-picture">
+                        <img class="account-img" src="<?= htmlspecialchars($profilePicture) ?>" alt="Profile Picture">
+                    </div>
+                    <div class="flex flex-col disappear-768px">
+                        <h1 class="gradient-text inter-700 profile-name"><?= htmlspecialchars($row['full_name']) ?></h1>
+                        <h2 class="inter-500 profile-username">@<?= htmlspecialchars($row['username']) ?></h2>
                     </div>
                 </div>
-                <div class="flex flex-col px-4">
+                <div class="flex flex-col px-4 align-center pb-4">
+                    <div class="flex flex-col appear-768px align-center">
+                        <h1 class="gradient-text inter-700 profile-name"><?= htmlspecialchars($row['full_name']) ?></h1>
+                        <h2 class="inter-500 profile-username">@<?= htmlspecialchars($row['username']) ?></h2>
+                    </div>
                     <h1 class="text-lg gradient-text inter-700"><?php echo $row['course']; ?></h1>
                     <h1 class="text-sm inter-300 text-white">Joined <?php echo date("F j, Y", strtotime($row['created_at'])); ?></h1>
                 </div>
             </div>
             <div class="profile-content-wrapper">
-                <div class="profile-level-container">
-                    <h1 class="text-white inter-600 text-lg">User Stats</h1>
-                    <hr class="w-full"/>
-                    <p class="text-white text-lg inter-700">Devotio Level</p>
-                    <h1 class="text-2xl gradient-text inter-700"><?= floor($devotioLevel) ?></h1>
-
-                    <div class="progress-bar">
-                        <div class="progress" style="width: <?= ($devotioLevel - floor($devotioLevel)) * 100 ?>%"></div>
+                <div class="flex flex-col gap-4">
+                    <div class="profile-level-container">
+                        <h1 class="text-white inter-600 text-lg">User Stats</h1>
+                        <hr class="w-full"/>
+                        <p class="text-white text-lg inter-700">Devotio Level</p>
+                        <h1 class="text-2xl gradient-text inter-700"><?= floor($devotioLevel) ?></h1>
+    
+                        <div class="progress-bar">
+                            <div class="progress" style="width: <?= ($devotioLevel - floor($devotioLevel)) * 100 ?>%"></div>
+                        </div>
+                        <p class="text-white text-lg inter-700 pt-4">Virtus Points</p>
+                        <h1 class="text-2xl gradient-text inter-700"><?= $virtusPoints ?></h1>
                     </div>
-                    <p class="text-white text-lg inter-700 pt-4">Virtus Points</p>
-                    <h1 class="text-2xl gradient-text inter-700"><?= $virtusPoints ?></h1>
+
+                    <div class="profile-level-container">
+                        <h1 class="text-white inter-600 text-lg pb-2">Achievements</h1>
+                        <p class="text-white text-base inter-300">No achievements so far.</p>
+                    </div>
                 </div>
-                <div class="flex flex-col" style="flex-grow: 1;">
+                <div class="flex flex-col profile-posts-wrapper">
                     <div class="flex flex-col" style="gap: 0.4rem;">
                         <h2 class="text-base inter-300 pb-2 text-white">Posts by <span class="inter-700 gradient-text"><?= htmlspecialchars($row['full_name']) ?></span></h2>
                         <?php if ($postRes->num_rows > 0): ?>

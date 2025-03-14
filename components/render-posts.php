@@ -45,7 +45,7 @@ function renderPost($title, $content, $author, $date, $id, $profile_picture, $pi
             <div class="renderPost-content">
                 <div class="flex flex-row align-center gap-4 renderPost-metadata">
                 <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Pfp"/>
-                    <div class="flex flex-col">
+                    <div class="renderPost-title">
                         <div class="post-title gradient-text text-base inter-700 flex flex-row align-center"><?php echo $title; ?>
                             <p class="text-xs inter-300 pl-2" style="color: black !important;"> <?= $pinned ? "<i class='fa-solid fa-thumbtack'></i>".' Pinned' : '' ?></p>
                         </div>
@@ -56,13 +56,9 @@ function renderPost($title, $content, $author, $date, $id, $profile_picture, $pi
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col justify-center">
-                <p class="text-sm"><span class="inter-700"><?php echo $comment_count; ?></span> replies</p>
-                <p class="text-sm"><span class="inter-700"><?php echo $view_count; ?></span> views</p>
-                </div>
-                <div class="flex flex-col">
-                    <p class="text-sm">Recent comment</p>
-                    <p class="text-sm inter-700"><?php echo $recent_commenter; ?></p>
+                <div class="renderPost-statistics">
+                    <p class="text-sm text-white"><i class="fa-solid fa-eye"></i> <?php echo $view_count; ?> <i class="fa-solid fa-comment-dots"></i> <?php echo $comment_count; ?></p>
+                    <p class="text-sm inter-300 text-light-muted"><?php echo $recent_commenter; ?></p>
                 </div>
             </div>
         </div>

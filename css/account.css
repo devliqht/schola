@@ -9,7 +9,7 @@
     width: 100%;
     height: 200px;
     overflow: hidden;
-    border-bottom: 2px solid var(--chiase-color-light);
+    border-bottom: 2px solid var(--border-main-dark);
     background-image: url('../uploads/covers/default.svg');
     background-repeat: repeat-x; /* Repeats horizontally */
     background-size: auto 100%; /* Keeps original width but stretches height */
@@ -35,6 +35,7 @@
     border-radius: 8px;
     justify-content: space-between;
     background: var(--base-bg-three);
+    padding-left: 0.6rem; padding-right: 0.6rem;
 }
 
 .profile-level-container {
@@ -147,4 +148,11 @@
 
 .profile-info-container {
     height: 80px;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.profile-posts-wrapper {
+    flex-grow: 1;
 }
