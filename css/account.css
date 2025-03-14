@@ -34,7 +34,7 @@
     flex-direction: row;
     border-radius: 8px;
     justify-content: space-between;
-    background: var(--base-bg-three);
+    background: var(--base-bg-two);
     padding-left: 0.6rem; padding-right: 0.6rem;
 }
 
@@ -49,7 +49,7 @@
 }
 
 .profile-comment-item {
-    background: var(--base-bg-three);
+    background: var(--base-bg-two);
     padding: 0.6rem;
     margin-bottom: 10px;
     border: 1px solid var(--border-main-dark);
@@ -155,4 +155,21 @@
 
 .profile-posts-wrapper {
     flex-grow: 1;
+}
+
+.achievement {
+    display: flex;
+    flex-direction: row;
+    padding: 0.4rem;
+    border: 2px solid var(--border-main-dark);
+    width: fit-content;
+    border-radius: 1rem;
+    color: var(--text-light);
+    font-size: 0.875rem; /* 14px */
+    line-height: calc(1.25 / 0.875); /* 1.429 */
+}
+
+.achievement.Creator {
+    border: 2px solid var(--chiase-color-dark);
+    color: var(--chiase-color-light)
 }
