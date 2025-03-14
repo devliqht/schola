@@ -25,10 +25,19 @@ form {
 }
 
 #submit {
-    padding: 8px;
+    padding: 0.6rem;
+    border: 2px solid var(--border-main-dark);
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.024);
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    width: calc(100% - 20px); 
+    max-width: 100%;
     color: var(--text-light);
-    border: 1px solid var(--border-main-dark);
-    border-radius: 1rem;
     cursor: pointer;
 }
 
@@ -39,7 +48,7 @@ form {
 
 input, textarea, select {
     padding: 0.6rem;
-    border: 1px solid var(--border-main-dark);
+    border: 2px solid var(--border-main-dark);
     box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     background: rgba(0, 0, 0, 0.024);
@@ -53,16 +62,17 @@ input, textarea, select {
     color: var(--text-light);
 }
 
+input.index, textarea.index, select.index, #submit.index {
+    border: none;
+    color: var(--text-dark);
+}
+
 input:focus, textarea:focus {
     outline: none !important;
     border: 1px solid var(--chiase-color-dark);
     box-shadow: 0 0 10px var(--chiase-color-dark);
     border-radius: 0.4rem;
   }
-
-.red {
-    color: red;
-}
 
 .add-post-form {
     display: flex;

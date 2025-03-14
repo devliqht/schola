@@ -53,8 +53,7 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; // Set a def
                 <?php echo get_breadcrumbs(); ?>
             </nav>
 
-            <h2 class="gradient-text inter-700 text-xl">Connect with Users</h2>
-            <hr />
+            <h2 class="gradient-text inter-700 text-xl pb-4">Connect with Users</h2>
             <div class="users-grid">
                 <?php while ($user = $result->fetch_assoc()): ?>
                     <div class="user-card">

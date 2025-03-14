@@ -37,10 +37,10 @@
                     </span>
                 </div>
                 <div class="col">
-                    <input type="text" name="username" placeholder="Username" class="text-base"/>
+                    <input type="text" name="username" placeholder="Username" class="text-base index"/>
                 </div>
                 <div class="col">
-                    <input type="password" name="password" id="password" placeholder="Password" class="text-base" required>
+                    <input type="password" name="password" id="password" placeholder="Password" class="text-base index" required>
                 </div>
                 <?php
                 if (isset($_GET['errors'])) {
@@ -56,7 +56,7 @@
                 }
                 ?>
                 <div class="col">
-                    <input type="Submit" class="poppins-regular" id="submit" value="Login">
+                    <input type="Submit" class="poppins-regular index" id="submit" value="Login">
                     <!-- <a href="#need-help" class="text-sm inter-300">Need Help?</a> -->
                 </div>
             </div>

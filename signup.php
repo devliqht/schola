@@ -30,19 +30,19 @@
                         </span>
                     </div>
                     <div class="col">
-                        <input type="text" name="username" placeholder="Username" required/>
+                        <input type="text" name="username" placeholder="Username" class="index" required/>
                     </div>
                     <div class="col">
-                        <input type="email" name="email" placeholder="Email" required/>
+                        <input type="email" name="email" placeholder="Email" class="index" required/>
                     </div>
                     <div class="col">
-                        <input type="password" name="password" placeholder="Password" required/>
+                        <input type="password" name="password" placeholder="Password" class="index" required/>
                     </div>
                     <div class="col">
-                        <input type="text" name="full_name" placeholder="Full Name" required/>
+                        <input type="text" name="full_name" placeholder="Full Name" class="index" required/>
                     </div>
                     <div class="col">
-                        <input type="Submit" class="poppins-regular" id="submit" value="Sign Up">
+                        <input type="Submit" class="poppins-regular index" id="submit" value="Sign Up">
                         <?php
                         if (isset($_GET['errors'])) {
                             $errors = $_GET['errors'];

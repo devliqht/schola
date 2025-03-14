@@ -5,6 +5,8 @@ html, body {
 
 hr {
     border-color: var(--border-main-dark);
+    background: var(--border-main-dark);
+    height: 2px;
 }
 
 .main-content {
@@ -81,8 +83,8 @@ hr {
 
 .post {
     padding: 1rem;
-    background-color: var(--base-bg-one);
-    border-top: 1px solid var(--border-main-dark);
+    background-color: var(--base-bg-two);
+    border-radius: 1rem;
     transition: 0.1s all;
 }
 
@@ -173,13 +175,15 @@ hr {
 }
 
 .interaction {
-    border: 1px solid var(--border-main-dark);
+    /* border: 1px solid var(--border-main-dark); */
+    border: none;
     padding: 0.675rem;
     padding-right: 0.885rem; padding-left: 0.885rem;
     border-radius: 1rem;
     transition: 0.1s border;
     color: var(--text-light);
-    background-color: var(--base-bg-two);
+    background-color: var(--interaction-dark);
+    transition: 0.2s all;
 }
 
 .interactions-row {
@@ -187,7 +191,7 @@ hr {
 }
 
 .interaction.active {
-    border: 1px solid #959595;
+    border: 2px solid var(--border-main-dark);
     cursor: pointer;
     color: var(--chiase-color-light);
 }
@@ -202,7 +206,7 @@ hr {
 }
 
 .interaction:hover {
-    border: 1px solid #959595;
+    background: var(--interaction-dark-hover);
     cursor: pointer;
     color: var(--chiase-color-light);
 }

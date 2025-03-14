@@ -95,7 +95,6 @@
                     <h1 class="text-sm inter-300 text-white">Joined <?php echo date("F j, Y", strtotime($row['created_at'])); ?></h1>
                 </div>
             </div>
-            <hr />
             <div class="flex flex-col">
                 <div class="flex flex-row align-center justify-between">
                     <p class="gradient-text text-xl inter-700">Devotio Level <?= floor($devotioLevel) ?></p>
@@ -106,9 +105,8 @@
                 </div>
                 <p class="gradient-text text-xl inter-700"></p>
             </div>
-            <hr />
-            <div class="flex flex-col py-2">
-                <h2 class="text-base inter-300 pb-4 text-white">Posts by <span class="inter-700 gradient-text"><?= htmlspecialchars($row['full_name']) ?></span></h2>
+            <div class="flex flex-col py-2" style="gap: 0.4rem;">
+                <h2 class="text-base inter-300 pb-2 text-white">Posts by <span class="inter-700 gradient-text"><?= htmlspecialchars($row['full_name']) ?></span></h2>
                 <?php if ($postRes->num_rows > 0): ?>
                 <?php while ($post = $postRes->fetch_assoc()) {
                     $authorQuery = $conn->prepare("SELECT username, profile_picture from users WHERE id = ?");
