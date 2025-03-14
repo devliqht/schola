@@ -50,26 +50,7 @@
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
-            <div class="flex flex-row gap-4 align-center justify-between">
-                <h2 class="text-xl gradient-text inter-700">Announcements</h2>
-                <?php if ($_SESSION['role'] === 'officer' || $_SESSION['role'] === 'admin'): ?>
-                    <a href="create-post.php" ><button class="interaction inter-700">Create Announcement</button></a>
-                        <div class="modal" id="postModal">
-                            <form action="../validation/add-post.php" method="POST">
-                                <div class="modal-content">
-                                    <span class="close-btn" onclick="closeModal()">&times;</span>
-                                    <h2 class="gradient-text inter-600 text-xl">Create a Post</h2>
-                                    <input type="text" id="postTitle" name="postTitle" placeholder="Post Title" required>
-                                    <textarea id="postContent" name="postContent" placeholder="Post Content" rows="4" required></textarea>
-                                    <input type="submit" class="submit-btn" />
-                                </div>
-                            </form>
-                        </div>
-                <?php endif; ?>
-            </div>
-            <hr/>
-            <h2 class="text-xl gradient-text inter-700">University Announcements</h2>
-                <hr/>
+            <h2 class="text-xl gradient-text inter-700 pb-4">University Announcements</h2>
                 <div class="latest-container">
                     <?php 
                         $conn = establish_connection();
@@ -99,8 +80,7 @@
                     ?>
                 </div>
 
-                <h2 class="text-xl gradient-text inter-700">Student Government Announcements</h2>
-                <hr/>
+                <h2 class="text-xl gradient-text inter-700 pb-4">Student Government Announcements</h2>
 
                 <div class="latest-container">
                     <?php 
@@ -117,7 +97,7 @@
                                 render_announcement($row, "ssg");
                             }
                         } else {
-                            echo "<p class='pb-4'>No announcements available.</p>";
+                            echo "<p class='pb-4 text-white inter-400'>No announcements available.</p>";
                         }
                     ?>
                 </div>
