@@ -8,6 +8,9 @@
     .header {
          border-bottom-right-radius: 1.5rem;
     }
+    .appear-768px {
+        display: none;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -31,6 +34,15 @@
         grid-template-rows: 1fr;
         position: absolute;
     }    
+    .appear-768px {
+        display: none;
+    }
+}
+
+@media (max-width: 868px) {
+    .header-nav-links {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -119,7 +131,8 @@
     }
 
     .profile-info-container {
-        height: 80px;
+        height: 70px;
+        justify-content: center;
     }
 
     .tags-grid {
@@ -163,6 +176,9 @@
     /* UTIL */
     .disappear-768px {
         display: none;
+    }
+    .appear-768px {
+        display: flex;
     }
 
     .branding {

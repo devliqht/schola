@@ -160,10 +160,25 @@ hr {
     flex-direction: row;
     justify-content: space-between;
     color: var(--text-light);
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.renderPost-title {
+    display: flex;
+    flex-direction: column;
 }
 
 .renderPost-metadata {
     width: 400px;
+}
+
+.renderPost-statistics {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    width: 100px;
 }
 
 .post-author-name:hover {
