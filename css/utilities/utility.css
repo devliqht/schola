@@ -58,6 +58,10 @@
     justify-content: space-between;
 }
 
+.justify-evenly {
+    justify-content: space-evenly;
+}
+
 .relative {
     position: relative;
 }
@@ -104,6 +108,14 @@
 
 .text-black {
     color: var(--text-dark);
+}
+
+.text-dark-muted {
+    color: var(--text-dark-muted);
+}
+
+.text-light-muted {
+    color: var(--text-light-muted);
 }
 /* Tailwind-like Box Shadows */
 .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }

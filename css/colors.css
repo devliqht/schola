@@ -14,10 +14,12 @@
 
     --border-main-light: #c9c9c9;
     --text-light: #c9c9c9;
+    --text-light-muted: #b3b3b3;
     --text-light-hover: #eaeaea;
 
     --border-main-dark: #424242;
     --text-dark: #424242;
+    --text-dark-muted: #333333;
     --text-dark-hover: #626262;
 
     /* Tailwind stuff */
