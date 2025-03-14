@@ -40,7 +40,7 @@ function get_breadcrumbs() {
         $breadcrumbs[] = '<span class="current">' . htmlspecialchars($pretty_name) . '</span>';
     }
 
-    return implode(' <span> &gt; </span> ', $breadcrumbs);
+    return implode(' <span class="text-black"> &gt; </span> ', $breadcrumbs);
 }
 
 // Enable error reporting (REMOVE this in production)

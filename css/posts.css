@@ -48,7 +48,7 @@ hr {
     grid-template-columns: 240px 1fr; 
     grid-template-rows: 1fr;
     position: absolute;
-    top: 4rem;
+    top: 3.9rem;
     width: 100%; /* Ensure Grid spans full viewport width */
 }
 
@@ -326,11 +326,14 @@ textarea.comment-textarea:focus {
 }
 
 .breadcrumb {
-    font-size: 14px;
-    margin-bottom: 16px;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--border-main-dark);
+    font-size: 0.895rem;
+    margin-bottom: 1rem;
     color: var(--text-light);
+    font-family: "Inter", ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+
 }
 
 .breadcrumb a {

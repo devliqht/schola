@@ -94,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col pr-4">
+                <div class="flex flex-col px-4">
                     <h1 class="text-lg gradient-text inter-700"><?php echo $row['course']; ?></h1>
                     <h1 class="text-sm inter-300 text-white">Joined <?php echo date("F j, Y", strtotime($row['created_at'])); ?></h1>
                 </div>

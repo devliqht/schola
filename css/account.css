@@ -26,6 +26,7 @@
     display: flex;
     flex-direction: row;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
 .profile-details {
@@ -33,6 +34,7 @@
     flex-direction: row;
     border-radius: 8px;
     justify-content: space-between;
+    background: var(--base-bg-three);
 }
 
 .profile-level-container {
