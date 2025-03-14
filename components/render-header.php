@@ -20,9 +20,8 @@ function render_header() {
             </form>
         </div>
         <div class="header-nav-links">
-            <div class="link-wrapper"><a href="announcements.php" class="text-base inter-600">Announcements</a></div>
-            <div class="link-wrapper"><a href="posts.php" class="text-base inter-600">Posts</a></div>
-            <div class="link-wrapper"><a href="groups.php" class="text-base inter-600">Groups</a></div>
+            <div class="link-wrapper"><a href="announcements.php" class="text-base inter-300"><i class="fa-solid fa-bullhorn"></i> Announcements</a></div>
+            <div class="link-wrapper"><a href="posts.php" class="text-base inter-300"><i class="fa-solid fa-comments fa-xs"></i> Posts</a></div>
         </div>
         <div class="search-results-overlay" id="search-results-overlay">
             <div class="search-results-content">
@@ -38,8 +37,9 @@ function render_header() {
          $profilePicture = isset($_SESSION['profile_picture']) ? "../uploads/profile_pictures/" . $_SESSION['profile_picture'] : $defaultProfilePicture;
         ?>
         <div class="flex flex-row align-center gap-4">
-            <div class="flex flex-col header-text">
-            <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-plus"></i> Create</button></a>
+            <div class="flex flex-row" style="gap: 0.4rem;">
+                <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-plus"></i> Create</button></a>
+                <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-bell"></i> Notifications</button></a>
             </div>
             <div class="header-account-container">
                 <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Profile Picture">

@@ -61,17 +61,15 @@ $events_result = $conn->query("SELECT * FROM events ORDER BY event_date ASC");
         <nav class="breadcrumb">
             <?php echo get_breadcrumbs(); ?>
         </nav>
-            <h2 class="gradient-text text-xl inter-700">Manage Events</h2>
-            <hr/>
-        
+            <h2 class="gradient-text text-xl inter-700 pb-4">Manage Events</h2> 
             <form method="POST">
-                <label class="inter-400 text-base">Event Title:</label>
+                <label class="inter-400 text-base text-white">Event Title:</label>
                 <input type="text" name="title" required>
                 
-                <label class="inter-400 text-base">Date:</label>
+                <label class="inter-400 text-base text-white">Date:</label>
                 <input type="date" name="event_date" required>
                 
-                <label class="inter-400 text-base">Description:</label>
+                <label class="inter-400 text-base text-white">Description:</label>
                 <textarea name="description" rows="5"></textarea>
                 
                 <button type="submit" name="add_event" class="action-button">Add Event</button>
@@ -81,10 +79,10 @@ $events_result = $conn->query("SELECT * FROM events ORDER BY event_date ASC");
             <ul>
                 <?php while ($event = $events_result->fetch_assoc()): ?>
                     <li>
-                        <strong><?= htmlspecialchars($event['title']) ?></strong> - <?= $event['event_date'] ?>
+                        <h1 class="text-white pb-4"><?= htmlspecialchars($event['title']) ?>  - <?= $event['event_date'] ?></h1>
                         <form method="POST" style="display:inline;">
                             <input type="hidden" name="event_id" value="<?= $event['id'] ?>">
-                            <button type="submit" name="delete_event">Delete</button>
+                            <button type="submit" name="delete_event" id="submit">Delete</button>
                         </form>
                     </li>
                 <?php endwhile; ?>

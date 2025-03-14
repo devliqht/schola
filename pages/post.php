@@ -118,14 +118,13 @@
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
-            <div class="flex flex-row align-center">
-                <img class="header-account-picture p-2" src="<?php echo $authorProfilePicture; ?>" alt="Author Picture"/>
-                <div class="flex flex-col">
+            <div class="flex flex-row align-center pb-4">
+                <img class="header-account-picture " src="<?php echo $authorProfilePicture; ?>" alt="Author Picture"/>
+                <div class="flex flex-col pl-3">
                     <h2 class="text-xl inter-700 gradient-text"><?php echo htmlspecialchars($post['title']); ?></h2>
-                    <a class="text-sm decoration-none text-white inter-300" href="profile.php?id=<?php echo $post['author_id']; ?>">by <?php echo htmlspecialchars($post['username']); ?></a>
+                    <a class="text-sm decoration-none text-white inter-300 post-author-name" href="profile.php?id=<?php echo $post['author_id']; ?>">@<?php echo htmlspecialchars($post['username']); ?></a>
                 </div>
             </div>
-            <hr/>
             <div class="flex flex-col" style="color: var(--text-light);">
                 <p class="text-base inter-400">
                     <?php echo nl2br(htmlspecialchars($post['content'])); ?>
@@ -187,8 +186,8 @@
                 <?php
                     $currPicture = !empty($_SESSION['profile_picture']) ? "../uploads/profile_pictures/" . $_SESSION['profile_picture'] : $defaultProfilePicture;
                 ?>
-                <img class="header-account-picture pr-2" src="<?php echo $currPicture; ?>" alt="Author Picture"/>
-                <form action="../validation/add-comment.php" method="POST" class="add-comment-form">
+                <img class="header-account-picture" src="<?php echo $currPicture; ?>" alt="Author Picture"/>
+                <form action="../validation/add-comment.php" method="POST" class="add-comment-form pl-3">
                         <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
                         <textarea style="margin: 0;" rows="2" name="commentContent" placeholder="Comment as <?php echo $_SESSION['username']; ?>" rows="1" required class="text-base comment-textarea"></textarea>
                         <input type="submit" class="submit-comment" id="submit" value="Submit Comment"></input>
@@ -204,10 +203,10 @@
                 ?>
                     <div class="comment-item">
                         <div class="flex flex-col">
-                            <div class="flex flex-row align-center gap-4 justify-between">
+                            <div class="flex flex-row align-center gap-4 ">
                                 <div class="flex flex-row align-center">
-                                    <img class="header-account-picture py-2 pr-2" src="<?php echo $profilePicture; ?>" alt="Pfp"/>
-                                    <div class="flex flex-col">
+                                    <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Pfp"/>
+                                    <div class="flex flex-col pl-3">
                                         <div class="flex flex-row gap-4 align-center">
                                             <h2 class="text-base gradient-text inter-700"><?php echo htmlspecialchars($comment['full_name']); ?></h2> 
                                             <h1 class="flex justify-end text-xs inter-400" style="color:rgb(150, 150, 150);">
@@ -221,7 +220,7 @@
                                     <form action="../validation/delete-comment.php" method="POST" style="width: fit-content;">
                                         <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
                                         <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-                                        <button id="submit" type="submit" class="text-black action-button"><i class="fa-solid fa-trash"></i></button>
+                                        <button type="submit" class="text-black action-button"><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 <?php endif; ?>
                             </div>

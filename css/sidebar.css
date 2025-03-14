@@ -100,7 +100,7 @@
         width: 240px;
         z-index: 1000;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.2s both;
         top: 4.2rem;
     }
 

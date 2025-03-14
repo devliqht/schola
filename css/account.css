@@ -22,13 +22,27 @@
     object-fit: cover;
 }
 
+.profile-content-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
 
 .profile-details {
     display: flex;
     flex-direction: row;
-
     border-radius: 8px;
     justify-content: space-between;
+}
+
+.profile-level-container {
+    display: flex;
+    flex-direction: column;
+    background: var(--base-bg-two);
+    height: fit-content;
+    padding: 1rem;
+    width: 280px;
+    border-radius: 1rem;
 }
 
 .profile-comment-item {

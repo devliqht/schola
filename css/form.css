@@ -69,7 +69,7 @@ input.index, textarea.index, select.index, #submit.index {
 
 input:focus, textarea:focus {
     outline: none !important;
-    border: 1px solid var(--chiase-color-dark);
+    border: 2px solid var(--chiase-color-dark);
     box-shadow: 0 0 10px var(--chiase-color-dark);
     border-radius: 0.4rem;
   }

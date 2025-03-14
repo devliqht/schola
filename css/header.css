@@ -55,10 +55,6 @@
     transition: all 0.3s ease;
 }
 
-.link-wrapper a:hover {
-    color: var(--chiase-color-dark);
-}
-
  .link-wrapper a:hover::after {
     content: '';
     position: absolute;

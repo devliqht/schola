@@ -4,9 +4,10 @@ html, body {
 }
 
 hr {
-    border-color: var(--border-main-dark);
+    border: 0;
     background: var(--border-main-dark);
     height: 2px;
+    box-shadow: none;
 }
 
 .main-content {
@@ -165,6 +166,9 @@ hr {
     width: 400px;
 }
 
+.post-author-name:hover {
+    text-decoration: underline;
+}
 .post-interactions {
     width: 100%;
     display: flex;

@@ -153,6 +153,12 @@
         padding: 0.4rem;
         padding-left: 0.55rem; padding-right: 0.55rem;
     }
+    .profile-content-wrapper {
+        flex-direction: column;
+    }
+    .profile-level-container {
+        width: calc(100% - 2rem);
+    }
 }
 
 @media (max-width: 480px) {

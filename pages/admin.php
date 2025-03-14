@@ -54,11 +54,10 @@
                     <?php while($row = $result->fetch_assoc()): ?>
                         <tr class="inter-300">
                             <td><?php echo $row['id']; ?></td>
-                            <td class="inter-700"><?php echo $row['username']; ?></td>
+                            <td class="inter-300"><a href="profile.php?id=<?php echo $row['id']; ?>" class="text-white decoration-none text-base"><?php echo $row['username']; ?></a></td>
                             <td><?php echo $row['full_name']; ?></td>
                             <td class="text-capitalize"><?php echo $row['role']; ?></td>
                             <td>
-                                <a href="profile.php?id=<?php echo $row['id']; ?>" class="text-black" style="text-decoration: underline; ">View Profile</a>
                                 <button class="action-button" onclick="showEditForm(<?php echo $row['id']; ?>, '<?php echo $row['username']; ?>', '<?php echo $row['full_name']; ?>', '<?php echo $row['role']; ?>', '<?php echo $row['course']; ?>')" class="btn bg-blue text-white p-1">Edit</button>
                                 <button class="action-button" onclick="showDeleteModal(<?php echo $row['id']; ?>)" class="btn bg-red text-white p-1">Delete</button>
                             </td>
