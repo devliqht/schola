@@ -6,7 +6,7 @@
         width: 600px;
     }
     .header {
-        border-bottom-left-radius: 1.5rem; border-bottom-right-radius: 1.5rem;
+         border-bottom-right-radius: 1.5rem;
     }
 }
 
@@ -158,6 +158,15 @@
     }
     .profile-level-container {
         width: calc(100% - 2rem);
+    }
+
+    /* UTIL */
+    .disappear-768px {
+        display: none;
+    }
+
+    .branding {
+        display: none;
     }
 }
 

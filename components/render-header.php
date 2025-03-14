@@ -38,7 +38,7 @@ function render_header() {
         ?>
         <div class="flex flex-row align-center gap-4">
             <div class="flex flex-row" style="gap: 0.4rem;">
-                <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-plus"></i> Create</button></a>
+                <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-plus"></i> <span class="disappear-768px">Create</span></button></a>
                 <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-bell"></i> </button></a>
             </div>
             <div class="header-account-container">
