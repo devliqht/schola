@@ -27,6 +27,7 @@ time, mark, audio, video {
 
 html {
 	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
 }
 
 /* HTML5 display-role reset for older browsers */

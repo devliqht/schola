@@ -75,23 +75,23 @@
 }
 
 .border-b-1 {
-    border-bottom: 1px solid #c9c9c9;
+    border-bottom: 1px solid var(--border-main-dark);
 }
 
 .border-b-2 {
-    border-bottom: 2px solid #c9c9c9;
+    border-bottom: 2px solid var(--border-main-dark);
 }
 
 .border-b-4 {
-    border-bottom: 4px solid #c9c9c9;
+    border-bottom: 4px solid var(--border-main-dark);
 }
 
 .border-1 {
-    border: 1px solid #c9c9c9;
+    border: 1px solid var(--border-main-dark);
 }
 
 .border-r-1 {
-    border-right: 1px solid #c9c9c9;
+    border-right: 1px solid var(--border-main-dark);
 }
 
 .text-capitalize {
