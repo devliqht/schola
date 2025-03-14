@@ -44,7 +44,7 @@
                 </nav>
 
                 <div class="flex flex-row gap-4 justify-between align-center">
-                    <h2 class="text-xl text-white inter-700 pb-4">Welcome, <span class="gradient-text"><?= $_SESSION['full_name']; ?></span></h2>
+                    <h2 class="text-xl text-white inter-700 pb-4">Welcome <span class="gradient-text"><?= $_SESSION['full_name']; ?></span></h2>
                 </div>
                 <div class="discussions-wrapper">
                     <?php 

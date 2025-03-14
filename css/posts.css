@@ -373,9 +373,9 @@ textarea.comment-textarea:focus {
 }
 
 .tag-box {
-    background-color: #f3f3f3;
-    border: 1px solid rgb(210, 210, 210);
-    color: black;
+    background-color: var(--base-bg-two);
+    border: 1px solid var(--border-main-dark);
+    color: var(--text-light);
     padding: 1rem;
     border-radius: 5px;
     text-align: center;
@@ -385,5 +385,5 @@ textarea.comment-textarea:focus {
     display: block;
 }
 .tag-box:hover {
-    background-color: #e0e0e0;
+    background-color: var(--text-dark-muted);
 }

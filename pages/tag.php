@@ -24,7 +24,7 @@ if (!$tag_data) {
 }
 $tag_name = htmlspecialchars($tag_data['name']);
 
-$posts_query = $conn->prepare("SELECT p.id, p.title, p.content, p.created_at, u.profile_picture 
+$posts_query = $conn->prepare("SELECT p.id, p.title, p.content, p.created_at, u.profile_picture, u.username, u.full_name
                                         FROM posts p
                                         JOIN post_tags pt ON p.id = pt.post_id
                                         JOIN users u ON p.author_id = u.id
@@ -73,14 +73,12 @@ $posts_result = $posts_query->get_result();
                 <ul>
                     <?php while ($post = $posts_result->fetch_assoc()): ?>
                         <?php 
-  
                             render_post($post); 
-                            
                         ?>
                     <?php endwhile; ?>
                 </ul>
             <?php else: ?>
-                <p>No posts found for this tag.</p>
+                <p class="text-base inter-300 text-white">No posts found for this tag.</p>
             <?php endif; ?>
 
         </div>
