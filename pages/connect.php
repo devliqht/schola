@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once '../api/config.php';
 require_once '../api/db_connection.php';
 require_once '../components/render-header.php';
 require_once '../components/render-sidebar.php';
@@ -61,16 +61,13 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; // Set a def
             <div class="users-grid">
                 <?php while ($user = $result->fetch_assoc()): ?>
                     <div class="user-card">
-                    <div class="user-card-photo">
-                        <!-- <img src="../uploads/covers/default.png" alt="Cover Photo"> -->
-                        <!-- <img src="../uploads/covers/default.svg" alt="Cover Photo"> -->
-                    </div>
+
                         <?php 
                             $profilePicture = isset($user['profile_picture']) ? "../uploads/profile_pictures/" . $user['profile_picture'] : $defaultProfilePicture;
                         ?>
                         <img src="<?php echo $profilePicture; ?>" alt="Profile">
                         <div class="flex flex-col">
-                            <h3 class="gradient-text text-base inter-700"><?= htmlspecialchars($user['full_name']) ?></h3>
+                            <h3 class="user-card-f-name gradient-text text-base inter-700"><?= htmlspecialchars($user['full_name']) ?></h3>
                             <h3 class="text-xs inter-700 pb-1"><?= htmlspecialchars($user['course']) ?></h3>
                             <h3 class="text-sm inter-300 pb-4">@<?= htmlspecialchars($user['username']) ?></h3>
                         </div>

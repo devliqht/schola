@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+require_once '../api/config.php';
 require_once '../api/db_connection.php';
 $conn = establish_connection();
 

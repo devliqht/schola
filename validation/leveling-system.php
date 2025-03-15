@@ -1,4 +1,5 @@
 <?php
+require_once '../api/config.php';
 require_once '../api/db_connection.php';
 require_once '../api/level_config.php';
 

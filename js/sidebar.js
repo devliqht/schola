@@ -41,3 +41,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const savedTheme = localStorage.getItem("theme") || document.documentElement.getAttribute("data-theme") || "dark";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+        const currentTheme = document.documentElement.getAttribute("data-theme");
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+        // Apply new theme
+        document.documentElement.setAttribute("data-theme", newTheme);
+
+        // Save to localStorage
+        localStorage.setItem("theme", newTheme);
+
+        // Save to PHP cookie (expires in 1 year)
+        document.cookie = `theme=${newTheme}; path=/; max-age=31536000`;
+    });
+});

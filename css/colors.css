@@ -5,21 +5,18 @@
     --chiase-color-light: #0ac76c;
     --ismis-light: #b7b01d;
     --ismis-dark: #0e3c00;
-    --base-bg-one: #202020;
-    --base-bg-two: #272727;
-    --base-bg-three: #292929;
+    --base-bg-one: #1b1b1b;
+    --base-bg-two: #222222;
+    --base-bg-three: #232323;
     --interaction-dark: #313131;
     --interaction-dark-hover: #414141;
-
-
     --border-main-light: #c9c9c9;
     --text-light: #c9c9c9;
     --text-light-muted: #b3b3b3;
     --text-light-hover: #eaeaea;
-
     --border-main-dark: #424242;
     --text-dark: #424242;
-    --text-dark-muted: #333333;
+    --text-dark-muted: #353535;
     --text-dark-hover: #626262;
 
     /* Tailwind stuff */
@@ -46,6 +43,23 @@
     --color-zinc-800: #47474b;
     --color-zinc-900: #36363a;
     --color-zinc-950: #232326;
+}
+
+[data-theme="light"] {
+    /* Light Mode */
+    --base-bg-one: #f5f5f5;
+    --base-bg-two: #eaeaea;
+    --base-bg-three: #dddddd;
+    --interaction-dark: #d1d1d1;
+    --interaction-dark-hover: #bbbbbb;
+    --border-main-light: #424242;
+    --text-light: #424242;
+    --text-light-muted: #626262;
+    --text-light-hover: #222222;
+    --border-main-dark: #c9c9c9;
+    --text-dark: #c9c9c9;
+    --text-dark-muted: #b3b3b3;
+    --text-dark-hover: #111111;
 }
 
 .base-bg {

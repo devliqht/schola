@@ -1,13 +1,9 @@
-<!-- <?php
-    //define("DB_HOST", "localhost:3306");
-    //define("DB_USER", "s22103604_chiase");
-    //define("DB_PASS", "sonicdravice");
-    //define("DB_NAME", "s22103604_chiase");
-?> -->
+<?php
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-<?php 
-    define("DB_HOST", "localhost");
-    define("DB_USER", "root");
-    define("DB_PASS", "");
-    define("DB_NAME", "chiase");
+// Get theme from cookie or default to 'dark'
+$theme = isset($_COOKIE['theme']) ? $_COOKIE['theme'] : 'dark';
 ?>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once '../api/config.php';
 require_once '../api/db_connection.php';
 
 if (!isset($_SESSION['id']) || !isset($_POST['post_id'])) {

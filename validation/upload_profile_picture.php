@@ -1,5 +1,5 @@
 <?php
-    session_start();
+require_once '../api/config.php';
     require '../api/db_connection.php'; 
     require '../components/resize-and-crop.php'; 
 

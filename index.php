@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php require_once 'api/config.php'; ?>
 <?php 
     if (isset($_SESSION['role']) && isset($_SESSION['username'])) { 
         header("Location: pages/home.php");

@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-session_start();
+require_once '../api/config.php';
 require_once '../api/level_config.php'; // Ensure database connection is included
 require_once '../api/db_connection.php'; 
 require_once 'leveling-system.php'; 

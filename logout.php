@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    require_once 'api/config.php';
     $_SESSION = [];
     session_destroy();
     header("Location: index.php");
