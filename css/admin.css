@@ -15,7 +15,7 @@
     background-color: rgba(0,0,0,0.5);
 }
 .modal-content {
-    background-color: white;
+    background-color: var(--base-bg-three);
     margin: 15% auto;
     padding: 20px;
     width: 300px;
@@ -45,7 +45,7 @@
 
 .action-button:hover {
     background: var(--chiase-color-light);
-    color: white;
+    color: var(--text-dark);
 }
 
 .form-group {
@@ -56,6 +56,6 @@
 }
 
 .dropdown-field {
-    color: black;
+    color: var(--text-light);
     padding: 0.4rem;
 }
