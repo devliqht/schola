@@ -3,24 +3,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("sidebar-overlay");
     const closeBtn = document.getElementById("sidebar-close");
-
-    sidebarToggle.addEventListener("click", function() {
-        sidebar.classList.toggle("open");
-    });
-
+    
     function openSidebar() {
-        sidebar.classList.add("open");
-        overlay.classList.add("active");
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("active");
     }
-
-    function closeSidebar() {
-        sidebar.classList.remove("open");
-        overlay.classList.remove("active");
-    }
-
     sidebarToggle.addEventListener("click", openSidebar);
-    closeBtn.addEventListener("click", closeSidebar);
-    overlay.addEventListener("click", closeSidebar);
+    closeBtn.addEventListener("click", openSidebar);
+    overlay.addEventListener("click", openSidebar);
 });
 
 // JavaScript
@@ -28,16 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const profilePic = document.querySelector('.header-account-picture');
     const modal = document.getElementById('accountModal');
     
-    // Toggle modal on profile picture click
-    profilePic.addEventListener('click', function(e) {
-        e.preventDefault();
-        modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+    profilePic.addEventListener("click", () => {
+        modal.classList.toggle("active");
     });
 
+
     // Close modal when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!profilePic.contains(e.target) && !modal.contains(e.target)) {
-            modal.style.display = 'none';
+    document.addEventListener("click", (event) => {
+        if (!modal.contains(event.target) && !profilePic.contains(event.target)) {
+            modal.classList.remove("active");
         }
     });
 });

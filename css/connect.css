@@ -24,7 +24,7 @@
     border-bottom: 4px solid var(--chiase-color-light);
 }
 
-.user-card-f-name {
+.user-card-f-name, .user-card-course {
     white-space: nowrap; /* Prevents line breaking */
     overflow: hidden;
     text-overflow: ellipsis; /* Adds "..." if too long */

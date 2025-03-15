@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             
                             resultItem.innerHTML = `
                                 <div class="post">
-                                    <div class="flex flex-row align-center gap-4">
+                                    <div class="flex flex-row align-center gap-4 text-white">
                                         <i class="fa-solid fa-newspaper fa-xl"></i>
                                         <div class="flex flex-col">
                                             <div class="post-title gradient-text text-base inter-700">${item.title}</div>

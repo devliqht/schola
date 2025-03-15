@@ -118,13 +118,15 @@
                     </div>
 
                     <div class="profile-level-container">
-                        <h1 class="text-white inter-600 text-lg pb-2">Achievements</h1>
+                        <h1 class="text-white inter-600 text-lg pb-2">User Tags</h1>
                         <p class="text-sm inter-300 text-white">
                         <?php 
                             if ($row['id'] === 2) {
                                 render_achievement("Creator"); 
+                            } else if ($row['id'] === 6) {
+                                render_achievement("WebDev Professor");
                             } else {
-                                echo "No achievements yet.";
+                                echo "No user tags yet.";
                             }
                         ?>
                         </p>

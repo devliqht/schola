@@ -99,8 +99,9 @@
         height: 100%;
         width: 240px;
         z-index: 1000;
+        opacity: 0;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-        transition: transform 0.4s cubic-bezier(.32,.98,.47,1);
+        transition: transform 0.4s var(--smooth-anim), opacity 0.3s var(--smooth-anim);
         top: 4.2rem;
     }
 
@@ -128,6 +129,7 @@
 
     .right-sidebar.open {
         transform: translateX(240px);
+        opacity: 1;
     }
 
     .sidebar-overlay.active {

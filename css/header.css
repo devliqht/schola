@@ -171,11 +171,12 @@
     margin: 50px auto;
     width: 80%;
     max-width: 600px;
-    background: var(--base-bg-two);
+    background: var(--base-bg-one);
     padding: 20px;
     border-radius: 5px;
     max-height: 80vh;
     overflow-y: auto;
+    gap: 4rem;
 }
 
 .search-close-btn {
@@ -189,9 +190,9 @@
 }
 
 .search-results-list {
-    color: black;
     display: flex;
     flex-direction: column;
+    gap: 0.4rem;
 }
 
 .profile-name {
@@ -219,7 +220,6 @@
 }
 
 .account-modal {
-    display: none;
     position: absolute;
     top: 45px; 
     right: 0;
@@ -229,6 +229,18 @@
     padding: 0.6rem;
     z-index: 1000;
 
+    /* Smooth animation properties */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s var(--smooth-anim), transform 0.3s var(--smooth-anim);
+}
+
+/* Show modal with animation */
+.account-modal.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .account-modal-content {

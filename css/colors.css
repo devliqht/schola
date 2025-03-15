@@ -44,6 +44,7 @@
     --color-zinc-900: #36363a;
     --color-zinc-950: #232326;
     --cover-photo: url('../uploads/covers/default.svg');
+    --smooth-anim: cubic-bezier(.32,.98,.47,1);
 }
 
 [data-theme="light"] {

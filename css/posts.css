@@ -196,7 +196,7 @@ hr {
 .interaction {
     /* border: 1px solid var(--border-main-dark); */
     border: none;
-    padding: 0.675rem;
+    padding: 0.475rem;
     padding-right: 0.885rem; padding-left: 0.885rem;
     border-radius: 1rem;
     transition: 0.1s border;
@@ -305,6 +305,7 @@ textarea.comment-textarea {
     border-radius: 0;
     box-shadow: none;
     color: var(--text-light);
+    width: calc(100% - 0.4rem);
 }
 
 textarea.comment-textarea:focus {
