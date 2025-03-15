@@ -4,7 +4,7 @@
     require_once '../components/render-header.php';
 ?>
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <title>Forum Dashboard</title>
     <link rel="stylesheet" href="../css/utilities/reset.css" />

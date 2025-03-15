@@ -27,7 +27,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <title>Create Post</title>
     <link rel="stylesheet" href="../css/utilities/fonts.css" />

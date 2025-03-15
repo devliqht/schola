@@ -84,7 +84,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <title><?php echo htmlspecialchars($post['title']); ?></title>
     <link rel="stylesheet" href="../css/utilities/fonts.css" />

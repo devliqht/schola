@@ -55,7 +55,7 @@ function render_header() {
                                     <p class="text-xs inter-400 text-white">Profile</p>
                                 </div>
                             </div>
-                        <button id="theme-toggle" class="modal-item interaction">Toggle Theme</button>
+                        <button id="theme-toggle" class="modal-item interaction text-base"><i class="fa-solid fa-moon"></i> Dark Mode</button>
                         <a href="account.php" class="modal-item"><i class="fa-solid fa-user-gear"></i>Settings</a>
                         <a href="../logout.php" class="modal-item"><i class="fa-solid fa-right-from-bracket"></i>Sign out</a>
                         <!-- Add more menu items here as needed -->

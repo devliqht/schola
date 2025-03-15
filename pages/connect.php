@@ -22,7 +22,7 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; // Set a def
 ?>
 
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <title>Connect with Users</title>
     <link

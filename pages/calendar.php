@@ -39,7 +39,7 @@ function getNavLink($offset) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <link rel="stylesheet" href="../css/calendar.css">
     <link rel="stylesheet" href="../css/utilities/fonts.css" />

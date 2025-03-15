@@ -14,7 +14,7 @@ $groups = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <title>Member Groups</title>
     <link rel="stylesheet" href="../css/utilities/fonts.css" />

@@ -47,7 +47,7 @@ $members = $members_stmt->get_result();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <title><?php echo htmlspecialchars($group['name']); ?></title>
     <link rel="stylesheet" href="../css/utilities/fonts.css" />

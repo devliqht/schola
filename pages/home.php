@@ -9,7 +9,7 @@
     require_once '../components/render-announcements.php';
 ?>
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <title>Forum Dashboard</title>
     <link

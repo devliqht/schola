@@ -8,7 +8,7 @@
     $profilePicture = isset($_SESSION['profile_picture']) ? "../uploads/profile_pictures/" . $_SESSION['profile_picture'] : $defaultProfilePicture;
 ?>
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <title>Forum Dashboard</title>
     <link rel="stylesheet" href="../css/utilities/fonts.css" />

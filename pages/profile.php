@@ -48,7 +48,7 @@
     $devotioLevel = getUserLevel($user_id);
 ?>
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
     <head>
     <title>Profile - <?= htmlspecialchars($row['full_name']) ?></title>
     <link

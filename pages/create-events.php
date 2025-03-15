@@ -32,7 +32,7 @@ $events_result = $conn->query("SELECT * FROM events ORDER BY event_date ASC");
 ?>
 
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <link rel="stylesheet" href="../css/calendar.css">
     <link rel="stylesheet" href="../css/utilities/fonts.css" />

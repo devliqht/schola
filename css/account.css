@@ -10,7 +10,7 @@
     height: 200px;
     overflow: hidden;
     border-bottom: 2px solid var(--border-main-dark);
-    background-image: url('../uploads/covers/default.svg');
+    background-image: var(--cover-photo);
     background-repeat: repeat-x; /* Repeats horizontally */
     background-size: auto 100%; /* Keeps original width but stretches height */
     background-position: center;

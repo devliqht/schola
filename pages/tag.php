@@ -35,7 +35,7 @@ $posts_result = $posts_query->get_result();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <link rel="stylesheet" href="../css/utilities/fonts.css" />
     <link rel="stylesheet" href="../css/utilities/util-text.css" />

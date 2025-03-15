@@ -43,6 +43,7 @@
     --color-zinc-800: #47474b;
     --color-zinc-900: #36363a;
     --color-zinc-950: #232326;
+    --cover-photo: url('../uploads/covers/default.svg');
 }
 
 [data-theme="light"] {
@@ -50,7 +51,7 @@
     --base-bg-one: #f5f5f5;
     --base-bg-two: #eaeaea;
     --base-bg-three: #dddddd;
-    --interaction-dark: #d1d1d1;
+    --interaction-dark: #dadada;
     --interaction-dark-hover: #bbbbbb;
     --border-main-light: #424242;
     --text-light: #424242;
@@ -60,6 +61,7 @@
     --text-dark: #c9c9c9;
     --text-dark-muted: #b3b3b3;
     --text-dark-hover: #111111;
+    --cover-photo: url('../uploads/covers/light.svg');
 }
 
 .base-bg {
