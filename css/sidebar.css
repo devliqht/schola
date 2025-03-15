@@ -39,17 +39,15 @@
     padding-top: 0.5rem; 
 }
 
-/* Sidebar */
 .right-sidebar {
     color: black;
     width: 240px;
     background: var(--base-bg-two);
-
-    position: fixed; /* Fixed position */
-    height: calc(100vh - 3.8rem); /* Full height minus header */
-    overflow-y: auto; /* Scrollable if needed */
+    position: fixed; 
+    height: calc(100vh - 3.8rem); 
+    overflow-y: auto; 
     transition: transform 0.3s ease-in-out;
-    grid-column: 1 / 2; /* Occupies first column */
+    grid-column: 1 / 2; 
     z-index: 1000;
 }
 
@@ -59,7 +57,7 @@
 }
 
 .sidebar-toggle {
-    display: none; /* Hidden by default */
+    display: none; 
     background: transparent;
     border: none;
     font-size: 1.5rem;
@@ -94,7 +92,7 @@
 @media (max-width: 1024px) {
     .right-sidebar {
         position: fixed;
-        left: -240px; /* Hide off-screen */
+        left: -240px; 
         top: 0;
         height: 100%;
         width: 240px;
@@ -106,10 +104,10 @@
     }
 
     .sidebar-toggle-wrapper {
-        display: inline-flex; /* Keeps button size consistent */
-        align-items: center; /* Centers the icon */
+        display: inline-flex; 
+        align-items: center; 
         justify-content: center;
-        width: fit-content; /* Prevents stretching */
+        width: fit-content; 
         height: 20px;
         width: 20px;
         margin: 0;
@@ -117,10 +115,10 @@
     }
 
     .sidebar-toggle {
-        display: inline-flex; /* Keeps button size consistent */
-        align-items: center; /* Centers the icon */
+        display: inline-flex; 
+        align-items: center; 
         justify-content: center;
-        width: fit-content; /* Prevents stretching */
+        width: fit-content; 
         height: 20px;
         width: 20px;
         margin: 0;
@@ -139,10 +137,10 @@
     }
 
     .sidebar-close {
-        display: inline-flex; /* Keeps button size consistent */
-        align-items: center; /* Centers the icon */
+        display: inline-flex; 
+        align-items: center;
         justify-content: center;
-        width: fit-content; /* Prevents stretching */
+        width: fit-content; 
         height: 20px;
         width: 20px;
         margin: 0;
@@ -150,7 +148,7 @@
     }
 
     .sidebar-toggle i, .sidebar-close i {
-        font-size: 16px; /* Ensures icon scales properly */
+        font-size: 16px; 
         margin: 0;
         padding: 0;
     }
