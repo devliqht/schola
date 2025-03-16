@@ -10,6 +10,10 @@
 <html data-theme="<?= htmlspecialchars($theme); ?>">
 <head>
     <title>Forum Dashboard</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="../css/utilities/fonts.css" />
     <link rel="stylesheet" href="../css/utilities/util-text.css" />
     <link rel="stylesheet" href="../css/utilities/util-padding.css" />
@@ -37,15 +41,9 @@
     <?php 
         render_header();
     ?>
-    <!-- <div class="subheader p-4">
-        <div class="flex flex-row">
-            <i class="fa-solid fa-circle-user" style="color: #242424;"></i>
-            <a href="#" class="inter-600 pl-2">My Account</a>  
-        </div>
-    </div> -->
     <div class="grid-container">
         <?php render_sidebar(); ?>
-        <div class="main-content">
+        <div class="main-content animate__animated animate__fadeIn animate__faster">
         <nav class="breadcrumb">
             <?php echo get_breadcrumbs(); ?>
         </nav>
@@ -56,7 +54,6 @@
             <div class="discussions-wrapper">
                 <?php 
                     $conn = establish_connection();
-            
                     $result = $conn->query("SELECT id, title, content, author_id, created_at, pinned FROM posts WHERE post_type = 'announcement' ORDER BY posts.pinned DESC, posts.created_at DESC ");
                     while ($row = $result->fetch_assoc()) {
                         $userQuery = $conn->prepare("SELECT username, profile_picture FROM users WHERE id = ?");
@@ -67,7 +64,6 @@
 
                         renderPost($row['title'], $row['content'], $user['username'], date("F j, Y", strtotime($row['created_at'])), $row['id'], $user['profile_picture'], $row['pinned']);
                     }
-
                     $conn->close();
                 ?>
             </div>
