@@ -7,28 +7,9 @@ $username = filter_input(INPUT_GET, 'username', FILTER_SANITIZE_STRING) ?? '';
 $email = filter_input(INPUT_GET, 'email', FILTER_SANITIZE_STRING) ?? '';
 $password = filter_input(INPUT_GET, 'password', FILTER_SANITIZE_STRING) ?? '';
 $full_name = filter_input(INPUT_GET, 'full_name', FILTER_SANITIZE_STRING) ?? '';
+$age = filter_input(INPUT_GET, 'age', FILTER_SANITIZE_STRING) ?? '';
 
 $errors = [];
-
-if (empty($username)) {
-    $errors[] = "Username is required.";
-}
-
-if (empty($password)) {
-    $errors[] = "Password is required.";
-}
-
-if (empty($full_name)) {
-    $errors[] = "Full Name is Required";
-}
-
-if (empty($email)) {
-    $errors[] = "Email is required.";
-}
-
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors[] = "Invalid email format.";
-} 
 
 $query = $conn->prepare("SELECT username FROM users WHERE username = ?");
 $query->bind_param("s", $username);

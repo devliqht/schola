@@ -16,8 +16,8 @@ form {
 .col {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    justify-content: space-between;
+    gap: 0.2rem;
+    justify-content: center;
     align-items: center;
     margin-top: 1rem;
     margin-bottom: 1rem;
