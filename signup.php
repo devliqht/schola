@@ -256,7 +256,6 @@
         }
 
         form.addEventListener("submit", (event) => {
-            event.preventDefault();
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
             const full_name = document.getElementById("full_name").value;
@@ -274,10 +273,8 @@
             let isValid = true;
 
             if (!username || !password || !full_name || !emailInput || !age || !repeatPassword) {
-                event.preventDefault();
                 alert("One or more required fields are empty.");
                 isValid = false;
-                return;
             }
 
             if (!isValidEmail(emailInput)) {
@@ -300,8 +297,8 @@
                 isValid = false;
             }
 
-            if (isValid) {
-                form.submit(); // Programmatically submit the form if all checks pass
+            if (!isValid) {
+                event.preventDefault();
             }
         })
     </script>
