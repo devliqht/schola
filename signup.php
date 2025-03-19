@@ -6,10 +6,12 @@
     <link rel="stylesheet" href="css/utilities/fonts.css" />
     <link rel="stylesheet" href="css/utilities/util-text.css" />
     <link rel="stylesheet" href="css/utilities/util-padding.css" />
+    <link rel="stylesheet" href="css/utilities/utility.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/form.css" />
     <link rel="stylesheet" href="css/colors.css" />
     <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/utilities/responsive.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,10 +29,10 @@
         }
 
         .modal-content {
-            background: var(--base-bg-two);
+            background: var(--text-light);
             padding: 20px;
             border-radius: 8px;
-            text-align: center;
+           
             position: relative;
             display: flex;
             flex-direction: column;
@@ -66,6 +68,14 @@
             background-color: var(--chiase-color-dark);
             color: white;
         }
+        
+        form {
+            width: calc(100% - 1rem);
+        }
+        h2 {
+            padding-top: 1rem;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
@@ -73,7 +83,7 @@
         <div class="grid-item-wrapper">
             <div class="grid-item">
             <form id="signup-form" method="GET" action="validation/response-signup.php">
-                <div class="form-wrapper p-4">
+                <div class="form-wrapper py-4 pr-4 pl-1p5">
                     <div class="row pb-2">
                     <img class="logo" src="assets/logo.png" />
                     </div>
@@ -103,6 +113,10 @@
                     <div class="col">
                         <input type="password" name="repeat_password" id="repeat_password" placeholder="Repeat Password" class="index" style="width: 400px;"/>
                         <div class="text-xs" style="color: blue" id="repeat-password-alert"></div>
+                    </div>
+                    <div class="row">
+                        <input type="checkbox" id="terms-check" name="terms-check" value="terms-check" style="width: fit-content;">
+                        <p class="text-sm inter-300"> I agree to <a style="color: black; text-decoration: underline; cursor: pointer;" id="terms">terms and conditions</a></p><br>
                     </div>
                     <div class="col">
                         <input type="Submit" class="poppins-regular index" id="submit" value="Sign Up" style="width: 400px;">
@@ -137,6 +151,64 @@
                     </div>
                 </div>
             </div>
+
+            <div id="terms-modal" class="modal ">
+                <div class="modal-content text-black inter-400" style="width: 90%; overflow: scroll;">
+                <h1 class="text-xl gradient-text inter-700">Terms and Conditions</h1>
+        <p><strong>Last Updated:</strong> March 19, 2025</p>
+        <h2>1. Definitions</h2>
+        <ul>
+            <li><strong>"Chiase"</strong> refers to our website, services, and content.</li>
+            <li><strong>"User"</strong> refers to anyone who accesses or uses Chiase.</li>
+            <li><strong>"Content"</strong> includes text, images, videos, posts, and any other material uploaded to the website.</li>
+        </ul>
+
+        <h2>2. Use of the Website</h2>
+        <ul>
+            <li>You must be at least <strong>13 years old</strong> to use Chiase.</li>
+            <li>You agree to use the website only for <strong>lawful</strong> purposes and in compliance with these terms.</li>
+            <li>You are responsible for maintaining the confidentiality of your account and password.</li>
+        </ul>
+
+        <h2>3. User-Generated Content</h2>
+        <p>By posting content on Chiase, you grant us a <strong>non-exclusive, worldwide, royalty-free license</strong> to display and share your content.</p>
+        <p>You <strong>retain ownership</strong> of your content but grant us the right to store, display, and distribute it.</p>
+        <p>You must not post <strong>illegal, harmful, or offensive content</strong>, including hate speech, violence, or explicit material.</p>
+
+        <h2>4. Prohibited Activities</h2>
+        <p>You agree <strong>NOT</strong> to:</p>
+        <ul>
+            <li>Use Chiase for <strong>spamming, phishing, or fraudulent activities</strong>.</li>
+            <li>Upload viruses, malware, or any harmful code.</li>
+            <li>Impersonate others or create fake accounts.</li>
+            <li>Violate <strong>copyright laws</strong> by posting unauthorized content.</li>
+            </ul>
+
+            <h2>5. Account Termination</h2>
+            <p>We reserve the right to <strong>suspend or terminate</strong> your account if you violate these Terms and Conditions.</p>
+
+            <h2>6. Privacy & Data Collection</h2>
+            <ul>
+                <li>We collect and process user data in accordance with our <strong>Privacy Policy</strong>.</li>
+                <li>We do not sell or share personal data with third parties <strong>without consent</strong>.</li>
+            </ul>
+
+            <h2>7. Limitation of Liability</h2>
+            <p>Chiase is provided <strong>"as is"</strong> without any warranties.</p>
+            <p>We are <strong>not liable</strong> for any losses, damages, or issues resulting from your use of the site.</p>
+
+            <h2>8. Changes to These Terms</h2>
+            <p>We may update these terms <strong>at any time</strong>, and it is your responsibility to check for changes. Continued use of Chiase means you accept the updated terms.</p>
+
+            <h2>9. Contact Information</h2>
+            <p>If you have any questions about these Terms, contact us at <strong>[your email]</strong>.</p>
+
+            <p>By using Chiase, you agree to these Terms and Conditions. </p>
+                    <div class="flex flex-row pt-4 justify-center gap-4">
+                        <button type="button" onclick="closeTermsModal()" class="action-button">Close</button>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -144,9 +216,23 @@
         const form = document.getElementById("signup-form");
         const clearModal = document.getElementById("clear-modal");
         const clearBtn = document.getElementById("clearBtn");
+        const termsLink = document.getElementById("terms");
+        const termsModal = document.getElementById("terms-modal");
+
+        termsLink.addEventListener("click", (e) => {
+            openTermsModal();
+        });
+
+        function openTermsModal() {
+            termsModal.style.display = 'flex';
+        }
+
+        function closeTermsModal() {
+            termsModal.style.display = 'none';
+        }
         
         function openClearModal() {
-            clearModal.style.display = 'block';
+            clearModal.style.display = 'flex';
         }
 
         function closeClearModal() {
@@ -170,6 +256,7 @@
         }
 
         form.addEventListener("submit", (event) => {
+            event.preventDefault();
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
             const full_name = document.getElementById("full_name").value;
@@ -179,13 +266,14 @@
             const emailAlert = document.getElementById("email-alert");
             const ageAlert = document.getElementById("age-alert");
             const repeatAlert = document.getElementById("repeat-password-alert");
+            const termsCheck = document.getElementById("terms-check");
 
             emailAlert.textContent = '';
             ageAlert.textContent = '';
             repeatAlert.textContent = '';
             let isValid = true;
 
-            if (!username || !password || !full_name || !email || !age || !repeatPassword) {
+            if (!username || !password || !full_name || !emailInput || !age || !repeatPassword) {
                 event.preventDefault();
                 alert("One or more required fields are empty.");
                 isValid = false;
@@ -193,25 +281,27 @@
             }
 
             if (!isValidEmail(emailInput)) {
-                event.preventDefault();
                 emailAlert.textContent = "Email wrong format";
                 isValid = false;
             }
             
             if (isNaN(age) || age <= 0) {
-                event.preventDefault();
                 ageAlert.textContent = "Age must be a number";
                 isValid = false;
             }
             
             if (password != repeatPassword) {
-                event.preventDefault(); 
                 repeatAlert.textContent = "Password is not the same.";
                 isValid = false;
             }
 
+            if (!termsCheck.checked) {
+                alert("Please agree to the terms and conditions.");
+                isValid = false;
+            }
+
             if (isValid) {
-                form.submit();
+                form.submit(); // Programmatically submit the form if all checks pass
             }
         })
     </script>

@@ -68,7 +68,7 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; // Set a def
                         <img src="<?php echo $profilePicture; ?>" alt="Profile">
                         <div class="flex flex-col">
                             <h3 class="user-card-f-name gradient-text text-base inter-700"><?= htmlspecialchars($user['full_name']) ?></h3>
-                            <h3 class="user-card-course text-xs inter-700 pb-1"><?= htmlspecialchars($user['course']) ?></h3>
+                            <h3 class="user-card-course text-xs inter-700 pb-1"><?= htmlspecialchars($user['course'] ?? '') ?></h3>
                             <h3 class="text-sm inter-300 pb-4">@<?= htmlspecialchars($user['username']) ?></h3>
                         </div>
                         <a href="profile.php?id=<?= $user['id'] ?>" class="interaction text-sm decoration-none text-black text-center">View Profile</a>
