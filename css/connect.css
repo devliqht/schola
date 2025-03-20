@@ -25,10 +25,10 @@
 }
 
 .user-card-f-name, .user-card-course {
-    white-space: nowrap; /* Prevents line breaking */
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Adds "..." if too long */
-    max-width: 160px; /* Adjust as needed */
+    text-overflow: ellipsis; 
+    max-width: 160px;
 }
 
 .user-card-photo {

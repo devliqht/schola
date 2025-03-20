@@ -49,3 +49,26 @@ document.addEventListener("DOMContentLoaded", function () {
         document.cookie = `theme=${newTheme}; path=/; max-age=31536000`;
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const collapseBtn = document.getElementById('sidebar-collapse');
+    const gridContainer = document.querySelector('.grid-container');
+
+    if (!sidebar || !collapseBtn || !gridContainer) {
+        console.error('Required elements not found');
+        return;
+    }
+
+    // Sync grid container gap with initial state
+    const isCollapsed = sidebar.classList.contains('collapsed');
+    gridContainer.style.gridTemplateColumns = isCollapsed ? '200px 1fr 200px' : '360px 1fr 200px';
+
+    // Handle toggle
+    collapseBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        const isCollapsed = sidebar.classList.contains('collapsed');
+        gridContainer.style.gridTemplateColumns = isCollapsed ? '200px 1fr 200px' : '360px 1fr 200px';
+        localStorage.setItem('sidebarCollapsed', isCollapsed);
+    });
+});

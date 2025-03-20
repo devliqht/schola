@@ -2,14 +2,14 @@
     position: fixed;
     top: 0;
     z-index: 2000;
-    background-color: var(--base-bg-three);
+    background-color: var(--base-bg-one);
     color: white;
     display: flex;
     align-items: center;
     gap: 1rem;
     justify-content: space-between;
     width: calc(100% - 2rem);
-    border-bottom: 2px solid var(--border-main-dark);
+    border-bottom: 1px solid var(--border-main-dark);
     background-size: cover; /* Ensures it covers the entire header */
     background-position: left center; /* Center it horizontally */
     background-repeat: no-repeat; /* Prevent repetition */
@@ -99,6 +99,10 @@
 .user-details {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    max-width: 160px;
 }
 
 .user-details > a {

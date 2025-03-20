@@ -9,7 +9,7 @@
     --interaction-dark: #313131;
     --interaction-dark-hover: #414141;
     --border-main-light: #c9c9c9;
-    --text-light: #c9c9c9;
+    --text-light: #ffffff;
     --text-light-muted: #b3b3b3;
     --text-light-hover: #eaeaea;
     --border-main-dark: #424242;
@@ -49,11 +49,11 @@
     /* Light Mode */
     --base-bg-one: #f5f5f5;
     --base-bg-two: #eaeaea;
-    --base-bg-three: #dddddd;
+    --base-bg-three: #e4e4e4;
     --interaction-dark: #dadada;
     --interaction-dark-hover: #bbbbbb;
     --border-main-light: #424242;
-    --text-light: #424242;
+    --text-light: #0c0c0c;
     --text-light-muted: #626262;
     --text-light-hover: #222222;
     --border-main-dark: #c9c9c9;

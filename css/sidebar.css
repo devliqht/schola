@@ -16,6 +16,9 @@
     transition: all 0.2s;
     padding-left: 1rem;
     border-radius: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 .quick-links a:hover {
@@ -41,14 +44,64 @@
 
 .right-sidebar {
     color: black;
-    width: 240px;
-    background: var(--base-bg-two);
-    position: fixed; 
-    height: calc(100vh - 3.8rem); 
-    overflow-y: auto; 
-    transition: transform 0.3s ease-in-out;
-    grid-column: 1 / 2; 
-    z-index: 1000;
+    width: 280px;
+    background: var(--base-bg-one);
+    position: fixed;
+    height: calc(100vh - 3.8rem);
+    border-right: 1px solid var(--border-main-dark);
+    overflow-y: auto;
+    transition: width 0.6s var(--smooth-anim), transform 0.3s var(--smooth-anim);
+    grid-column: 1 / 2;
+    z-index: 400;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+}
+
+.right-sidebar.collapsed {
+    width: 60px;
+    overflow-x: visible; /* Allow content to extend beyond width */
+}
+
+.right-sidebar.no-transition {
+    transition: none; /* Disable all transitions when this class is present */
+}
+
+.right-sidebar.collapsed .user-details,
+.right-sidebar.collapsed .quick-links a span,
+.right-sidebar.collapsed h1, .right-sidebar.collapsed .link-label {
+    display: none;
+}
+
+.right-sidebar.collapsed .user-info {
+    padding: 0.4rem;
+}
+
+.right-sidebar.collapsed .quick-links a {
+    padding: 0.6rem;
+    justify-content: center;
+}
+
+.sidebar-collapse {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 1rem;
+    padding: 0.6rem;
+    cursor: pointer;
+    background: none;
+    border: 1px solid var(--border-main-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    transition: transform 0.3s ease;
+    border-radius: 9999px;
+    z-index: 404;
+}
+
+.right-sidebar.collapsed .sidebar-collapse {
+    transform: rotate(180deg);
 }
 
 .sidebar-toggle-wrapper {
@@ -151,6 +204,17 @@
         font-size: 16px; 
         margin: 0;
         padding: 0;
+    }
+
+    .right-sidebar.collapsed {
+        transform: translateX(0);
+        width: 60px;
+        opacity: 1;
+        left: 0;
+    }
+    
+    .sidebar-collapse {
+        display: none; /* Hide collapse button on mobile when sidebar is in overlay mode */
     }
 }
 

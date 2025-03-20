@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CHI-ASE Forum</title>
+    <title>Schola</title>
     <link rel="stylesheet" href="css/utilities/reset.css" />
     <link rel="stylesheet" href="css/utilities/fonts.css" />
     <link rel="stylesheet" href="css/utilities/util-text.css" />
