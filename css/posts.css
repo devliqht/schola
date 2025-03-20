@@ -45,7 +45,7 @@ hr {
 
 .grid-container {
     display: grid;
-    grid-template-columns: 360px 1fr 200px; 
+    grid-template-columns: 260px 1fr 200px; 
     grid-template-rows: 1fr;
     position: absolute;
     top: 3.9rem;

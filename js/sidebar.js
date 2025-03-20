@@ -62,13 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sync grid container gap with initial state
     const isCollapsed = sidebar.classList.contains('collapsed');
-    gridContainer.style.gridTemplateColumns = isCollapsed ? '200px 1fr 200px' : '360px 1fr 200px';
+    gridContainer.style.gridTemplateColumns = isCollapsed ? '180x 1fr 200px' : '260px 1fr 200px';
 
     // Handle toggle
     collapseBtn.addEventListener('click', () => {
         sidebar.classList.toggle('collapsed');
         const isCollapsed = sidebar.classList.contains('collapsed');
-        gridContainer.style.gridTemplateColumns = isCollapsed ? '200px 1fr 200px' : '360px 1fr 200px';
+        gridContainer.style.gridTemplateColumns = isCollapsed ? '180px 1fr 200px' : '260px 1fr 200px';
         localStorage.setItem('sidebarCollapsed', isCollapsed);
     });
 });

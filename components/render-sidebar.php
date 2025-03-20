@@ -38,7 +38,7 @@ function render_sidebar() {
                 const gridContainer = document.querySelector('.grid-container');
                 if (localStorage.getItem('sidebarCollapsed') === 'true') {
                     sidebar.classList.add('collapsed');
-                    gridContainer.style.gridTemplateColumns = "200px 1fr 200px";
+                    gridContainer.style.gridTemplateColumns = "180px 1fr 200px";
                 }
             })();
         </script>

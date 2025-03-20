@@ -44,7 +44,7 @@
 
 .right-sidebar {
     color: black;
-    width: 280px;
+    width: 240px;
     background: var(--base-bg-one);
     position: fixed;
     height: calc(100vh - 3.8rem);
