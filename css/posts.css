@@ -47,11 +47,10 @@ hr {
     display: grid;
     grid-template-columns: 360px 1fr 200px; 
     grid-template-rows: 1fr;
-    column-gap: 2rem;
     position: absolute;
     top: 3.9rem;
     width: 100%; /* Ensure Grid spans full viewport width */
-    transition: 0.3s grid-template-columns var(--smooth-anim);
+    transition: 0.5s grid-template-columns var(--smooth-anim);
 }
 
 .grid-container::before {
@@ -321,14 +320,14 @@ textarea.comment-textarea:focus {
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: var(--base-bg-two);
-    border-radius: 0.7rem;
+    background-color: var(--base-bg-one);
     transition: 0.1s all;
+    border-bottom: 1px solid var(--border-main-dark);
 }
 
 .recent-discussion:hover {
     cursor: pointer;
-    background-color: var(--text-dark);
+    background-color: var(--base-bg-two);
 }
 
 .fetched-content, .announcement-content {

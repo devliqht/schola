@@ -50,7 +50,7 @@
     height: calc(100vh - 3.8rem);
     border-right: 1px solid var(--border-main-dark);
     overflow-y: auto;
-    transition: width 0.6s var(--smooth-anim), transform 0.3s var(--smooth-anim);
+    transition: width 0.5s var(--smooth-anim), transform 0.5s var(--smooth-anim);
     grid-column: 1 / 2;
     z-index: 400;
     padding-left: 0.4rem;
