@@ -62,6 +62,7 @@ $members = $members_stmt->get_result();
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/admin.css" />
     <link rel="stylesheet" href="../css/account.css" />
+    <link rel="stylesheet" href="../css/groups.css" />
     <link rel="stylesheet" href="../css/utilities/responsive.css" />
     <link rel="stylesheet" href="../css/utilities/reset.css" />
     <link rel="stylesheet" href="../css/utilities/responsive.css" />
@@ -70,7 +71,7 @@ $members = $members_stmt->get_result();
     <link rel="stylesheet" href="../vendor/fontawesome-free-6.7.2-web/css/all.min.css">
     <style>
         .group-table { width: 100%; border-collapse: collapse; }
-        .group-table th, .group-table td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        .group-table th, .group-table td { padding: 10px; text-align: left; border-bottom: 1px solid var(--border-main-dark); }
     </style>
 </head>
 <body>
@@ -82,11 +83,9 @@ $members = $members_stmt->get_result();
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
-            <hr/>
-            <h2 class="text-3xl gradient-text inter-700"><?php echo htmlspecialchars($group['name']); ?></h2>
-            <p class="text-lg gradient-text">Created by <?php echo htmlspecialchars($group['username']); ?> on <?php echo (new DateTime($group['created_at']))->format('M d, Y'); ?></p>
-            <hr/>
-            <h3 class="text-2xl gradient-text inter-700 py-4">Members</h3>
+            <h2 class="text-2xl gradient-text inter-700"><?php echo htmlspecialchars($group['name']); ?></h2>
+            <p class="text-sm text-white">Created by <?php echo htmlspecialchars($group['username']); ?> on <?php echo (new DateTime($group['created_at']))->format('M d, Y'); ?></p>
+            <h3 class="text-2xl gradient-text inter-700 pt-4">Members</h3>
             <table class="group-table">
                 <thead>
                     <tr>
@@ -97,8 +96,8 @@ $members = $members_stmt->get_result();
                 <tbody>
                     <?php while ($member = $members->fetch_assoc()): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($member['username']); ?></td>
-                            <td><?php echo htmlspecialchars($member['role']); ?></td>
+                            <td class="text-white"><?php echo htmlspecialchars($member['username']); ?></td>
+                            <td class="text-white"><?php echo htmlspecialchars($member['role']); ?></td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>

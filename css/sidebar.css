@@ -153,7 +153,7 @@
         opacity: 0;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
         transition: transform 0.4s var(--smooth-anim), opacity 0.3s var(--smooth-anim);
-        top: 4.2rem;
+        top: 3.9rem;
     }
 
     .sidebar-toggle-wrapper {
@@ -206,12 +206,7 @@
         padding: 0;
     }
 
-    .right-sidebar.collapsed {
-        transform: translateX(0);
-        width: 60px;
-        opacity: 1;
-        left: 0;
-    }
+
     
     .sidebar-collapse {
         display: none; /* Hide collapse button on mobile when sidebar is in overlay mode */

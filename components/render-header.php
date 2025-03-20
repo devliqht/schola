@@ -19,10 +19,6 @@ function render_header() {
                 </div>
             </form>
         </div>
-        <div class="header-nav-links">
-            <div class="link-wrapper"><a href="announcements.php" class="text-base inter-300"><i class="fa-solid fa-bullhorn"></i> Announcements</a></div>
-            <div class="link-wrapper"><a href="posts.php" class="text-base inter-300"><i class="fa-solid fa-comments fa-xs"></i> Posts</a></div>
-        </div>
         <div class="search-results-overlay" id="search-results-overlay">
             <div class="search-results-content">
                 <h1 class="text-xl inter-600 gradient-text pb-4">Search Results for "<span id="search-query"></span>"</h1>
@@ -38,6 +34,8 @@ function render_header() {
         ?>
         <div class="flex flex-row align-center gap-4">
             <div class="flex flex-row" style="gap: 0.4rem;">
+                <a href="announcements.php"><button class="interaction inter-600 text-sm"><i class="fa-solid fa-bullhorn"></i> <span class="disappear-768px">Announcements</span></button></a>
+                <a href="posts.php"><button class="interaction inter-600 text-sm"><i class="fa-solid fa-comments"></i> <span class="disappear-768px">Posts</span></button></a>
                 <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-plus"></i> <span class="disappear-768px">Create</span></button></a>
                 <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-bell"></i> </button></a>
             </div>

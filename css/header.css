@@ -141,6 +141,7 @@
     border-radius: 2rem;
     outline: none;
     color: var(--text-light);
+    background: var(--base-bg-two);
 }
 
 .search-icon {
