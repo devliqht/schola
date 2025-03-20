@@ -13,8 +13,14 @@ Schola is a forum application designed for schools, providing a platform for stu
 
 ## Screenshots
 
-![Screenshot 1](assets/031425.png)
-![Screenshot 2](assets/031425_2.png)
+### Post Layout (Dark Mode)
+![Screenshot 1](assets/32025_dark.png)
+
+### Light Mode + Sidebar collapsed
+![Screenshot 2](assets/32025_light_collapsed.png)
+
+### Profile (Dark Mode)
+![Screenshot 3](assets/32025_p.png)
 
 ## Prerequisites
 
