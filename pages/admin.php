@@ -38,24 +38,23 @@
     <div class="grid-container">
     <?php render_sidebar(); ?>
         <div class="main-content">
-            <h2 class="text-3xl gradient-text inter-700">User Control</h2>
-            <hr/>
+            <h2 class="text-3xl gradient-text inter-700 pb-2">User Control</h2>
             <table class="user-table">
                 <thead>
                     <tr>
-                        <th class="gradient-text inter-700 text-2xl">ID</th>
-                        <th class="gradient-text inter-700 text-2xl">Username</th>
-                        <th class="gradient-text inter-700 text-2xl">Name</th>
-                        <th class="gradient-text inter-700 text-2xl">Role</th>
-                        <th class="gradient-text inter-700 text-2xl">Actions</th>
+                    <th class="inter-700 text-2xl" data-label="ID">ID</th>
+                    <th class="inter-700 text-2xl" data-label="Name">Name</th>
+                    <th class="inter-700 text-2xl" data-label="Username">Username</th>
+                    <th class="inter-700 text-2xl" data-label="Role">Role</th>
+                    <th class="inter-700 text-2xl" data-label="Actions">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while($row = $result->fetch_assoc()): ?>
                         <tr class="inter-300">
                             <td><?php echo $row['id']; ?></td>
-                            <td class="inter-300"><a href="profile.php?id=<?php echo $row['id']; ?>" class="text-white decoration-none text-base"><?php echo $row['username']; ?></a></td>
                             <td><?php echo $row['full_name']; ?></td>
+                            <td class="inter-300"><a href="profile.php?id=<?php echo $row['id']; ?>" class="text-white decoration-none text-base">@<?php echo $row['username']; ?></a></td>
                             <td class="text-capitalize"><?php echo $row['role']; ?></td>
                             <td>
                                 <button class="action-button" onclick="showEditForm(<?php echo $row['id']; ?>, '<?php echo $row['username']; ?>', '<?php echo $row['full_name']; ?>', '<?php echo $row['role']; ?>', '<?php echo $row['course']; ?>')" class="btn bg-blue text-white p-1">Edit</button>

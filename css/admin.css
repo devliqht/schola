@@ -26,6 +26,10 @@
     width: 100%;
     border-collapse: collapse;
 }
+.user-table th {
+    background: var(--base-bg-two); 
+}
+
 .user-table th, .user-table td {
     padding: 10px;
     text-align: left;

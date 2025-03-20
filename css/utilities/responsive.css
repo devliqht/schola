@@ -30,11 +30,14 @@
 
     .grid-container {
         display: grid;
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr !important;  
         grid-template-rows: 1fr;
         position: absolute;
     }    
     .appear-768px {
+        display: none;
+    }
+    .pup-wrapper {
         display: none;
     }
 }
@@ -88,7 +91,7 @@
 
     .grid-container {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         grid-template-rows: 1fr;
         place-self: center;
         top: 4.4rem;
@@ -184,6 +187,64 @@
     .branding {
         display: none;
     }
+
+    .user-table {
+        display: block;
+        width: 100%;
+    }
+
+    .user-table thead {
+        display: none; /* Hide the header row on mobile */
+    }
+
+    .user-table tbody,
+    .user-table tr,
+    .user-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .user-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid var(--border-main-dark);
+        border-radius: 0.5rem;
+        background: var(--base-bg-one);
+    }
+
+    .user-table td {
+        position: relative;
+        border-bottom: none; 
+    }
+
+    .user-table td::before {
+        content: attr(data-label);
+        font-weight: 700; 
+        display: block;
+        margin-bottom: 0.25rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+        font-size: 0.875rem; 
+    }
+
+    /* Special handling for Actions cell */
+    .user-table td[data-label="Actions"] {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .user-table td[data-label="Actions"]::before {
+        display: none; 
+    }
+
+    .user-table td[data-label="Actions"] .action-button {
+        flex: 1; 
+        text-align: center;
+    }
+
+
 }
 
 @media (max-width: 480px) {
