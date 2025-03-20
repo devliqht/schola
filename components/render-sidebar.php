@@ -58,9 +58,10 @@ HTML;
 
     // Generate regular links
     foreach ($links as $file => $data) {
+        $activeClass = isActive($file, $current_page); // Call the function first
         $sidebarHTML .= <<<HTML
         <li class="inter-300 text-sm p-1">
-            <a href="{$file}" class="{isActive($file, $current_page)}">
+            <a href="{$file}" class="{$activeClass}">
                 <i class="fa-solid {$data['icon']}"></i> <span class="link-label">{$data['label']}</span>
             </a>
         </li>
