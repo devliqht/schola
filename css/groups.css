@@ -1,0 +1,16 @@
+.groups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.5rem;
+}
+.group-card {
+    color: var(--text-light);
+    padding: 0.8rem;
+    transition: 0.3s;
+    /* border: 1px solid var(--border-main-dark); Set border width */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--base-bg-two);
+    border-radius: 1rem;
+}

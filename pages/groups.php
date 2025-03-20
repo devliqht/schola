@@ -29,6 +29,7 @@ $groups = $stmt->get_result();
     <link rel="stylesheet" href="../css/header.css" />
     <link rel="stylesheet" href="../css/admin.css" />
     <link rel="stylesheet" href="../css/account.css" />
+    <link rel="stylesheet" href="../css/groups.css" />
     <link rel="stylesheet" href="../css/utilities/responsive.css" />
     <link rel="stylesheet" href="../css/utilities/reset.css" />
     <link rel="stylesheet" href="../css/utilities/responsive.css" />
@@ -38,8 +39,7 @@ $groups = $stmt->get_result();
     <style>
         .group-table { width: 100%; border-collapse: collapse; }
         .group-table th, .group-table td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
-        .modal-content { background-color: white; margin: 15% auto; padding: 20px; width: 300px; border-radius: 5px; }
+
     </style>
 </head>
 <body>
@@ -51,16 +51,12 @@ $groups = $stmt->get_result();
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
-            <h2 class="text-xl gradient-text inter-700">Member Groups</h2>
-            <hr />
-            <?php if ($_SESSION['role'] === 'officer' || $_SESSION['role'] === 'admin'): ?>
-                <form action="../validation/add-group.php" method="POST" class="pb-4">
-                    <input type="text" name="group_name" placeholder="Enter group name" class="input-field" required>
-                    <button type="submit" class="action-button">Create Group</button>
-                </form>
-            <?php endif; ?>
-            <div class="flex flex-col">
-                <div class="flex flex-col">
+            <div class="flex flex-row justify-between pb-4">
+                <h2 class="text-2xl gradient-text inter-700">Member Groups</h2>
+                <!-- <input type="text" name="group_name" placeholder="Enter group name" class="input-field" required> -->
+                <button type="submit" class="interaction" onclick="openCreateModal()">Create Group</button>
+            </div>
+            <div class="groups-grid">
                     <?php while ($group = $groups->fetch_assoc()): ?>
                         <?php 
                         $count_stmt = $conn->prepare("SELECT COUNT(*) as member_count FROM group_members WHERE group_id = ?");
@@ -68,23 +64,22 @@ $groups = $stmt->get_result();
                         $count_stmt->execute();
                         $member_count = $count_stmt->get_result()->fetch_assoc()['member_count'];
                         ?>
-                            <div class="flex flex-col p-4 border-1">
-                                <h1><a href="group.php?id=<?php echo $group['id']; ?>" class="gradient-text inter-700 text-2xl"><?php echo htmlspecialchars($group['name']); ?></a></h1>
-                                <p class="inter-300 text-lg">Created by <?php echo htmlspecialchars($group['username']); ?></p>
-                                <p><?php echo (new DateTime($group['created_at']))->format('M d, Y'); ?></p>
-                                <div class="py-4">
+                            <div class="group-card">
+                                <h1><a href="group.php?id=<?php echo $group['id']; ?>" class="gradient-text inter-700 text-xl"><?php echo htmlspecialchars($group['name']); ?></a></h1>
+                                <p class="inter-300 text-base">Created by <?php echo htmlspecialchars($group['username']); ?></p>
+                                <p class="inter-300 text-sm"><?php echo (new DateTime($group['created_at']))->format('M d, Y'); ?></p>
+                                <div class="pt-4 text-sm">
                                     <?php 
                                     $user_count = $conn->query("SELECT COUNT(*) FROM group_members WHERE user_id = " . $_SESSION['id'])->fetch_row()[0];
                                     $is_member = $conn->query("SELECT 1 FROM group_members WHERE group_id = {$group['id']} AND user_id = " . $_SESSION['id'])->num_rows > 0;
                                     ?>
                                     <?php if (!$is_member && $user_count < 3): ?>
-                                        <a href="group.php?id=<?php echo $group['id']; ?>&join=1" class="action-button decoration-none text-black">Join</a>
+                                        <a href="group.php?id=<?php echo $group['id']; ?>&join=1" class="interaction inter-600 decoration-none text-black"><i class="fa-solid fa-arrow-right-to-bracket"></i> Join</a>
                                     <?php elseif ($is_member): ?>
-                                        <a href="group.php?id=<?php echo $group['id']; ?>&leave=1" class="action-button decoration-none text-black">Leave</a>
+                                        <a href="group.php?id=<?php echo $group['id']; ?>&leave=1" class="interaction inter-600 decoration-none text-black"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
                                     <?php endif; ?>
                                     <?php if ($_SESSION['role'] === 'admin' || ($_SESSION['role'] === 'officer' && $group['username'] === $_SESSION['username'])): ?>
-                                        <button onclick="showEditModal(<?php echo $group['id']; ?>, '<?php echo htmlspecialchars($group['name'], ENT_QUOTES); ?>')" class="action-button">Edit</button>
-
+                                        <button onclick="showEditModal(<?php echo $group['id']; ?>, '<?php echo htmlspecialchars($group['name'], ENT_QUOTES); ?>')" class="interaction inter-600"><i class="fa-solid fa-pen"></i> Edit</button>
                                         <button class="interaction inter-600" onclick='showDeleteModal(<?php echo $group["id"]; ?>, "<?php echo htmlspecialchars($group["name"], ENT_QUOTES); ?>")'>
                                             <i class="fa-solid fa-trash pr-1"></i>Delete
                                         </button>
@@ -92,7 +87,6 @@ $groups = $stmt->get_result();
                                 </div>
                             </div>
                     <?php endwhile; ?>
-                </div>
             </div>
             <div id="editModal" class="modal">
                 <div class="modal-content">
@@ -119,6 +113,16 @@ $groups = $stmt->get_result();
                     </form>
                 </div>
             </div>
+            <div id="createModal" class="modal">
+                <div class="modal-content">
+                    <h1 class="gradient-text text-2xl inter-700">Create a group</h1>
+                    <form action="../validation/add-group.php" method="POST">
+                        <input type="text" name="group_name" placeholder="Enter group name" class="input-field" required>
+                        <button type="submit" class="action-button">Create</button>
+                        <button type="button" onclick="closeCreateModal()" class="action-button">Cancel</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 <?php else: ?>
@@ -129,10 +133,18 @@ $groups = $stmt->get_result();
     function showEditModal(id, name) {
         document.getElementById('edit_group_id').value = id;
         document.getElementById('edit_group_name').value = name;
-        document.getElementById('editModal').style.display = 'block';
+        document.getElementById('editModal').style.display = 'flex';
     }
     function closeEditModal() {
         document.getElementById('editModal').style.display = 'none';
+    }
+
+    function openCreateModal() {
+        document.getElementById('createModal').style.display = 'flex';
+    }
+
+    function closeCreateModal() {
+        document.getElementById('createModal').style.display = 'none';
     }
     window.onclick = function(event) {
         if (event.target.className === 'modal') closeEditModal();
