@@ -26,6 +26,7 @@
             background: rgba(0, 0, 0, 0.5);
             justify-content: center;
             align-items: center;
+            overflow-y: scroll;
         }
 
         .modal-content {
