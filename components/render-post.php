@@ -2,7 +2,7 @@
 require_once 'format-date.php';
 require_once '../api/db_connection.php';
 
-function render_post($post) {
+function render_post($post, $likeCount) {
         $conn = establish_connection();
         if (!$post) {
             echo "<p>Post not found.</p>";
@@ -35,6 +35,7 @@ function render_post($post) {
             <div class="flex flex-wrap" style="gap: 0.3rem;">
                 <div class="flex flex-row post-interaction">
                     <i class="fa-regular fa-thumbs-up pr-1"></i>
+                    <?= $likeCount ?>
                 </div>
                 <div class="flex flex-row post-interaction">
                     <i class="fa-regular fa-comments pr-1"></i>

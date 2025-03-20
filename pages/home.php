@@ -57,7 +57,12 @@
                         $posts_result = $conn->query($posts_query);
 
                         while ($post = $posts_result->fetch_assoc()) {
-                            render_post($post); // Render each post 
+                            $likeCountQuery = $conn->prepare("SELECT COUNT(*) as like_count FROM post_likes WHERE post_id = ?");
+                            $likeCountQuery->bind_param("i", $post['id']);
+                            $likeCountQuery->execute();
+                            $likeCountResult = $likeCountQuery->get_result();
+                            $likeCount = $likeCountResult->fetch_assoc()['like_count'];
+                            render_post($post, $likeCount); // Render each post 
                         }
                         $conn->close();
                     ?>
