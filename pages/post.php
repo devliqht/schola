@@ -3,6 +3,7 @@
     require_once '../api/db_connection.php';
     require_once '../components/render-header.php';
     require_once '../components/render-sidebar.php';
+    require_once '../components/render-fetch-post.php';
     require_once '../components/get-breadcrumbs.php';
     require_once '../validation/leveling-system.php';
 
@@ -13,7 +14,7 @@
     $conn = establish_connection();
     
     $post_id = intval($_GET['id']);
-    $posts_query = "SELECT posts.*, users.username, users.profile_picture FROM posts 
+    $posts_query = "SELECT posts.*, users.username, users.full_name, users.profile_picture FROM posts 
               JOIN users ON posts.author_id = users.id
               WHERE posts.id = ?";
     
@@ -118,15 +119,16 @@
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
-            <div class="flex flex-row align-center pb-4">
+            <div class="flex flex-row align-center pb-2">
                 <img class="header-account-picture " src="<?php echo $authorProfilePicture; ?>" alt="Author Picture"/>
-                <div class="flex flex-col pl-3">
-                    <h2 class="text-xl inter-700 gradient-text"><?php echo htmlspecialchars($post['title']); ?></h2>
-                    <a class="text-sm decoration-none text-white inter-300 post-author-name" href="profile.php?id=<?php echo $post['author_id']; ?>">@<?php echo htmlspecialchars($post['username']); ?></a>
+                <div class="flex flex-col pl-3 py-2">
+                    <h2 class="text-base inter-700 gradient-text"><?php echo htmlspecialchars($post['full_name']); ?></h2>
+                    <a class="text-xs decoration-none text-white inter-300 post-author-name" href="profile.php?id=<?php echo $post['author_id']; ?>">@<?php echo htmlspecialchars($post['username']); ?></a>
                 </div>
             </div>
             <div class="flex flex-col" style="color: var(--text-light);">
-                <p class="text-base inter-400 border-1 rounded-lg p-4" style="background: var(--base-bg-two);">
+                <h1 class="text-2xl inter-600"><?= $post['title']; ?></h1>
+                <p class="text-base inter-400 rounded-lg text-muted">
                     <?php echo nl2br(htmlspecialchars($post['content'])); ?>
                 </p>
                 <div class="post-tags pt-4">
@@ -177,22 +179,27 @@
                     $post_date = new DateTime($post['created_at']);
                     $formatted_post_date = $post_date->format('M d, Y, h:i A');     
                 ?>
-                <div class="text-sm gradient-text inter-300"><?php echo $formatted_post_date; ?></div>
+                <div class="text-sm text-white inter-300"><?php echo $formatted_post_date; ?></div>
             </div>
-            <hr />
-            <div class="comments-section" id="comments-section">
-                <h3 class="text-2xl inter-700 tracking-tight gradient-text">Comments</h3>
-                <div class="flex flex-row align-start" style="margin-top: 1rem;">
-                <?php
-                    $currPicture = !empty($_SESSION['profile_picture']) ? "../uploads/profile_pictures/" . $_SESSION['profile_picture'] : $defaultProfilePicture;
-                ?>
-                <img class="header-account-picture" src="<?php echo $currPicture; ?>" alt="Author Picture"/>
-                <form action="../validation/add-comment.php" method="POST" class="add-comment-form pl-3">
-                        <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-                        <textarea style="margin: 0;" rows="2" name="commentContent" placeholder="Comment as <?php echo $_SESSION['username']; ?>" rows="1" required class="text-base comment-textarea"></textarea>
-                        <input type="submit" class="submit-comment" id="submit" value="Submit Comment"></input>
-                    </form>
+            <div class="comments-section pt-2" id="comments-section">
+                <div class="comment-container" style="margin-top: 1rem; position: relative;">
+                    <div class="comment-input-wrapper flex flex-row align-start">
+                        <form action="../validation/add-comment.php" method="POST" class="add-comment-form flex-grow">
+                            <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                            <textarea 
+                                style="margin: 0;" 
+                                name="commentContent" 
+                                placeholder="Comment as <?php echo $_SESSION['username']; ?>" 
+                                required 
+                                class="text-base comment-textarea"
+                            ></textarea>
+                            <div class="comment-buttons">
+                                <input type="submit" class="submit-comment-button" value="Submit" />
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                <h3 class="text-2xl inter-700 tracking-tight gradient-text pt-2"><?php echo $comment_count; ?> Comments</h3>
                 <div class="flex flex-col">
                 <?php while ($comment = $comments_result->fetch_assoc()): ?>
                 <?php
@@ -241,6 +248,31 @@
                             <button type="button" onclick="closeDeleteModal()" class="action-button">No</button>
                         </div>
                     </form>
+                </div>
+            </div>
+            <div class="pup-wrapper" id="post-user-profile">
+                <?php
+                    $fetch_user_posts_query = $conn->prepare("SELECT p.id, p.title, p.content, p.created_at, u.profile_picture, u.username, u.full_name
+                    FROM posts p
+                    JOIN users u ON p.author_id = u.id
+                    WHERE p.author_id = ? AND p.id != ?");
+                    $fetch_user_posts_query->bind_param("ii", $post['author_id'], $post['id']);
+                    $fetch_user_posts_query->execute();
+                    $fetch_user_posts_result = $fetch_user_posts_query->get_result();
+                ?>
+                <div class="post-user-profile">
+                    <h2 class="text-lg gradient-text inter-700 pb-2 border-b-1">More by <?= $post['username']; ?></h2>
+                    <?php if ($fetch_user_posts_result->num_rows > 0): ?>
+                        <ul>
+                            <?php while ($fetched_post = $fetch_user_posts_result->fetch_assoc()): ?>
+                                <?php 
+                                    render_fetch_post($fetched_post, 0); 
+                                ?>
+                            <?php endwhile; ?>
+                        </ul>
+                    <?php else: ?>
+                        <p class="text-base inter-300 text-white">No posts found for this user.</p>
+                    <?php endif; ?>
                 </div>
             </div>
     </div>

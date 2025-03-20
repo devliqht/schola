@@ -38,7 +38,7 @@ function render_sidebar() {
                 const gridContainer = document.querySelector('.grid-container');
                 if (localStorage.getItem('sidebarCollapsed') === 'true') {
                     sidebar.classList.add('collapsed');
-                    gridContainer.style.gridTemplateColumns = "180px 1fr 200px";
+                    gridContainer.style.gridTemplateColumns = "180px 1fr 300px";
                 }
             })();
         </script>
@@ -60,9 +60,9 @@ HTML;
     foreach ($links as $file => $data) {
         $activeClass = isActive($file, $current_page); // Call the function first
         $sidebarHTML .= <<<HTML
-        <li class="inter-300 text-sm p-1">
+        <li class="p-1">
             <a href="{$file}" class="{$activeClass}">
-                <i class="fa-solid {$data['icon']}"></i> <span class="link-label">{$data['label']}</span>
+                <i class="fa-solid {$data['icon']}"></i> <span class="link-label inter-300 text-sm">{$data['label']}</span>
             </a>
         </li>
 HTML;
@@ -72,10 +72,6 @@ HTML;
 
     // Admin section
     if ($role === 'admin') {
-        $sidebarHTML .= <<<HTML
-        <h1 class="gradient-text text-lg inter-700 pl-4 tracking-wide" style="text-transform: capitalize;">Admin</h1>
-HTML;
-        
         foreach ($adminLinks as $file => $data) {
             $sidebarHTML .= <<<HTML
             <li class="inter-300 text-sm p-1">

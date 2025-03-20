@@ -73,7 +73,7 @@ $posts_result = $posts_query->get_result();
                 <ul>
                     <?php while ($post = $posts_result->fetch_assoc()): ?>
                         <?php 
-                            render_post($post); 
+                            render_post($post, 0); 
                         ?>
                     <?php endwhile; ?>
                 </ul>
