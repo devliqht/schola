@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("You do not have permission to create announcements.");
     }
 
-    $stmt = $conn->prepare("INSERT INTO posts (title, content, author_id, created_at, post_type, post_category) VALUES (?, ?, ?, NOW(), ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO posts (title, content, author_id, created_at, post_type, post_category) VALUES (?, ?, ?, UTC_TIMESTAMP(), ?, ?)");
     $stmt->bind_param("ssiss", $title, $content, $author_id, $post_type, $post_category);
 
     if ($stmt->execute()) {    

@@ -8,77 +8,105 @@ document.addEventListener("DOMContentLoaded", function() {
         sidebar.classList.toggle("open");
         overlay.classList.toggle("active");
     }
-    sidebarToggle.addEventListener("click", openSidebar);
-    closeBtn.addEventListener("click", openSidebar);
-    overlay.addEventListener("click", openSidebar);
-});
+    
+    if (sidebarToggle) sidebarToggle.addEventListener("click", openSidebar);
+    if (closeBtn) closeBtn.addEventListener("click", openSidebar);
+    if (overlay) overlay.addEventListener("click", openSidebar);
 
-// JavaScript
-document.addEventListener('DOMContentLoaded', function() {
     const profilePic = document.querySelector('.header-account-picture');
     const modal = document.getElementById('accountModal');
     
-    profilePic.addEventListener("click", () => {
-        modal.classList.toggle("active");
-    });
+    if (profilePic && modal) {
+        profilePic.addEventListener("click", () => {
+            modal.classList.toggle("active");
+        });
+        document.addEventListener("click", (event) => {
+            if (!modal.contains(event.target) && !profilePic.contains(event.target)) {
+                modal.classList.remove("active");
+            }
+        });
+    }
 
-
-    // Close modal when clicking outside
-    document.addEventListener("click", (event) => {
-        if (!modal.contains(event.target) && !profilePic.contains(event.target)) {
-            modal.classList.remove("active");
-        }
-    });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
     const savedTheme = localStorage.getItem("theme") || document.documentElement.getAttribute("data-theme") || "dark";
     document.documentElement.setAttribute("data-theme", savedTheme);
 
-    document.getElementById("theme-toggle").addEventListener("click", function () {
-        const currentTheme = document.documentElement.getAttribute("data-theme");
-        const newTheme = currentTheme === "dark" ? "light" : "dark";
+    const themeToggle = document.getElementById("theme-toggle");
+    if (themeToggle) {
+        themeToggle.addEventListener("click", function() {
+            const currentTheme = document.documentElement.getAttribute("data-theme");
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            
+            document.documentElement.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+            document.cookie = `theme=${newTheme}; path=/; max-age=31536000`;
+        });
+    }
 
-        // Apply new theme
-        document.documentElement.setAttribute("data-theme", newTheme);
-
-        // Save to localStorage
-        localStorage.setItem("theme", newTheme);
-
-        // Save to PHP cookie (expires in 1 year)
-        document.cookie = `theme=${newTheme}; path=/; max-age=31536000`;
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const sidebar = document.getElementById('sidebar');
     const collapseBtn = document.getElementById('sidebar-collapse');
     const gridContainer = document.querySelector('.grid-container');
 
-    if (!sidebar || !collapseBtn || !gridContainer) {
-        console.error('Required elements not found');
-        return;
-    }
-
-    // Sync grid container gap with initial state
-    const isCollapsed = sidebar.classList.contains('collapsed');
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
-
-    if (isCollapsed && !isMobile) {
-        if (isMobile) {
-            gridContainer.style.gridTemplateColumns = '';
-        } else {
-            gridContainer.style.gridTemplateColumns = '180x 1fr 300px';
-        }
-    } else {
-        gridContainer.style.gridTemplateColumns = '';
-    }
-
-    // Handle toggle
-    collapseBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('collapsed');
+    if (sidebar && collapseBtn && gridContainer) {
         const isCollapsed = sidebar.classList.contains('collapsed');
-        gridContainer.style.gridTemplateColumns = isCollapsed ? '180px 1fr 300px' : '260px 1fr 300px';
-        localStorage.setItem('sidebarCollapsed', isCollapsed);
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+        if (isCollapsed && !isMobile) {
+            gridContainer.style.gridTemplateColumns = isMobile ? '' : '180px 1fr 300px';
+        } else {
+            gridContainer.style.gridTemplateColumns = '';
+        }
+
+        collapseBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+            const isCollapsed = sidebar.classList.contains('collapsed');
+            gridContainer.style.gridTemplateColumns = isCollapsed ? '180px 1fr 300px' : '260px 1fr 300px';
+            localStorage.setItem('sidebarCollapsed', isCollapsed);
+        });
+    } else {
+        console.error('Required sidebar elements not found');
+    }
+
+    const textarea = document.querySelector('.comment-textarea');
+    const form = textarea.closest('form');
+
+    if (textarea) {
+        function adjustHeight() {
+            textarea.style.height = 'auto';
+            textarea.style.height = `${textarea.scrollHeight}px`;
+        }
+        
+        textarea.addEventListener('input', adjustHeight);
+        adjustHeight();
+
+        textarea.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault(); 
+                form.submit(); 
+            }
+        });
+    }
+
+    document.querySelectorAll('.clear-button').forEach(button => {
+        const tooltip = button.nextElementSibling;
+
+        // Toggle tooltip on button click
+        button.addEventListener('click', (event) => {
+            event.preventDefault(); // Prevent any default behavior
+            tooltip.classList.toggle('active');
+        });
+
+        // Close tooltip when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!button.contains(event.target) && !tooltip.contains(event.target)) {
+                tooltip.classList.remove('active');
+            }
+        });
+
+        // Edit comment handler (placeholder)
+        const editButton = tooltip.querySelector('.edit-comment');
+        editButton.addEventListener('click', () => {
+            alert('Edit functionality to be implemented');
+            tooltip.classList.remove('active');
+            // Add your edit logic here (e.g., open a textarea)
+        });
     });
 });

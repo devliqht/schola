@@ -210,25 +210,29 @@
                 ?>
                     <div class="comment-item">
                         <div class="flex flex-col">
-                            <div class="flex flex-row align-center gap-4 ">
+                            <div class="flex flex-row align-center gap-4 justify-between">
                                 <div class="flex flex-row align-center">
                                     <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Pfp"/>
                                     <div class="flex flex-col pl-3">
-                                        <div class="flex flex-row gap-4 align-center">
-                                            <h2 class="text-base gradient-text inter-700"><?php echo htmlspecialchars($comment['full_name']); ?></h2> 
-                                            <h1 class="flex justify-end text-xs inter-400" style="color:rgb(150, 150, 150);">
-                                                <?php echo $formatted_comment_date; ?>
-                                            </h1>
+                                        <div class="flex flex-row align-center"style="gap: 0.4rem;" >
+                                            <h2 class="text-base gradient-text inter-700"><?php echo htmlspecialchars($comment['full_name']); ?> </h2> 
+                                            <div class="text-xs inter-300 post-date" data-timestamp="<?php echo $comment['created_at']; ?>" style="color:rgb(97, 97, 97);"></div>
                                         </div>
                                         <a href="profile.php?id=<?php echo $comment['user_id']; ?>" class="text-xs inter-400 decoration-none text-white">@<?php echo htmlspecialchars($comment['username']); ?></a>
                                     </div>
                                 </div>
                                 <?php if ($_SESSION['id'] == $comment['user_id'] || $_SESSION['role'] == 'admin'): ?>
-                                    <form action="../validation/delete-comment.php" method="POST" style="width: fit-content;">
-                                        <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
-                                        <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-                                        <button type="submit" class="text-black action-button"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
+                                    <div class="tooltip-container">
+                                        <button class="text-black clear-button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                        <div class="tooltip">
+                                            <button class="tooltip-option edit-comment">Edit Comment</button>
+                                            <form action="../validation/delete-comment.php" method="POST" class="tooltip-form">
+                                                <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
+                                                <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                                                <button type="submit" class="tooltip-option delete-comment">Delete Comment</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                             <p class="text-base py-2 inter-300 post-content text-white"><?php echo nl2br(htmlspecialchars($comment['content'])); ?></p>

@@ -335,13 +335,7 @@ textarea.comment-textarea {
     resize: vertical; 
     padding: 1rem;
     background: var(--base-bg-two);
-    height: 64px;
-}
-
-textarea.comment-textarea:focus {
-    outline: none;
-    box-shadow: none;
-    height: 120px;
+    overflow: hidden; /* Hide scrollbar */
 }
 
 .comment-buttons {
@@ -481,4 +475,72 @@ textarea.comment-textarea:focus {
 
 .fetched-user-post:hover {
     background-color: var(--base-bg-three);
+}
+
+.clear-button {
+    background: transparent;
+    padding: 8px;
+    color: var(--text-light);
+    border-radius: 1rem;
+    border: 1px solid var(--border-main-dark);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.clear-button:hover {
+    background: var(--base-bg-two);
+}
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 1.8rem; 
+    transform: translateY(-50%);
+    background: var(--base-bg-two); 
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 5px 0;
+    z-index: 10;
+    min-width: 160px;
+}
+
+@keyframes smoothFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.tooltip.active {
+    display: block;
+    animation: smoothFadeIn 0.5s var(--smooth-anim);
+}
+
+.tooltip-option {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.tooltip-option:hover {
+    background: var(--base-bg-three); /* Hover effect */
+}
+
+.tooltip-form {
+    margin: 0;
+    padding: 0;
 }

@@ -1,9 +1,7 @@
 <?php
-require_once 'format-date.php';
 require_once '../api/db_connection.php';
 
 function render_fetch_post($post, $likeCount) {
-        $conn = establish_connection();
         if (!$post) {
             echo "<p>Post not found.</p>";
             return;
