@@ -4,6 +4,8 @@
 
 Schola is a forum application designed for schools, providing a platform for students, teachers, and staff to interact, share information, and participate in discussions. It features forum interactions, user profiles, a leveling system, and more.
 
+This is a school project, but I hope to implement something like this later in the future but with a more modern approach and with modern technologies.
+
 ## Features
 
 * **Forum Interactions:** Create and participate in discussions, threads, and posts.
