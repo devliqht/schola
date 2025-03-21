@@ -2,7 +2,7 @@
 require_once 'format-date.php';
 require_once '../api/db_connection.php';
 
-function render_post($post, $likeCount) {
+function render_post($post) {
         $conn = establish_connection();
         if (!$post) {
             echo "<p>Post not found.</p>";
@@ -26,7 +26,7 @@ function render_post($post, $likeCount) {
             </div>
             <div class="flex flex-col">
                 <div class="flex flex-row align-center">
-                    <h2 class="text-lg inter-700 pr-2 text-white"><?php echo htmlspecialchars($post['title']); ?></h2>
+                    <h2 class="text-xl inter-700 pb-2 text-white"><?php echo htmlspecialchars($post['title']); ?></h2>
                 </div>
                     <div class="text-sm inter-400 fetched-content text-white"><?php echo $post['content']; ?></div>
             </div>
@@ -35,10 +35,12 @@ function render_post($post, $likeCount) {
             <div class="flex flex-wrap" style="gap: 0.3rem;">
                 <div class="flex flex-row post-interaction">
                     <i class="fa-regular fa-thumbs-up pr-1"></i>
-                    <?= $likeCount ?>
+                    <?= $post['like_count']; ?>
                 </div>
                 <div class="flex flex-row post-interaction">
                     <i class="fa-regular fa-comments pr-1"></i>
+                    <?= $post['comment_count']; ?>
+
                 </div>
                 <div class="flex flex-row post-interaction">
                     <i class="fa-regular fa-share-from-square pr-1"></i>

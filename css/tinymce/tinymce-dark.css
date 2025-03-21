@@ -1,0 +1,11 @@
+body {
+    background-color: var(--base-bg-one, #1b1b1b);
+    color: var(--text-light, #ffffff);
+}
+p {
+    margin: 0.5rem 0;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}

@@ -44,25 +44,31 @@
                 </nav>
 
                 <div class="flex flex-row gap-4 justify-between align-center">
-                    <h2 class="text-xl text-white inter-700 pb-4">Welcome <span class="gradient-text"><?= $_SESSION['full_name']; ?></span></h2>
+                    <h2 class="text-xl text-white inter-700">Welcome <span class="gradient-text"><?= $_SESSION['full_name']; ?></span></h2>
                 </div>
+                <hr />
                 <div class="discussions-wrapper">
                     <?php 
                         $conn = establish_connection();
                 
-                        $posts_query = "SELECT posts.*, users.username, users.full_name, users.profile_picture FROM posts 
+                        $posts_query = "SELECT posts.*, users.username, users.full_name, users.profile_picture, 
+                                        COUNT(DISTINCT post_likes.id) AS like_count, 
+                                        COUNT(DISTINCT comments.id) AS comment_count 
+                                        FROM posts 
                                         JOIN users ON posts.author_id = users.id 
-                                        WHERE post_type = 'regular'
+                                        LEFT JOIN post_likes ON post_likes.post_id = posts.id 
+                                        LEFT JOIN comments ON comments.post_id = posts.id 
+                                        WHERE post_type = 'regular' 
+                                        GROUP BY posts.id, users.username, users.full_name, users.profile_picture 
                                         ORDER BY posts.created_at DESC";
                         $posts_result = $conn->query($posts_query);
 
+                        if (!$posts_result) {
+                            die("Query failed: " . $conn->error); 
+                        }
+                        
                         while ($post = $posts_result->fetch_assoc()) {
-                            $likeCountQuery = $conn->prepare("SELECT COUNT(*) as like_count FROM post_likes WHERE post_id = ?");
-                            $likeCountQuery->bind_param("i", $post['id']);
-                            $likeCountQuery->execute();
-                            $likeCountResult = $likeCountQuery->get_result();
-                            $likeCount = $likeCountResult->fetch_assoc()['like_count'];
-                            render_post($post, $likeCount); // Render each post 
+                            render_post($post); 
                         }
                         $conn->close();
                     ?>

@@ -72,8 +72,8 @@ $role = $_SESSION['role'] ?? 'user';
     <script>
        tinymce.init({
         selector: '#postContent',
-        plugins: 'image link lists',
-        toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | image link | bullist numlist',
+        plugins: 'image link lists autoresize',
+        toolbar: 'undo redo | h1 h2 h3 h4 | bold italic underline | alignleft aligncenter alignright | image link | bullist numlist',
         menubar: false,
         height: 300,
         images_upload_url: '../validation/upload-image.php',

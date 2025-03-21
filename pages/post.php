@@ -127,10 +127,10 @@
                 </div>
             </div>
             <div class="flex flex-col" style="color: var(--text-light);">
-                <h1 class="text-2xl inter-600"><?= $post['title']; ?></h1>
-                <p class="text-base inter-400 rounded-lg text-muted">
+                <h1 class="text-2xl inter-600 pb-4"><?= $post['title']; ?></h1>
+                <div class="text-base inter-400 rounded-lg text-muted post-content-container">
                     <?php echo $post['content']; ?>
-                </p>
+                </div>
                 <div class="post-tags pt-4">
                 <?php 
                     $tags_query = $conn->prepare("SELECT t.name FROM tags t 
