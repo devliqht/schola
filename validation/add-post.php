@@ -1,7 +1,7 @@
 <?php
 require_once '../api/config.php';
+require_once '../api/db_connection.php';
 
-include '../api/db_connection.php'; 
 $conn = establish_connection();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -11,16 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $tags = isset($_POST['postTags']) ? explode(',', trim($_POST['postTags'])) : [];
     $title = trim($_POST['postTitle']);
-    $content = trim($_POST['postContent']);
-    $author_id = $_SESSION['id']; 
-    $post_type = $_POST['postType'] ?? 'regular'; // Default to regular
-    $post_category = null; // Default is NULL for non-announcements
+    $content = $_POST['postContent']; 
+    $author_id = $_SESSION['id'];
+    $post_type = $_POST['postType'] ?? 'regular'; 
+    $post_category = null; 
 
     if ($post_type === "announcement") {
         $post_category = $_POST['postCategory'] ?? null;
     }
 
-    if (empty($title) || empty($content)) {
+    if (empty($title) || empty(strip_tags($content))) {
         die("Title and content cannot be empty.");
     }
 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("ssiss", $title, $content, $author_id, $post_type, $post_category);
 
     if ($stmt->execute()) {    
-        $new_post_id = $stmt->insert_id; 
+        $new_post_id = $stmt->insert_id;
         $stmt->close();
 
         foreach ($tags as $tag) {
@@ -47,12 +47,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt = $conn->prepare("INSERT INTO post_tags (post_id, tag_id) VALUES (?, ?)");
             $stmt->bind_param("ii", $new_post_id, $tag_id);
             $stmt->execute();
+            $stmt->close();
         }
-        header("Location: ../pages/post.php?id=" . $new_post_id); 
-        $stmt->close();
+        header("Location: ../pages/post.php?id=" . $new_post_id);
         exit();
     } else {
         die("Error: " . $stmt->error);
     }
 }
+$conn->close();
 ?>

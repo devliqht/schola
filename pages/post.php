@@ -129,7 +129,7 @@
             <div class="flex flex-col" style="color: var(--text-light);">
                 <h1 class="text-2xl inter-600"><?= $post['title']; ?></h1>
                 <p class="text-base inter-400 rounded-lg text-muted">
-                    <?php echo nl2br(htmlspecialchars($post['content'])); ?>
+                    <?php echo $post['content']; ?>
                 </p>
                 <div class="post-tags pt-4">
                 <?php 

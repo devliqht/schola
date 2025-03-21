@@ -59,11 +59,11 @@
 
 .right-sidebar.collapsed {
     width: 60px;
-    overflow-x: visible; /* Allow content to extend beyond width */
+    overflow-x: visible;
 }
 
 .right-sidebar.no-transition {
-    transition: none; /* Disable all transitions when this class is present */
+    transition: none; 
 }
 
 .right-sidebar.collapsed .user-details,
@@ -102,6 +102,10 @@
 
 .right-sidebar.collapsed .sidebar-collapse {
     transform: rotate(180deg);
+}
+
+.sidebar-header-title {
+    padding-left: 1rem;
 }
 
 .sidebar-toggle-wrapper {
@@ -209,7 +213,7 @@
 
     
     .sidebar-collapse {
-        display: none; /* Hide collapse button on mobile when sidebar is in overlay mode */
+        display: none; 
     }
 }
 

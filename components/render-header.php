@@ -34,8 +34,6 @@ function render_header() {
         ?>
         <div class="flex flex-row align-center gap-4">
             <div class="flex flex-row" style="gap: 0.4rem;">
-                <a href="announcements.php"><button class="interaction inter-600 text-sm"><i class="fa-solid fa-bullhorn"></i> <span class="disappear-768px">Announcements</span></button></a>
-                <a href="posts.php"><button class="interaction inter-600 text-sm"><i class="fa-solid fa-comments"></i> <span class="disappear-768px">Posts</span></button></a>
                 <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-plus"></i> <span class="disappear-768px">Create</span></button></a>
                 <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-bell"></i> </button></a>
             </div>
@@ -56,7 +54,6 @@ function render_header() {
                         <button id="theme-toggle" class="modal-item interaction text-base"><i class="fa-solid fa-moon"></i> Dark Mode</button>
                         <a href="account.php" class="modal-item"><i class="fa-solid fa-user-gear"></i>Settings</a>
                         <a href="../logout.php" class="modal-item"><i class="fa-solid fa-right-from-bracket"></i>Sign out</a>
-                        <!-- Add more menu items here as needed -->
                     </div>
                 </div>
             </div>

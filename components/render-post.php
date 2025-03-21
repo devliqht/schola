@@ -28,7 +28,7 @@ function render_post($post, $likeCount) {
                 <div class="flex flex-row align-center">
                     <h2 class="text-lg inter-700 pr-2 text-white"><?php echo htmlspecialchars($post['title']); ?></h2>
                 </div>
-                    <p class="text-sm inter-400 fetched-content"><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
+                    <div class="text-sm inter-400 fetched-content text-white"><?php echo $post['content']; ?></div>
             </div>
         </div>
         <div class="post-interactions text-white">

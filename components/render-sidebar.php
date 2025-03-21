@@ -21,18 +21,21 @@ function render_sidebar() {
         "calendar.php" => ["icon" => "fa-calendar", "label" => "Calendar"],
     ];
 
+    $universityLinks = [
+        "announcements.php"    => ["icon" => "fa-bullhorn", "label" => "Announcements"],
+        "posts.php" => ["icon" => "fa-comments", "label" => "Posts"],
+    ];
+
     $adminLinks = [
         "admin.php" => ["icon" => "fa-users", "label" => "Manage Users"],
-        "posts.php" => ["icon" => "fa-sliders", "label" => "Manage Posts"],
+        // "posts.php" => ["icon" => "fa-sliders", "label" => "Manage Posts"],
         "create-events.php" => ["icon" => "fa-sliders", "label" => "Manage Events"],
     ];
 
-    // Using heredoc for cleaner HTML output
     $sidebarHTML = <<<HTML
 <div id="sidebar-overlay" class="sidebar-overlay"></div>
 <div class="right-sidebar" id="sidebar">
 <script>
-            // Run immediately to set initial class
             (function() {
                 const sidebar = document.getElementById('sidebar');
                 const gridContainer = document.querySelector('.grid-container');
@@ -56,7 +59,6 @@ function render_sidebar() {
     <ul class="quick-links">
 HTML;
 
-    // Generate regular links
     foreach ($links as $file => $data) {
         $activeClass = isActive($file, $current_page); // Call the function first
         $sidebarHTML .= <<<HTML
@@ -68,15 +70,36 @@ HTML;
 HTML;
     }
 
-    $sidebarHTML .= '<div class="p-4"></div>';
+    $sidebarHTML .= <<<HTML
+    </ul>
+    <div class="p-4"><hr/></div>
+    <h1 class="text-lg text-muted inter-600 sidebar-header-title tracking-tight">University</h1>
+    <ul class="quick-links">
+HTML;
 
-    // Admin section
+    foreach ($universityLinks as $file => $data) {
+        $activeClass = isActive($file, $current_page); // Call the function first
+        $sidebarHTML .= <<<HTML
+        <li class="p-1">
+            <a href="{$file}" class="{$activeClass}">
+                <i class="fa-solid {$data['icon']}"></i> <span class="link-label inter-300 text-sm">{$data['label']}</span>
+            </a>
+        </li>
+HTML;
+    }
+
     if ($role === 'admin') {
+        $sidebarHTML .= <<<HTML
+    </ul>
+    <div class="p-4"><hr/></div>
+    <h1 class="text-lg text-muted inter-600 sidebar-header-title tracking-tight">Admin</h1>
+    <ul class="quick-links">
+HTML;
         foreach ($adminLinks as $file => $data) {
             $sidebarHTML .= <<<HTML
             <li class="inter-300 text-sm p-1">
                 <a href="{$file}" class="{isActive($file, $current_page)}">
-                    <i class="fa-solid {$data['icon']}"></i> <span class="link-label">{$data['label']}</span>
+                    <i class="fa-solid {$data['icon']}"></i> <span class="link-label inter-300 text-sm">{$data['label']}</span>
                 </a>
             </li>
 HTML;

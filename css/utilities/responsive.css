@@ -37,6 +37,9 @@
     .pup-wrapper {
         display: none;
     }
+    .profile-content-wrapper {
+        padding: 1.2rem;
+    }
 }
 
 @media (max-width: 868px) {
@@ -57,6 +60,11 @@
         padding-top: 1.1rem;
     }
 
+    .main-content.profile {
+        padding: 0.785rem;
+        padding-top: 1.1rem;
+    }
+
     .container {
         padding: 0;
         border-radius: 0;
@@ -73,7 +81,7 @@
     }
 
     .latest-post {
-        width: calc(50% - 1rem); /* Two per row on medium screens */
+        width: calc(50% - 1rem); 
     }
 
     .link-wrapper {
@@ -140,13 +148,13 @@
     }
 
     .profile-name {
-        font-size: 1.425rem; /* 18px */
-        line-height: calc(1.75 / 1.125); /* 1.556 */
+        font-size: 1.425rem; 
+        line-height: calc(1.75 / 1.125); 
     }
 
     .profile-username {
-        font-size: 0.875rem; /* 14px */
-        line-height: calc(1.25 / 0.875); /* 1.429 */
+        font-size: 0.875rem; 
+        line-height: calc(1.25 / 0.875); 
     }
 
     .profile-picture {
@@ -166,9 +174,12 @@
         padding: 0.4rem;
         padding-left: 0.55rem; padding-right: 0.55rem;
     }
+
     .profile-content-wrapper {
         flex-direction: column;
+        padding: 0;
     }
+
     .profile-level-container {
         width: calc(100% - 2rem);
     }
@@ -191,7 +202,7 @@
     }
 
     .user-table thead {
-        display: none; /* Hide the header row on mobile */
+        display: none; 
     }
 
     .user-table tbody,
@@ -223,7 +234,6 @@
         font-size: 0.875rem; 
     }
 
-    /* Special handling for Actions cell */
     .user-table td[data-label="Actions"] {
         display: flex;
         flex-direction: row;
@@ -255,6 +265,6 @@
     }
 
     .latest-post {
-        width: 100%; /* One per row on small screens */
+        width: 100%; 
     }
 }

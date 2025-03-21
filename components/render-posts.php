@@ -58,7 +58,7 @@ function renderPost($title, $content, $author, $date, $id, $profile_picture, $pi
                 </div>
                 <div class="renderPost-statistics">
                     <p class="text-sm text-white"><i class="fa-solid fa-eye"></i> <?php echo $view_count; ?> <i class="fa-solid fa-comment-dots"></i> <?php echo $comment_count; ?></p>
-                    <p class="text-sm inter-300 text-light-muted"><?php echo $recent_commenter; ?></p>
+                    <p class="text-sm inter-300 text-light-muted renderPost-recent-commenter"><?php echo $recent_commenter; ?></p>
                 </div>
             </div>
         </div>

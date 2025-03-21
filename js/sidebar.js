@@ -65,48 +65,43 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error('Required sidebar elements not found');
     }
 
-    const textarea = document.querySelector('.comment-textarea');
-    const form = textarea.closest('form');
-
-    if (textarea) {
-        function adjustHeight() {
-            textarea.style.height = 'auto';
-            textarea.style.height = `${textarea.scrollHeight}px`;
-        }
-        
-        textarea.addEventListener('input', adjustHeight);
-        adjustHeight();
-
-        textarea.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' && !event.shiftKey) {
-                event.preventDefault(); 
-                form.submit(); 
+    const commentTextareas = document.querySelectorAll('.comment-textarea');
+    commentTextareas.forEach(textarea => {
+        const form = textarea.closest('form');
+        if (form) {
+            textarea.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' && !event.shiftKey) {
+                    event.preventDefault();
+                    form.submit();
+                }
+            });
+            function adjustHeight() {
+                textarea.style.height = 'auto';
+                textarea.style.height = `${textarea.scrollHeight}px`;
             }
-        });
-    }
+            textarea.addEventListener('input', adjustHeight);
+            adjustHeight();
+        }
+    });
 
     document.querySelectorAll('.clear-button').forEach(button => {
         const tooltip = button.nextElementSibling;
 
-        // Toggle tooltip on button click
         button.addEventListener('click', (event) => {
-            event.preventDefault(); // Prevent any default behavior
+            event.preventDefault(); 
             tooltip.classList.toggle('active');
         });
 
-        // Close tooltip when clicking outside
         document.addEventListener('click', (event) => {
             if (!button.contains(event.target) && !tooltip.contains(event.target)) {
                 tooltip.classList.remove('active');
             }
         });
 
-        // Edit comment handler (placeholder)
         const editButton = tooltip.querySelector('.edit-comment');
         editButton.addEventListener('click', () => {
             alert('Edit functionality to be implemented');
             tooltip.classList.remove('active');
-            // Add your edit logic here (e.g., open a textarea)
         });
     });
 });

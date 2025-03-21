@@ -6,7 +6,7 @@ html, body {
 hr {
     border: 0;
     background: var(--border-main-dark);
-    height: 2px;
+    height: 1px;
     box-shadow: none;
 }
 
@@ -18,6 +18,10 @@ hr {
     grid-column: 2 / 3; 
     height: 100%;
     padding: 1.2rem;
+}
+
+.main-content.profile {
+    padding: 0; padding-top: 1.2rem;
 }
 
 .container {
@@ -126,13 +130,13 @@ hr {
 .latest-img {
     width: 100%;
     height: auto;
-    max-height: 200px; /* Optional: caps image height for consistency */
-    object-fit: cover; /* Ensures images scale uniformly */
+    max-height: 200px;
+    object-fit: cover; 
 }
 
 .post-details {
     width: 100%;
-    text-align: left; /* Align text consistently */
+    text-align: left; 
 }
 
 .post-title {
@@ -154,7 +158,7 @@ hr {
 
 .post-details {
     width: 100%;
-    text-align: left; /* Align text consistently */
+    text-align: left; 
 }
 
 .renderPost-content {
@@ -181,6 +185,13 @@ hr {
     align-items: start;
     justify-content: center;
     width: 100px;
+}
+
+.renderPost-recent-commenter {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    max-width: 100px;
 }
 
 .post-author-name:hover {
@@ -307,7 +318,7 @@ input, textarea {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 0.5rem; /* Space between profile picture and textarea */
+    gap: 0.5rem; 
 }
 
 .header-account-picture {
@@ -315,11 +326,11 @@ input, textarea {
     object-fit: contain;
     width: 40px;
     border-radius: 50%;
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0; 
 }
 
 .add-comment-form {
-    flex-grow: 1; /* Form takes remaining space */
+    flex-grow: 1; 
     position: relative;
 }
 
@@ -335,7 +346,7 @@ textarea.comment-textarea {
     resize: vertical; 
     padding: 1rem;
     background: var(--base-bg-two);
-    overflow: hidden; /* Hide scrollbar */
+    overflow: hidden; 
 }
 
 .comment-buttons {
@@ -537,7 +548,7 @@ textarea.comment-textarea {
 }
 
 .tooltip-option:hover {
-    background: var(--base-bg-three); /* Hover effect */
+    background: var(--base-bg-three); 
 }
 
 .tooltip-form {
