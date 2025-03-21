@@ -8,10 +8,11 @@ This is a school project, but I hope to implement something like this later in t
 
 ## Features
 
-* **Forum Interactions:** Create and participate in discussions, threads, and posts.
-* **User Profiles:** Customizable user profiles with information and activity tracking.
-* **Leveling System:** Reward active users with a leveling system based on their participation.
-* **[MORE FEATURES PLANNED]**
+* **Forum Interactions:** Create and participate in discussions, threads, and posts, special sections dedicated to the University/School
+* **User Profiles:** Customizable user profiles with information and activity tracking
+* **Leveling System:** Reward active users with a leveling system based on their participation
+* **Post Content Formatting**: Post content formatting powered by tinyMCE
+* **Community Groups**: Community groups for common interests
 
 ## Screenshots
 
@@ -48,7 +49,7 @@ The MySQL Database structure is currently not included in this GitHub repo.
 This repo is not for contributing and is for syncing purposes only for my web server at dcism.org, but you are still free to look :))
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (**CC BY-NC 4.0**) - see the [LICENSE](LICENSE) file for details.
 
 ## Author
 * [devliqht](https://github.com/devliqht)
