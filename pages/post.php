@@ -119,15 +119,31 @@
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
-            <div class="flex flex-row align-center pb-2">
-                <img class="header-account-picture " src="<?php echo $authorProfilePicture; ?>" alt="Author Picture"/>
-                <div class="flex flex-col pl-3 py-2">
-                    <h2 class="text-base inter-700 gradient-text"><?php echo htmlspecialchars($post['full_name']); ?></h2>
-                    <a class="text-xs decoration-none text-white inter-300 post-author-name" href="profile.php?id=<?php echo $post['author_id']; ?>">@<?php echo htmlspecialchars($post['username']); ?></a>
+            <div class="flex flex-row align-center justify-between pb-2">
+                <div class="flex flex-row align-center">
+                    <img class="header-account-picture " src="<?php echo $authorProfilePicture; ?>" alt="Author Picture"/>
+                    <div class="flex flex-col pl-3 py-2">
+                        <h2 class="text-base inter-700 gradient-text"><?php echo htmlspecialchars($post['full_name']); ?></h2>
+                        <div class="flex flex-row">
+                            <a class="text-xs decoration-none text-white inter-300 post-author-name" href="profile.php?id=<?php echo $post['author_id']; ?>">@<?php echo htmlspecialchars($post['username']); ?> &nbsp;</a>
+                            <div class="text-xs inter-300 post-date" data-timestamp="<?php echo $post['created_at']; ?>" style="color:var(--text-light-muted);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tooltip-container">
+                    <button class="text-black clear-button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                    <div class="tooltip">
+                        <button class="tooltip-option edit-comment">Edit Comment</button>
+                        <form action="../validation/delete-comment.php" method="POST" class="tooltip-form">
+                            <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
+                            <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                            <button type="submit" class="tooltip-option delete-comment">Delete Comment</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="flex flex-col" style="color: var(--text-light);">
-                <h1 class="text-2xl inter-600 pb-4"><?= $post['title']; ?></h1>
+                <h1 class="text-2xl inter-600 pb-2"><?= $post['title']; ?></h1>
                 <div class="text-base inter-400 rounded-lg text-muted post-content-container">
                     <?php echo $post['content']; ?>
                 </div>
@@ -199,7 +215,7 @@
                         </form>
                     </div>
                 </div>
-                <h3 class="text-2xl inter-700 tracking-tight gradient-text pt-2"><?php echo $comment_count; ?> Comments</h3>
+                <h3 class="text-2xl inter-700 tracking-tight gradient-text pt-4"><?php echo $comment_count; ?> Comments</h3>
                 <div class="flex flex-col">
                 <?php while ($comment = $comments_result->fetch_assoc()): ?>
                 <?php

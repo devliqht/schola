@@ -14,3 +14,75 @@
     background-color: var(--base-bg-two);
     border-radius: 1rem;
 }
+
+.group-picture-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 1rem 0;
+}
+.group-picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--border-main-dark);
+}
+.edit-picture-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--interaction-dark);
+    color: var(--text-light);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.edit-picture-btn:hover {
+    background-color: var(--interaction-dark-hover);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background-color: var(--base-bg-one);
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-light);
+}
+.cropper-container {
+    max-height: 400px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+.cropper-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}

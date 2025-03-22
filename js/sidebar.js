@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
         if (isCollapsed && !isMobile) {
-            gridContainer.style.gridTemplateColumns = isMobile ? '' : '180px 1fr 300px';
+            gridContainer.style.gridTemplateColumns = isMobile ? '' : '180px 1fr 260px';
         } else {
             gridContainer.style.gridTemplateColumns = '';
         }
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
         collapseBtn.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
             const isCollapsed = sidebar.classList.contains('collapsed');
-            gridContainer.style.gridTemplateColumns = isCollapsed ? '180px 1fr 300px' : '260px 1fr 300px';
+            gridContainer.style.gridTemplateColumns = isCollapsed ? '180px 1fr 260px' : '260px 1fr 200px';
             localStorage.setItem('sidebarCollapsed', isCollapsed);
         });
     } else {

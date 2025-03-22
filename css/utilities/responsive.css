@@ -250,7 +250,13 @@
         flex: 1; 
         text-align: center;
     }
-
+    .post-content-container img {
+        width: 100%; 
+        height: auto;
+    }
+    .groups-grid {
+        grid-template-columns: 1fr;
+    }
 
 }
 

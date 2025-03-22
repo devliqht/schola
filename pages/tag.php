@@ -24,11 +24,16 @@ if (!$tag_data) {
 }
 $tag_name = htmlspecialchars($tag_data['name']);
 
-$posts_query = $conn->prepare("SELECT p.id, p.title, p.content, p.created_at, u.profile_picture, u.username, u.full_name
+$posts_query = $conn->prepare("SELECT p.id, p.title, p.content, p.created_at, u.profile_picture, u.username, u.full_name,
+                                        COUNT(DISTINCT pl.id) AS like_count, 
+                                        COUNT(DISTINCT c.id) AS comment_count 
                                         FROM posts p
                                         JOIN post_tags pt ON p.id = pt.post_id
                                         JOIN users u ON p.author_id = u.id
-                                        WHERE pt.tag_id = ?");
+                                        LEFT JOIN post_likes pl ON p.id = pl.post_id
+                                        LEFT JOIN comments c ON p.id = c.post_id
+                                        WHERE pt.tag_id = ?
+                                        GROUP BY p.id, p.title, p.content, p.created_at, u.profile_picture, u.username, u.full_name");
 $posts_query->bind_param("i", $tag_id);
 $posts_query->execute();
 $posts_result = $posts_query->get_result();
@@ -73,7 +78,7 @@ $posts_result = $posts_query->get_result();
                 <ul>
                     <?php while ($post = $posts_result->fetch_assoc()): ?>
                         <?php 
-                            render_post($post, 0); 
+                            render_post($post); 
                         ?>
                     <?php endwhile; ?>
                 </ul>

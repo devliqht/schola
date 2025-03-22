@@ -50,7 +50,6 @@
                 <div class="discussions-wrapper">
                     <?php 
                         $conn = establish_connection();
-                
                         $posts_query = "SELECT posts.*, users.username, users.full_name, users.profile_picture, 
                                         COUNT(DISTINCT post_likes.id) AS like_count, 
                                         COUNT(DISTINCT comments.id) AS comment_count 
@@ -66,13 +65,11 @@
                         if (!$posts_result) {
                             die("Query failed: " . $conn->error); 
                         }
-                        
                         while ($post = $posts_result->fetch_assoc()) {
                             render_post($post); 
                         }
                         $conn->close();
                     ?>
-
                 </div>
             </div>
             <!-- <div class="flex flex-col p-4 recent-posts-sidebar">

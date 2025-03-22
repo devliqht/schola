@@ -77,6 +77,10 @@ $role = $_SESSION['role'] ?? 'user';
         menubar: false,
         height: 300,
         images_upload_url: '../validation/upload-image.php',
+        image_dimensions: false, // Prevent hardcoded width/height
+        image_class_list: [
+            { title: 'Responsive', value: 'responsive-image' } // Add a class for styling
+        ],
         images_upload_handler: function(blobInfo) {
             console.log('Starting upload for:', blobInfo.filename()); // Debug start
             return new Promise((resolve, reject) => {
