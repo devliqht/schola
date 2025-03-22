@@ -89,5 +89,8 @@ $events_result = $conn->query("SELECT * FROM events ORDER BY event_date ASC");
             </ul>
         </div>
     </div>
+    <script src="../js/search.js"></script>
+    <script src="../js/formatTime.js"></script>
+    <script src="../js/sidebar.js"></script>
 </body>
 </html>

@@ -98,5 +98,8 @@ function getNavLink($offset) {
             </div>
         </div>
         </div>
+        <script src="../js/search.js"></script>
+        <script src="../js/formatTime.js"></script>
+        <script src="../js/sidebar.js"></script>
 </body>
 </html>

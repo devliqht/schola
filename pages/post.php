@@ -133,11 +133,11 @@
                 <div class="tooltip-container">
                     <button class="text-black clear-button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                     <div class="tooltip">
-                        <button class="tooltip-option edit-comment">Edit Comment</button>
+                        <button class="tooltip-option edit-comment">Edit Post</button>
                         <form action="../validation/delete-comment.php" method="POST" class="tooltip-form">
                             <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
                             <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-                            <button type="submit" class="tooltip-option delete-comment">Delete Comment</button>
+                            <button type="submit" class="tooltip-option delete-comment">Delete Post</button>
                         </form>
                     </div>
                 </div>
