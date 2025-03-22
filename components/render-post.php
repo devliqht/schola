@@ -20,7 +20,11 @@ function render_post($post) {
                     <img class="rounded-full" src="<?php echo $profilePicture; ?>" />
                     </div>
                     <div class="flex flex-col">
-                        <h1 class="inter-700 text-base flex flex-row align-center" style="gap: 0.4rem;"><span class="gradient-text"><?= $post['full_name'] ?></span><div class="text-xs inter-300 post-date" data-timestamp="<?php echo $post['created_at']; ?>" style="color:var(--text-light-muted);"></div></h1>
+                        <h1 class="inter-700 text-base flex flex-row align-center" style="gap: 0.4rem;">
+                            <span class="gradient-text">
+                                <?= $post['full_name'] ?>
+                            </span> 
+                        <div class="text-xs inter-300 post-date" data-timestamp="<?php echo $post['created_at']; ?>" style="color:var(--text-light-muted);"></div>
                         <h1 class="inter-300 text-xs text-white">@<?= $post['username'] ?></h1>
                     </div>
             </div>

@@ -10,10 +10,10 @@
     justify-content: space-between;
     width: calc(100% - 2rem);
     border-bottom: 1px solid var(--border-main-dark);
-    background-size: cover; /* Ensures it covers the entire header */
-    background-position: left center; /* Center it horizontally */
-    background-repeat: no-repeat; /* Prevent repetition */
-    background-position-y: center; /* Move up or down */
+    background-size: cover; 
+    background-position: left center; 
+    background-repeat: no-repeat; 
+    background-position-y: center; 
 }
 
 .header::before {
@@ -25,8 +25,8 @@
     height: 100%;
     /* background: url('../assets/usc.jpg') no-repeat center; */
     background-size: cover;
-    opacity: 0.1; /* Adjust opacity */
-    z-index: -1; /* Keep it behind content */
+    opacity: 0.1; 
+    z-index: -1; 
 }
 
 .branding {
@@ -115,9 +115,9 @@
 }
 
 .header-account-picture {
-    height: auto;
-    object-fit: contain;
     width: 40px;
+    height: 40px; 
+    object-fit: cover; 
     border-radius: 50%;
 }
 
@@ -136,7 +136,7 @@
 
 .header-search-input {
     width: 100%;
-    padding: 8px 8px 8px 32px; /* Left padding for icon */
+    padding: 8px 8px 8px 32px; 
     border: 1px solid var(--border-main-dark);
     border-radius: 2rem;
     outline: none;
@@ -157,7 +157,7 @@
     color: #888;
     font-size: 14px;
     cursor: pointer;
-    display: none; /* Hidden by default */
+    display: none; 
 }
 
 .search-results-overlay {
@@ -233,15 +233,13 @@
     border-radius: 4px;
     padding: 0.6rem;
     z-index: 1000;
-
-    /* Smooth animation properties */
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
     transition: opacity 0.3s var(--smooth-anim), transform 0.3s var(--smooth-anim);
 }
 
-/* Show modal with animation */
+
 .account-modal.active {
     opacity: 1;
     transform: translateY(0);
