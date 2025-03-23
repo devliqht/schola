@@ -20,6 +20,11 @@
         box-shadow: none;
         grid-column: 1/1;
     }
+
+    .main-content.profile {
+        padding-right: 0;
+        grid-column: 1;
+    }
     
     .header-text {
         display: none;
