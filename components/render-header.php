@@ -54,6 +54,7 @@ function render_header() {
                         <button id="theme-toggle" class="modal-item interaction text-base"><i class="fa-solid fa-moon"></i> Dark Mode</button>
                         <a href="account.php" class="modal-item"><i class="fa-solid fa-user-gear"></i>Settings</a>
                         <a href="../logout.php" class="modal-item"><i class="fa-solid fa-right-from-bracket"></i>Sign out</a>
+                        <a href="about.php" class="modal-item"><i class="fa-solid fa-circle-info"></i>About Schola</a>
                     </div>
                 </div>
             </div>

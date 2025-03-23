@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_event'])) {
     $stmt = $conn->prepare("INSERT INTO events (title, event_date, description) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $title, $event_date, $description);
     $stmt->execute();
-    header("Location: admin-events.php");
+    header("Location: create-events.php");
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_event'])) {
@@ -63,7 +63,7 @@ $events_result = $conn->query("SELECT * FROM events ORDER BY event_date ASC");
             <?php echo get_breadcrumbs(); ?>
         </nav>
             <h2 class="gradient-text text-xl inter-700 pb-4">Manage Events</h2> 
-            <form method="POST">
+            <form action="../validation/createmethod="POST">
                 <label class="inter-400 text-base text-white">Event Title:</label>
                 <input type="text" name="title" required>
                 
@@ -77,17 +77,17 @@ $events_result = $conn->query("SELECT * FROM events ORDER BY event_date ASC");
             </form>
             <hr/>
             <h3 class="gradient-text text-lg inter-700">Existing Events</h3>
-            <ul>
+            <div class="flex flex-col gap-4">
                 <?php while ($event = $events_result->fetch_assoc()): ?>
-                    <li>
+                    <div class="text-white py-2 inter-300">
                         <h1 class="text-white pb-4"><?= htmlspecialchars($event['title']) ?>  - <?= $event['event_date'] ?></h1>
                         <form method="POST" style="display:inline;">
                             <input type="hidden" name="event_id" value="<?= $event['id'] ?>">
-                            <button type="submit" name="delete_event" id="submit">Delete</button>
+                            <button type="submit" name="delete_event" id="submit" >Delete</button>
                         </form>
-                    </li>
+                    </div>
                 <?php endwhile; ?>
-            </ul>
+            </div>
         </div>
     </div>
     <script src="../js/search.js"></script>
