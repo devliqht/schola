@@ -204,9 +204,6 @@ hr {
     max-width: 100px;
 }
 
-.post-author-name:hover {
-    text-decoration: underline;
-}
 .post-interactions {
     width: 100%;
     display: flex;
@@ -356,6 +353,10 @@ textarea.comment-textarea {
     padding: 1rem;
     background: var(--base-bg-three);
     overflow: hidden; 
+}
+
+.comment-author:hover, .post-author-name:hover {
+    text-decoration: underline;
 }
 
 .comment-buttons {
@@ -586,4 +587,105 @@ img.responsive-image {
     max-width: 100%;
     height: auto;
     display: block; /* Prevent inline spacing issues */
+}
+
+.edit-comment-form {
+    display: none;
+    width: 100%;
+    padding-top: 1rem;
+}
+.edit-comment-form textarea {
+    width: 100%;
+    margin: 0;
+}
+.edit-comment-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+.edit-comment-buttons button {
+    padding: 0.5rem 1rem;
+    background-color: var(--interaction-dark);
+    color: var(--text-light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.edit-comment-buttons button:hover {
+    background-color: var(--interaction-dark-hover);
+}
+.reply-button {
+    background: none;
+    border: none;
+    color: var(--text-light-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.2rem 0;
+}
+.reply-form {
+    display: none;
+    margin-top: 1rem;
+    position: relative;
+}
+.reply-form textarea {
+    width: 100%;
+    margin: 0;
+}
+.reply-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+.reply-buttons button {
+    padding: 0.5rem 1rem;
+    background-color: var(--interaction-dark);
+    color: var(--text-light);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.reply-buttons button:hover {
+    background-color: var(--interaction-dark-hover);
+}
+.comment-item {
+    position: relative;
+    margin-bottom: 1rem;
+}
+.comment-item.reply {
+    margin-left: 2rem;
+    position: relative;
+}
+.comment-connector {
+    position: absolute;
+    left: -1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-main-dark);
+}
+.comment-connector::before {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    width: 1rem;
+    height: 2px;
+    background-color: var(--border-main-dark);
+}
+.reply-form-connector {
+    position: absolute;
+    left: -1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-main-dark);
+}
+.reply-form-connector::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 2px;
+    background-color: var(--border-main-dark);
 }

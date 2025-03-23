@@ -100,11 +100,5 @@ document.addEventListener("DOMContentLoaded", function() {
                 tooltip.classList.remove('active');
             }
         });
-
-        const editButton = tooltip.querySelector('.edit-comment');
-        editButton.addEventListener('click', () => {
-            alert('Edit functionality to be implemented');
-            tooltip.classList.remove('active');
-        });
     });
 });
