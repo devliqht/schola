@@ -693,3 +693,14 @@ img.responsive-image {
     height: 2px;
     background-color: var(--border-main-dark);
 }
+
+.pinned-comment {
+    background-color: var(--background-dark);
+    border-left: 4px solid var(--interaction-dark);
+    padding-left: 1rem;
+}
+
+.pinned-icon {
+    color: var(--chiase-color-light);
+    font-size: 0.9rem;
+}

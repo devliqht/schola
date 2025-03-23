@@ -24,7 +24,7 @@ $posts_stmt->execute();
 $posts_result = $posts_stmt->get_result();
 $post = $posts_result->fetch_assoc();
 
-$comments_query = "SELECT comments.id, comments.user_id, comments.content, comments.created_at, comments.parent_id, users.username, users.full_name, users.role, users.profile_picture
+$comments_query = "SELECT comments.id, comments.user_id, comments.content, comments.created_at, comments.parent_id, comments.pinned, users.username, users.full_name, users.role, users.profile_picture
       FROM comments
       JOIN users ON comments.user_id = users.id
       WHERE comments.post_id = ?
@@ -102,6 +102,17 @@ function buildCommentTree($comments, $parent_id = null) {
 }
 
 $comment_tree = buildCommentTree($comments);
+
+$pinned_comment_tree = [];
+$unpinned_comment_tree = [];
+
+foreach ($comment_tree as $comment) {
+    if ($comment['pinned'] == 1) {
+        $pinned_comment_tree[] = $comment;
+    } else {
+        $unpinned_comment_tree[] = $comment;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html data-theme="<?= htmlspecialchars($theme); ?>">
@@ -128,7 +139,6 @@ $comment_tree = buildCommentTree($comments);
         .logo {
             width: 54px;
         }
-
     </style>
 </head>
 <body>
@@ -220,7 +230,7 @@ $comment_tree = buildCommentTree($comments);
                     $post_date = new DateTime($post['created_at']);
                     $formatted_post_date = $post_date->format('M d, Y, h:i A');     
                 ?>
-                <div class="text-sm text-white inter-300"><?php echo $formatted_post_date; ?></div>
+                <div class="text-sm text-muted inter-700"><?php echo $formatted_post_date; ?></div>
             </div>
             <div class="comments-section pt-2" id="comments-section">
                 <div class="comment-container" style="margin-top: 1rem; position: relative;">
@@ -243,13 +253,13 @@ $comment_tree = buildCommentTree($comments);
                 <h3 class="text-2xl inter-700 tracking-tight gradient-text pt-4"><?php echo $comment_count; ?> Comments</h3>
                 <div class="flex flex-col">
                 <?php
-                function renderComment($comment, $post_id, $defaultProfilePicture, $level = 0) {
+                function renderComment($comment, $post_id, $defaultProfilePicture, $post_author_id, $level = 0) {
                     $comment_date = new DateTime($comment['created_at']);
                     $formatted_comment_date = $comment_date->format('M d, Y, h:i A');
                     $profilePicture = !empty($comment['profile_picture']) ? "../uploads/profile_pictures/" . $comment['profile_picture'] : $defaultProfilePicture;
                     $isReply = $level > 0;
                 ?>
-                    <div class="comment-item <?php echo $isReply ? 'reply' : ''; ?>" data-comment-id="<?php echo $comment['id']; ?>">
+                    <div class="comment-item <?php echo $isReply ? 'reply' : ''; ?> <?php echo $comment['pinned'] ? 'pinned-comment' : ''; ?>" data-comment-id="<?php echo $comment['id']; ?>">
                         <?php if ($isReply): ?>
                             <div class="comment-connector"></div>
                         <?php endif; ?>
@@ -261,25 +271,31 @@ $comment_tree = buildCommentTree($comments);
                                         <div class="flex flex-row align-center" style="gap: 0.4rem;">
                                             <h2 class="text-base gradient-text inter-700"><?php echo htmlspecialchars($comment['full_name']); ?></h2> 
                                             <div class="text-xs inter-300 post-date" data-timestamp="<?php echo $comment['created_at']; ?>" style="color:rgb(97, 97, 97);"></div>
+                                            <?php if ($comment['pinned'] == 1 && $level == 0): ?>
+                                                <i class="fa-solid fa-thumbtack pinned-icon"></i>
+                                            <?php endif; ?>
                                         </div>
                                         <a href="profile.php?id=<?php echo $comment['user_id']; ?>" class="text-xs inter-400 decoration-none text-white comment-author">@<?php echo htmlspecialchars($comment['username']); ?></a>
                                     </div>
                                 </div>
-                                <?php if ($_SESSION['id'] == $comment['user_id'] || $_SESSION['role'] == 'admin'): ?>
-                                    <div class="tooltip-container">
-                                        <button class="text-black clear-button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                        <div class="tooltip">
-                                            <?php if ($_SESSION['id'] == $comment['user_id'] || $_SESSION['role'] == 'admin'): ?>
+                                <div class="tooltip-container">
+                                    <button class="text-black clear-button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                    <div class="tooltip">
+                                        <?php if ($_SESSION['id'] == $comment['user_id'] || $_SESSION['role'] == 'admin'): ?>
                                             <button class="tooltip-option edit-comment" onclick="editComment(<?php echo $comment['id']; ?>)">Edit Comment</button>
-                                            <?php endif; ?>
-                                            <form action="../validation/delete-comment.php" method="POST" class="tooltip-form">
-                                                <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
-                                                <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-                                                <button type="submit" class="tooltip-option delete-comment">Delete Comment</button>
-                                            </form>
-                                        </div>
+                                        <?php endif; ?>
+                                        <?php if ($_SESSION['id'] == $post_author_id): ?>
+                                            <button class="tooltip-option pin-comment" onclick="pinComment(<?php echo $comment['id']; ?>, '<?php echo $comment['pinned'] ? 'unpin' : 'pin'; ?>')">
+                                                <?php echo $comment['pinned'] ? 'Unpin Comment' : 'Pin Comment'; ?>
+                                            </button>
+                                        <?php endif; ?>
+                                        <form action="../validation/delete-comment.php" method="POST" class="tooltip-form">
+                                            <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
+                                            <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                                            <button type="submit" class="tooltip-option delete-comment">Delete Comment</button>
+                                        </form>
                                     </div>
-                                <?php endif; ?>
+                                </div>
                             </div>
                             <p class="text-base py-2 inter-300 post-content text-white comment-content"><?php echo nl2br(htmlspecialchars($comment['content'])); ?></p>
                             <button class="interaction w-fit" onclick="showReplyForm(<?php echo $comment['id']; ?>)">Reply</button>
@@ -301,17 +317,28 @@ $comment_tree = buildCommentTree($comments);
                             <?php if (!empty($comment['children'])): ?>
                                 <div class="replies">
                                     <?php foreach ($comment['children'] as $child): ?>
-                                        <?php renderComment($child, $post_id, $defaultProfilePicture, $level + 1); ?>
+                                        <?php renderComment($child, $post_id, $defaultProfilePicture, $post_author_id, $level + 1); ?>
                                     <?php endforeach; ?>
                                 </div>
                             <?php endif; ?>
                         </div>
                     </div>
                 <?php } ?>
+                <?php if (!empty($pinned_comment_tree)): ?>
+                    <h4 class="text-lg inter-600 pt-2 text-white">Pinned Comments</h4>
+                    <?php foreach ($pinned_comment_tree as $comment): ?>
+                        <?php renderComment($comment, $post_id, $defaultProfilePicture, $post['author_id']); ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
 
-                <?php foreach ($comment_tree as $comment): ?>
-                    <?php renderComment($comment, $post_id, $defaultProfilePicture); ?>
-                <?php endforeach; ?>
+                <?php if (!empty($unpinned_comment_tree)): ?>
+                    <?php if (!empty($pinned_comment_tree)): ?>
+                        <h4 class="text-lg inter-600 pt-2 text-white">Other Comments</h4>
+                    <?php endif; ?>
+                    <?php foreach ($unpinned_comment_tree as $comment): ?>
+                        <?php renderComment($comment, $post_id, $defaultProfilePicture, $post['author_id']); ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -448,6 +475,26 @@ $comment_tree = buildCommentTree($comments);
             .catch(error => {
                 console.error('Error:', error);
                 alert('An error occurred while updating the comment.');
+            });
+        }
+
+        function pinComment(commentId, action) {
+            fetch('../validation/pin-comment.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `comment_id=${commentId}&post_id=<?php echo $post_id; ?>&action=${action}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    window.location.reload();
+                } else {
+                    alert('Failed to ' + (action === 'pin' ? 'pin' : 'unpin') + ' comment: ' + (data.message || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while ' + (action === 'pin' ? 'pinning' : 'unpinning') + ' the comment.');
             });
         }
 
