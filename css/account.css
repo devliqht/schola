@@ -52,7 +52,6 @@
     background: var(--base-bg-two);
     padding: 0.6rem;
     margin-bottom: 10px;
-    border: 1px solid var(--border-main-dark);
     color: var(--text-light);
     border-radius: 1rem;
 }

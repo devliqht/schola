@@ -28,20 +28,19 @@ function render_sidebar() {
 
     $adminLinks = [
         "admin.php" => ["icon" => "fa-users", "label" => "Manage Users"],
-        // "posts.php" => ["icon" => "fa-sliders", "label" => "Manage Posts"],
         "create-events.php" => ["icon" => "fa-sliders", "label" => "Manage Events"],
     ];
 
     $sidebarHTML = <<<HTML
 <div id="sidebar-overlay" class="sidebar-overlay"></div>
 <div class="right-sidebar" id="sidebar">
-<script>
-            (function() {
+        <script>
+            (function() {     
                 const sidebar = document.getElementById('sidebar');
                 const gridContainer = document.querySelector('.grid-container');
                 if (localStorage.getItem('sidebarCollapsed') === 'true') {
                     sidebar.classList.add('collapsed');
-                    gridContainer.style.gridTemplateColumns = "180px 1fr 260px";
+                    gridContainer.style.gridTemplateColumns = "100px 1fr 360px";
                 }
             })();
         </script>

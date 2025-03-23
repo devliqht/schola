@@ -3,6 +3,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("sidebar-overlay");
     const closeBtn = document.getElementById("sidebar-close");
+    const collapseBtn = document.getElementById('sidebar-collapse');
+    const gridContainer = document.querySelector('.grid-container');
+    const commentTextareas = document.querySelectorAll('.comment-textarea');
+    const profilePic = document.querySelector('.header-account-picture');
+    const modal = document.getElementById('accountModal');
+    const savedTheme = localStorage.getItem("theme") || document.documentElement.getAttribute("data-theme") || "dark";
+
+    if (localStorage.getItem('sidebarCollapsed') === 'true') {
+        sidebar.classList.add('collapsed');
+        gridContainer.style.gridTemplateColumns = "180px 1fr 260px";
+    }
     
     function openSidebar() {
         sidebar.classList.toggle("open");
@@ -13,9 +24,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (closeBtn) closeBtn.addEventListener("click", openSidebar);
     if (overlay) overlay.addEventListener("click", openSidebar);
 
-    const profilePic = document.querySelector('.header-account-picture');
-    const modal = document.getElementById('accountModal');
-    
     if (profilePic && modal) {
         profilePic.addEventListener("click", () => {
             modal.classList.toggle("active");
@@ -27,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    const savedTheme = localStorage.getItem("theme") || document.documentElement.getAttribute("data-theme") || "dark";
     document.documentElement.setAttribute("data-theme", savedTheme);
 
     const themeToggle = document.getElementById("theme-toggle");
@@ -42,15 +49,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    const collapseBtn = document.getElementById('sidebar-collapse');
-    const gridContainer = document.querySelector('.grid-container');
-
     if (sidebar && collapseBtn && gridContainer) {
         const isCollapsed = sidebar.classList.contains('collapsed');
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
         if (isCollapsed && !isMobile) {
-            gridContainer.style.gridTemplateColumns = isMobile ? '' : '180px 1fr 260px';
+            gridContainer.style.gridTemplateColumns = isMobile ? '' : '100px 1fr 360px';
         } else {
             gridContainer.style.gridTemplateColumns = '';
         }
@@ -58,14 +62,13 @@ document.addEventListener("DOMContentLoaded", function() {
         collapseBtn.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
             const isCollapsed = sidebar.classList.contains('collapsed');
-            gridContainer.style.gridTemplateColumns = isCollapsed ? '180px 1fr 260px' : '260px 1fr 200px';
+            gridContainer.style.gridTemplateColumns = isCollapsed ? '100px 1fr 360px' : '260px 1fr 260px';
             localStorage.setItem('sidebarCollapsed', isCollapsed);
         });
     } else {
         console.error('Required sidebar elements not found');
     }
 
-    const commentTextareas = document.querySelectorAll('.comment-textarea');
     commentTextareas.forEach(textarea => {
         const form = textarea.closest('form');
         if (form) {

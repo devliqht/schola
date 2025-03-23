@@ -63,6 +63,8 @@
     .main-content.profile {
         padding: 0.785rem;
         padding-top: 1.1rem;
+        padding-right: 0.785rem;
+        grid-column: 1;
     }
 
     .container {
