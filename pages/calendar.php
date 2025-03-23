@@ -65,7 +65,7 @@ function getNavLink($offset) {
     <?php render_header(); ?>
     <div class="grid-container">
         <?php render_sidebar(); ?>
-        <div class="main-content">
+        <div class="main-content w-bg">
         <nav class="breadcrumb">
             <?php echo get_breadcrumbs(); ?>
         </nav>

@@ -116,7 +116,7 @@
     <?php render_header(); ?>
     <div class="grid-container">
         <?php render_sidebar(); ?>
-        <div class="main-content">
+        <div class="main-content w-bg">
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
@@ -276,21 +276,23 @@
                     $fetch_user_posts_query = $conn->prepare("SELECT p.id, p.title, p.content, p.created_at, u.profile_picture, u.username, u.full_name
                     FROM posts p
                     JOIN users u ON p.author_id = u.id
-                    WHERE p.author_id = ? AND p.id != ?");
+                    WHERE p.author_id = ? AND p.id != ?
+                    ORDER BY p.created_at DESC"
+                    );
                     $fetch_user_posts_query->bind_param("ii", $post['author_id'], $post['id']);
                     $fetch_user_posts_query->execute();
                     $fetch_user_posts_result = $fetch_user_posts_query->get_result();
                 ?>
                 <div class="post-user-profile">
-                    <h2 class="text-lg gradient-text inter-700 pb-2 border-b-1">More by <?= $post['username']; ?></h2>
+                    <h2 class="text-lg gradient-text inter-700 pb-2">More by <?= $post['username']; ?></h2>
                     <?php if ($fetch_user_posts_result->num_rows > 0): ?>
-                        <ul>
+                        <div class="flex flex-col gap-4">
                             <?php while ($fetched_post = $fetch_user_posts_result->fetch_assoc()): ?>
                                 <?php 
                                     render_fetch_post($fetched_post, 0); 
                                 ?>
                             <?php endwhile; ?>
-                        </ul>
+                        </div>
                     <?php else: ?>
                         <p class="text-base inter-300 text-white">No posts found for this user.</p>
                     <?php endif; ?>

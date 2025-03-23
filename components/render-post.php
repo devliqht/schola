@@ -13,7 +13,7 @@ function render_post($post) {
         $profilePicture = !empty($post['profile_picture']) ? "../uploads/profile_pictures/" . $post['profile_picture'] : $defaultProfilePicture;
     ?>
     <a class="post-link" href="post.php?id=<?php echo htmlspecialchars($post['id']); ?>">
-    <div class="recent-discussion py-4">
+    <div class="recent-discussion p-4 rounded-2xl">
         <div class="flex flex-col gap-4">
             <div class="flex flex-row gap-4 align-center">
                     <div class="flex flex-col w-10 h-10">

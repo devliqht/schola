@@ -4,7 +4,7 @@
     z-index: 2000;
     background-color: var(--base-bg-one);
     color: white;
-    display: flex;
+    display: flex;  
     align-items: center;
     gap: 1rem;
     justify-content: space-between;
@@ -93,7 +93,7 @@
 }
 
 .user-info:hover {
-    background: var(--text-dark);
+    background: var(--base-bg-three);
 }
 
 .user-details {

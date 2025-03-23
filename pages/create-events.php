@@ -58,7 +58,7 @@ $events_result = $conn->query("SELECT * FROM events ORDER BY event_date ASC");
     <?php render_header(); ?>
     <div class="grid-container">
         <?php render_sidebar(); ?>
-        <div class="main-content">
+        <div class="main-content w-bg">
         <nav class="breadcrumb">
             <?php echo get_breadcrumbs(); ?>
         </nav>

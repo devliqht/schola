@@ -22,11 +22,12 @@
 }
 
 .calendar-cell {
-    background: var(--base-bg-two);
+    background: var(--base-bg-three);
     min-height: 60px;
     position: relative;
     padding: 5px;
     color: var(--text-light);
+    border-radius: 1rem;
 }
 
 .date {

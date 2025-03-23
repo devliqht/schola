@@ -44,13 +44,13 @@ function render_header() {
                         <h1 class="gradient-text text-lg inter-700">My Account</h1>
                         <div class="user-info">
                             <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Pfp"/>
-                                <div class="user-details">
-                                    <a class="text-base inter-700 gradient-text" href="profile.php?id=<?= $_SESSION['id']; ?>">
-                                        <?= htmlspecialchars($_SESSION['full_name']) ?>
-                                    </a>
-                                    <p class="text-xs inter-400 text-white">Profile</p>
-                                </div>
+                            <div class="user-details">
+                                <a class="text-base inter-700 gradient-text" href="profile.php?id=<?= $_SESSION['id']; ?>">
+                                    <?= htmlspecialchars($_SESSION['full_name']) ?>
+                                </a>
+                                <p class="text-xs inter-400 text-white">Profile</p>
                             </div>
+                        </div>
                         <button id="theme-toggle" class="modal-item interaction text-base"><i class="fa-solid fa-moon"></i> Dark Mode</button>
                         <a href="account.php" class="modal-item"><i class="fa-solid fa-user-gear"></i>Settings</a>
                         <a href="../logout.php" class="modal-item"><i class="fa-solid fa-right-from-bracket"></i>Sign out</a>

@@ -4,8 +4,9 @@
     --ismis-light: #b7b01d;
     --ismis-dark: #0e3c00;
     --base-bg-one: #1b1b1b;
-    --base-bg-two: #222222;
-    --base-bg-three: #232323;
+    --base-bg-two: #1e1e1e;
+    --base-bg-three: #222222;
+    --base-bg-four: #2a2a2a;
     --interaction-dark: #313131;
     --interaction-dark-hover: #414141;
     --border-main-light: #c9c9c9;
@@ -22,8 +23,9 @@
 
 [data-theme="light"] {
     --base-bg-one: #f5f5f5;
-    --base-bg-two: #eaeaea;
+    --base-bg-two: #efefef;
     --base-bg-three: #e4e4e4;
+    --base-bg-four: #e7e7e7;
     --interaction-dark: #dadada;
     --interaction-dark-hover: #bbbbbb;
     --border-main-light: #424242;

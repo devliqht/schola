@@ -45,7 +45,6 @@ $role = $_SESSION['role'] ?? 'user';
                 <?php echo get_breadcrumbs(); ?>
             </nav>
             <h2 class="text-xl gradient-text inter-700">Create Group</h2>
-            <hr/>
             <form action="../validation/add-group.php" method="POST" enctype="multipart/form-data">
                 <div class="group-picture-container">
                     <img src="../uploads/group_pictures/default_group.svg" alt="Group Picture" class="group-picture" id="groupPicturePreview">

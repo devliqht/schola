@@ -11,8 +11,25 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: var(--base-bg-two);
+    background-color: var(--base-bg-three);
     border-radius: 1rem;
+    position: relative;
+    text-decoration: none; 
+    cursor: pointer; 
+}
+
+.group-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.user-card:hover {
+    transform: translateY(-2px);
+    background-color: var(--base-bg-four); 
 }
 
 .user-card img {

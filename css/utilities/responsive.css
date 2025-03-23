@@ -22,7 +22,7 @@
     }
 
     .main-content.profile {
-        padding-right: 0;
+        padding: 0.875rem;
         grid-column: 1;
     }
     

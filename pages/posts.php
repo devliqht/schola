@@ -44,15 +44,14 @@
     ?>
     <div class="grid-container">
         <?php render_sidebar(); ?>
-        <div class="main-content animate__animated animate__fadeIn animate__faster">
+        <div class="main-content w-bg animate__animated animate__fadeIn animate__faster">
         <nav class="breadcrumb">
             <?php echo get_breadcrumbs(); ?>
         </nav>
-            <div class="flex flex-row gap-4 align-center justify-between">
+            <div class="flex flex-row gap-4 align-center justify-between pb-4">
                 <h2 class="text-xl gradient-text inter-700">Announcements</h2>
             </div>
-            <hr/>
-            <div class="discussions-wrapper">
+            <div class="discussions-wrapper posts">
                 <?php 
                     $conn = establish_connection();
                     $result = $conn->query("SELECT id, title, content, author_id, created_at, pinned FROM posts WHERE post_type = 'announcement' ORDER BY posts.pinned DESC, posts.created_at DESC ");
@@ -69,13 +68,11 @@
                 ?>
             </div>
             <div class="p-4"></div>
-            <div class="flex flex-row gap-4 align-center justify-between">
+            <div class="flex flex-row gap-4 align-center justify-between pb-4">
                 <h2 class="text-xl gradient-text inter-700">Posts</h2>
                     <a href="create-post.php" ><button class="interaction inter-700">Create Post</button></a>
             </div>
-            <hr />
-
-            <div class="discussions-wrapper">
+            <div class="discussions-wrapper posts">
                 <?php 
                     $conn = establish_connection();
             

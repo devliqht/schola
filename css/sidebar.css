@@ -22,12 +22,12 @@
 }
 
 .quick-links a:hover {
-    background: var(--text-dark);
+    background: var(--base-bg-three);
     color: var(--text-light) !important;
 }
 
 .active-link {
-    background: var(--text-dark);
+    background: var(--base-bg-three);
     color: var(--text-light) !important;
     transition: 0.2s all;
 }

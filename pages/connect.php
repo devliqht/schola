@@ -53,7 +53,7 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; // Set a def
     <?php render_header(); ?>
     <div class="grid-container">
         <?php render_sidebar(); ?>
-        <div class="main-content animate__animated animate__fadeIn animate__faster">
+        <div class="main-content profile animate__animated animate__fadeIn animate__faster">
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
@@ -62,17 +62,16 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; // Set a def
             <div class="users-grid">
                 <?php while ($user = $result->fetch_assoc()): ?>
                     <div class="user-card">
-
+                        <a href="profile.php?id=<?php echo $user['id']; ?>" class="group-link"></a>
                         <?php 
                             $profilePicture = isset($user['profile_picture']) ? "../uploads/profile_pictures/" . $user['profile_picture'] : $defaultProfilePicture;
                         ?>
                         <img src="<?php echo $profilePicture; ?>" alt="Profile">
                         <div class="flex flex-col">
-                            <h3 class="user-card-f-name gradient-text text-base inter-700"><?= htmlspecialchars($user['full_name']) ?></h3>
-                            <h3 class="user-card-course text-xs inter-700 pb-1"><?= htmlspecialchars($user['course'] ?? '') ?></h3>
-                            <h3 class="text-sm inter-300 pb-4">@<?= htmlspecialchars($user['username']) ?></h3>
+                            <h3 class="user-card-f-name text-base inter-700"><?= htmlspecialchars($user['full_name']) ?></h3>
+                            <h3 class="user-card-course text-sm text-muted inter-500 gradient-text pb-1"><?= htmlspecialchars($user['course'] ?? 'No course') ?></h3>
+                            <h3 class="text-xs inter-300 pb-2">@<?= htmlspecialchars($user['username']) ?></h3>
                         </div>
-                        <a href="profile.php?id=<?= $user['id'] ?>" class="interaction text-sm decoration-none text-black text-center">View Profile</a>
                     </div>
                 <?php endwhile; ?>
             </div>

@@ -39,15 +39,15 @@
         <?php  render_header();?>
         <div class="grid-container">
             <?php render_sidebar(); ?>
-            <div class="main-content animate__animated animate__fadeIn animate__faster">
+            <div class="main-content w-bg animate__animated animate__fadeIn animate__faster">
                 <nav class="breadcrumb">
                     <?php echo get_breadcrumbs(); ?>
                 </nav>
 
-                <div class="flex flex-row gap-4 justify-between align-center">
+                <div class="flex flex-row gap-4 justify-between align-center pb-4">
                     <h2 class="text-xl text-white inter-700">Welcome <span class="gradient-text"><?= $_SESSION['full_name']; ?></span></h2>
                 </div>
-                <hr />
+
                 <div class="discussions-wrapper">
                     <?php 
                         $conn = establish_connection();

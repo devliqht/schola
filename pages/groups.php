@@ -51,15 +51,15 @@ $defaultGroupPicture = "../uploads/group_pictures/default_group.svg";
     <?php render_header(); ?>
     <div class="grid-container">
         <?php render_sidebar(); ?>
-        <div class="main-content">
+        <div class="main-content profile">
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
             <div class="flex flex-row justify-between pb-4">
                 <h2 class="text-2xl gradient-text inter-700">Member Groups</h2>
-                <a class="interaction text-sm inter-400 decoration-none" href="create-group.php">Create Group</a>
+                <a class="interaction text-sm inter-600 decoration-none" href="create-group.php">Create Group</a>
             </div>
-            <div class="groups-grid">
+            <div class="groups-container">
                     <?php while ($group = $groups->fetch_assoc()): ?>
                         <?php 
                         $count_stmt = $conn->prepare("SELECT COUNT(*) as member_count FROM group_members WHERE group_id = ?");
@@ -68,38 +68,39 @@ $defaultGroupPicture = "../uploads/group_pictures/default_group.svg";
                         $member_count = $count_stmt->get_result()->fetch_assoc()['member_count'];
 
                         $groupPicture = !empty($group['group_picture']) ? "../uploads/group_pictures/" . $group['group_picture'] : $defaultGroupPicture;
+                        $user_count = $conn->query("SELECT COUNT(*) FROM group_members WHERE user_id = " . $_SESSION['id'])->fetch_row()[0];
+                        $is_member = $conn->query("SELECT 1 FROM group_members WHERE group_id = {$group['id']} AND user_id = " . $_SESSION['id'])->num_rows > 0;
                         ?>
-                            <?php 
-                            $user_count = $conn->query("SELECT COUNT(*) FROM group_members WHERE user_id = " . $_SESSION['id'])->fetch_row()[0];
-                            $is_member = $conn->query("SELECT 1 FROM group_members WHERE group_id = {$group['id']} AND user_id = " . $_SESSION['id'])->num_rows > 0;
-                            ?>
-                            <div class="group-card">
-                                <div class="flex flex-row gap-4">
-                                <img class="header-account-picture " src="<?php echo $groupPicture; ?>" alt="Author Picture"/>
-                                    <div class="flex flex-col justify-between">
-                                        <div class="flex flex-row justify-between">
-                                        <h2 class="gradient-text inter-700 text-lg"><?php echo htmlspecialchars($group['name']); ?></h2>
-                                        <?php if (!$is_member && $user_count < 3): ?>
-                                                <a href="group.php?id=<?php echo $group['id']; ?>&join=1" class="interaction inter-600 decoration-none text-black text-sm"><i class="fa-solid fa-arrow-right-to-bracket"></i> Join</a>
-                                            <?php elseif ($is_member): ?>
-                                                <a href="group.php?id=<?php echo $group['id']; ?>&leave=1" class="interaction inter-600 decoration-none text-black text-sm"><i class="fa-solid fa-arrow-right-from-bracket"></i> Leave</a>
-                                            <?php endif; ?>
-                                        </div>
-        
-                                        <p class="inter-300 text-sm"><?php echo htmlspecialchars($group['description']); ?></p>
-                                        <p class="inter-300 text-xs text-muted pt-2"><?php echo (new DateTime($group['created_at']))->format('M d, Y'); ?></p>
-                                        
-                                        <div class="pt-4 text-sm">
-                                            <a href="group.php?id=<?php echo $group['id']; ?>" class="interaction inter-600 decoration-none">View</a>
-        
-                                            <?php if ($_SESSION['role'] === 'admin' || ($_SESSION['role'] === 'officer' && $group['username'] === $_SESSION['username'])): ?>
-                                                <button onclick="showEditModal(<?php echo $group['id']; ?>, '<?php echo htmlspecialchars($group['name'], ENT_QUOTES); ?>')" class="interaction inter-600"><i class="fa-solid fa-pen"></i> Edit</button>
-                                                <button class="interaction inter-600" onclick='showDeleteModal(<?php echo $group["id"]; ?>, "<?php echo htmlspecialchars($group["name"], ENT_QUOTES); ?>")'>
-                                                    <i class="fa-solid fa-trash pr-1"></i>Delete
-                                                </button>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
+                        <div class="group-item">
+                                <a href="group.php?id=<?php echo $group['id']; ?>" class="group-link"></a>
+                                <img class="group-image" src="<?php echo $groupPicture; ?>" alt="Group Picture"/>
+                                <div class="group-content">
+                                    <h2 class="group-title"><?php echo htmlspecialchars($group['name']); ?></h2>
+                                    <p class="group-desc inter-300"><?php echo htmlspecialchars($group['description']); ?></p>
+                                    <p class="group-date"><?php echo (new DateTime($group['created_at']))->format('M d, Y'); ?></p>
+                                </div>
+                                <div class="group-actions">
+                                    <?php if (!$is_member && $user_count < 3): ?>
+                                        <a href="group.php?id=<?php echo $group['id']; ?>&join=1" class="interaction" onclick="event.stopPropagation();">
+                                            <i class="fa-solid fa-arrow-right-to-bracket"></i> Join
+                                        </a>
+                                    <?php elseif ($is_member): ?>
+                                        <a href="group.php?id=<?php echo $group['id']; ?>&leave=1" class="interaction" onclick="event.stopPropagation();">
+                                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Leave
+                                        </a>
+                                    <?php endif; ?>
+                                    <?php if ($_SESSION['role'] === 'admin' || ($_SESSION['role'] === 'officer' && $group['username'] === $_SESSION['username'])): ?>
+                                        <button class="interaction edit-btn" 
+                                                data-group-id="<?php echo $group['id']; ?>" 
+                                                data-group-name="<?php echo htmlspecialchars(json_encode($group['name']), ENT_QUOTES); ?>">
+                                            <i class="fa-solid fa-pen"></i> Edit
+                                        </button>
+                                        <button class="interaction delete-btn" 
+                                                data-group-id="<?php echo $group['id']; ?>" 
+                                                data-group-name="<?php echo htmlspecialchars(json_encode($group['name']), ENT_QUOTES); ?>">
+                                            <i class="fa-solid fa-trash"></i> Delete
+                                        </button>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                     <?php endwhile; ?>
@@ -120,7 +121,7 @@ $defaultGroupPicture = "../uploads/group_pictures/default_group.svg";
             <div id="deleteModal" class="modal">
                 <div class="modal-content">
                     <h1 class="gradient-text text-2xl inter-700">Are you sure you want to delete this group?</h1>
-                    <p id="deleteModalText"></p> <!-- Display group name -->
+                    <p id="deleteModalText" class="text-white"></p> <!-- Display group name -->
                     <form action="../validation/delete-group.php" method="POST">
                         <input type="hidden" name="group_id" id="delete_group_id">
                         <hr />
@@ -136,6 +137,25 @@ $defaultGroupPicture = "../uploads/group_pictures/default_group.svg";
 <?php endif; ?>
 
 <script>
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.stopPropagation();
+            const id = this.getAttribute('data-group-id');
+            const name = JSON.parse(this.getAttribute('data-group-name')); // Decode JSON string
+            showEditModal(id, name);
+        });
+    });
+
+    // Delete button listeners
+    document.querySelectorAll('.delete-btn').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.stopPropagation();
+            const id = this.getAttribute('data-group-id');
+            const name = JSON.parse(this.getAttribute('data-group-name')); // Decode JSON string
+            showDeleteModal(id, name);
+        });
+    });
+
     function showEditModal(id, name) {
         document.getElementById('edit_group_id').value = id;
         document.getElementById('edit_group_name').value = name;

@@ -34,14 +34,14 @@
     flex-direction: row;
     border-radius: 8px;
     justify-content: space-between;
-    background: var(--base-bg-two);
+    background: var(--base-bg-three);
     padding-left: 0.6rem; padding-right: 0.6rem;
 }
 
 .profile-level-container {
     display: flex;
     flex-direction: column;
-    background: var(--base-bg-two);
+    background: var(--base-bg-three);
     height: fit-content;
     padding: 1rem;
     width: 280px;
@@ -49,7 +49,7 @@
 }
 
 .profile-comment-item {
-    background: var(--base-bg-two);
+    background: var(--base-bg-three);
     padding: 0.6rem;
     margin-bottom: 10px;
     color: var(--text-light);

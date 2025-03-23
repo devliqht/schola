@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function() {
         collapseBtn.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
             const isCollapsed = sidebar.classList.contains('collapsed');
-            gridContainer.style.gridTemplateColumns = isCollapsed ? '100px 1fr 360px' : '260px 1fr 260px';
+            gridContainer.style.gridTemplateColumns = isCollapsed ? '100px 1fr 360px' : '260px 1fr 300px';
             localStorage.setItem('sidebarCollapsed', isCollapsed);
         });
     } else {
