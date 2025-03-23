@@ -10,6 +10,10 @@ hr {
     box-shadow: none;
 }
 
+a {
+    color: var(--text-white);
+}
+
 .main-content {
     background-color: var(--base-bg-one);
     overflow-y: auto; 
