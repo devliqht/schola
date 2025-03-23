@@ -13,7 +13,7 @@ function render_announcement($post, $from) {
             <img class="latest-img" src="../assets/university.png" alt="Latest Image"/>
             <div class="post-details">
                 <a href="post.php?id=<?php echo $post['id']; ?>" class="text-lg announcement-title gradient-text inter-700 decoration-none"><?php echo $post['title']; ?></a>
-                <div class="text-sm inter-300 announcement-content"><?php echo $post['content']; ?></div>
+                <div class="text-base inter-300 announcement-content"><?php echo $post['content']; ?></div>
                 <p class="text-sm inter-600 pt-1 text-muted"><?php echo $formatted_post_date; ?></p>
             </div>
         </div>
@@ -22,7 +22,7 @@ function render_announcement($post, $from) {
             <img class="latest-img" src="../assets/ssc.png" alt="Latest Image"/>
             <div class="post-details">
                 <a href="post.php?id=<?php echo $post['id']; ?>" class="text-lg announcement-title gradient-text inter-700 decoration-none"><?php echo $post['title']; ?></a>
-                <p class="text-sm inter-300 announcement-content"><?php echo $post['content']; ?></p>
+                <p class="text-base inter-300 announcement-content"><?php echo $post['content']; ?></p>
                 <p class="text-sm inter-600 pt-1 text-muted"><?php echo $formatted_post_date; ?></p>
             </div>
         </div>

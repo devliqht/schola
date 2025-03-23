@@ -76,7 +76,7 @@ $defaultGroupPicture = "../uploads/group_pictures/default_group.svg";
                                 <img class="group-image" src="<?php echo $groupPicture; ?>" alt="Group Picture"/>
                                 <div class="group-content">
                                     <h2 class="group-title"><?php echo htmlspecialchars($group['name']); ?></h2>
-                                    <p class="group-desc inter-300"><?php echo htmlspecialchars($group['description']); ?></p>
+                                    <p class="group-desc inter-300 text-sm"><?php echo htmlspecialchars($group['description']); ?></p>
                                     <p class="group-date"><?php echo (new DateTime($group['created_at']))->format('M d, Y'); ?></p>
                                 </div>
                                 <div class="group-actions">

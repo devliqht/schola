@@ -50,39 +50,39 @@ This is a school project, but I hope to implement something like this later in t
                 <hr class="w-full" style="margin: 1rem 0 1rem 0;"/>
                 <h1 class="text-xl text-white inter-600">Features:</h1>
                 <ul class="text-white inter-300 text-muted" style="list-style: disc inside;">
-                    <li class="inter-300 pt-2">Forum Interactions: Create and participate in discussions, threads, and posts, special sections dedicated to the University/School</li>
-                    <li class="inter-300 pt-2">User Profiles: Customizable user profiles with information and activity tracking</li>
-                    <li class="inter-300 pt-2">Leveling System: Reward active users with a leveling system based on their participation</li>
-                    <li class="inter-300 pt-2">Community Groups: Community groups for common interests</li>
+                    <li class="text-base inter-300 pt-2">Forum Interactions: Create and participate in discussions, threads, and posts, special sections dedicated to the University/School</li>
+                    <li class="text-base inter-300 pt-2">User Profiles: Customizable user profiles with information and activity tracking</li>
+                    <li class="text-base inter-300 pt-2">Leveling System: Reward active users with a leveling system based on their participation</li>
+                    <li class="text-base inter-300 pt-2">Community Groups: Community groups for common interests</li>
                 </ul>
 
                 <hr class="w-full" style="margin: 1rem 0 1rem 0;"/>
                 <h1 class="text-xl text-white inter-600">Tech Stack:</h1>
                 <ul class="text-white inter-300 text-muted" style="list-style: disc inside;">
-                    <li class="inter-300 pt-2">HTML</li>
-                    <li class="inter-300 pt-2">CSS</li>
-                    <li class="inter-300 pt-2">JavaScript</li>
-                    <li class="inter-300 pt-2">PHP</li>
-                    <li class="inter-300 pt-2">MySQL</li>
+                    <li class="text-base inter-300 pt-2">HTML</li>
+                    <li class="text-base inter-300 pt-2">CSS</li>
+                    <li class="text-base inter-300 pt-2">JavaScript</li>
+                    <li class="text-base inter-300 pt-2">PHP</li>
+                    <li class="text-base inter-300 pt-2">MySQL</li>
                 </ul>
                 <h1 class="text-xl text-white inter-600 pt-4">Third-party Technologies used:</h1>
                 <ul class="text-white inter-300 text-muted" style="list-style: disc inside;">
-                    <li class="inter-300 pt-2">CropperJS: Image cropping and resizing</li>
-                    <li class="inter-300 pt-2">FontAwesome: SVG inline icons</li>
-                    <li class="inter-300 pt-2">tinyMCE: Content formatter</li>
+                    <li class="text-base inter-300 pt-2">CropperJS: Image cropping and resizing</li>
+                    <li class="text-base inter-300 pt-2">FontAwesome: SVG inline icons</li>
+                    <li class="text-base inter-300 pt-2">tinyMCE: Content formatter</li>
                 </ul>
 
                 <hr class="w-full" style="margin: 1rem 0 1rem 0;"/>
                 <h1 class="text-xl text-white inter-600">Code</h1>
                 <ul class="text-white inter-300 text-muted" >
-                    <li class="inter-300 pt-2">You can check the github repo for Schola <a href="https://github.com/devliqht/schola">here.</a></li>
-                        <li class="inter-300 pt-2">Lines of code written: 7,768</li>
+                    <li class="text-base inter-300 pt-2">You can check the github repo for Schola <a href="https://github.com/devliqht/schola">here.</a></li>
+                        <li class="text-base inter-300 pt-2">Lines of code written: 7,768</li>
                 </ul>
 
                 <hr class="w-full" style="margin: 1rem 0 1rem 0;"/>
                 <h1 class="text-xl text-white inter-600">Acknowledgements</h1>
                 <ul class="text-white inter-300 text-muted" style="list-style: disc inside;">
-                    <li class="inter-300 pt-2">Sir Christian Maderazo</li>
+                    <li class="text-base inter-300 pt-2">Sir Christian Maderazo</li>
                 </ul>
 
             </div>
