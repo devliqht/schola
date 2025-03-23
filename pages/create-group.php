@@ -33,8 +33,7 @@ $role = $_SESSION['role'] ?? 'user';
     <link rel="stylesheet" href="../vendor/cropperjs/cropper.min.css">
     <script src="../vendor/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="../vendor/cropperjs/cropper.min.js"></script>
-    <style>
-    </style>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
 </head>
 <body>
 <?php if (!empty($_SESSION['role'])): ?>

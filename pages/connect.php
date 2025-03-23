@@ -47,7 +47,8 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; // Set a def
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../vendor/fontawesome-free-6.7.2-web/css/all.min.css">
-</head>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    </head>
 <body>
     <?php render_header(); ?>
     <div class="grid-container">

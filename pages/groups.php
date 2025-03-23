@@ -39,6 +39,7 @@ $defaultGroupPicture = "../uploads/group_pictures/default_group.svg";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../vendor/fontawesome-free-6.7.2-web/css/all.min.css">
+    <link rel="icon" type="image/png" href="../assets/logo.png">
     <style>
         .group-table { width: 100%; border-collapse: collapse; }
         .group-table th, .group-table td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }

@@ -30,6 +30,7 @@ $role = $_SESSION['role'] ?? 'user';
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../vendor/fontawesome-free-6.7.2-web/css/all.min.css">
     <!-- Self-hosted TinyMCE -->
+    <link rel="icon" type="image/png" href="../assets/logo.png">
     <script src="../vendor/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
