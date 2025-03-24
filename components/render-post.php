@@ -11,6 +11,18 @@ function render_post($post) {
 
         $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; 
         $profilePicture = !empty($post['profile_picture']) ? "../uploads/profile_pictures/" . $post['profile_picture'] : $defaultProfilePicture;
+
+        $group_name = "Global"; // Default for global posts
+        if (!empty($post['group_id'])) {
+            $group_stmt = $conn->prepare("SELECT name FROM member_groups WHERE id = ?");
+            $group_stmt->bind_param("i", $post['group_id']);
+            $group_stmt->execute();
+            $group_result = $group_stmt->get_result();
+            if ($group_row = $group_result->fetch_assoc()) {
+                $group_name = htmlspecialchars($group_row['name']);
+            }
+            $group_stmt->close();
+        }
     ?>
     <a class="post-link" href="post.php?id=<?php echo htmlspecialchars($post['id']); ?>">
     <div class="recent-discussion p-4 rounded-2xl">
@@ -20,12 +32,15 @@ function render_post($post) {
                     <img class="rounded-full" src="<?php echo $profilePicture; ?>" />
                     </div>
                     <div class="flex flex-col">
+                        <div class="flex flex-row align-center" style="gap: 0.4rem;">
                         <h1 class="inter-700 text-base flex flex-row align-center" style="gap: 0.4rem;">
                             <span class="gradient-text">
                                 <?= $post['full_name'] ?>
                             </span> 
+                        </h1>
                         <div class="text-xs inter-300 post-date" data-timestamp="<?php echo $post['created_at']; ?>" style="color:var(--text-light-muted);"></div>
-                        <h1 class="inter-300 text-xs text-white">@<?= $post['username'] ?></h1>
+                        </div>
+                        <h1 class="inter-300 text-xs text-white">@<?= $post['username'] ?> in <span class="text-muted"><?php echo $group_name; ?></span></h1>
                     </div>
             </div>
             <div class="flex flex-col">

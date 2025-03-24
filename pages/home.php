@@ -39,7 +39,7 @@
         <?php  render_header();?>
         <div class="grid-container">
             <?php render_sidebar(); ?>
-            <div class="main-content w-bg animate__animated animate__fadeIn animate__faster">
+            <div class="main-content animate__animated animate__fadeIn animate__faster">
                 <nav class="breadcrumb">
                     <?php echo get_breadcrumbs(); ?>
                 </nav>

@@ -396,7 +396,7 @@ textarea.comment-textarea {
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: var(--base-bg-three);
+    background-color: var(--base-bg-two);
     transition: 0.1s all;
 }
 

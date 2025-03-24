@@ -6,8 +6,13 @@ require_once '../components/render-posts.php';
 require_once '../components/render-sidebar.php';
 require_once '../components/get-breadcrumbs.php';
 
-// Check user role
+$conn = establish_connection();
 $role = $_SESSION['role'] ?? 'user'; 
+
+$groups_stmt = $conn->prepare("SELECT mg.id, mg.name FROM member_groups mg JOIN group_members gm ON mg.id = gm.group_id WHERE gm.user_id = ?");
+$groups_stmt->bind_param("i", $_SESSION['id']);
+$groups_stmt->execute();
+$groups = $groups_stmt->get_result();
 ?>
 <!DOCTYPE html>
 <html data-theme="<?= htmlspecialchars($theme); ?>"> 
@@ -42,23 +47,32 @@ $role = $_SESSION['role'] ?? 'user';
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
-            <h2 class="text-xl gradient-text inter-700">Create Post</h2>
-            <hr/>
+            <h2 class="text-xl gradient-text inter-700 pb-4">Create Post</h2>
             <form action="../validation/add-post.php" method="POST" class="add-post-form" enctype="multipart/form-data">
                 <div class="flex flex-col w-full">
+                    <h1 class="text-base text-white inter-700 pb-2">Select a group</h1>
+                    <select name="group_id" class="input-field">
+                        <option value="">Global</option>
+                        <?php while ($group = $groups->fetch_assoc()): ?>
+                            <option value="<?php echo $group['id']; ?>"><?php echo htmlspecialchars($group['name']); ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                    <p class="pt-4 text-white text-base inter-700">Post Content</p>
                     <input type="text" maxlength="64" id="postTitle" name="postTitle" placeholder="Post Title" required>
                     <textarea id="postContent" name="postContent" placeholder="Post Content"></textarea>
                     <input type="text" id="tagsInput" placeholder="Add tags (comma-separated)">
                     <input type="hidden" name="postTags" id="postTags"> 
 
+                    
                     <?php if ($role === 'officer' || $role === 'admin'): ?>
-                        <h1 class="text-base gradient-text inter-700">Post Type:</h1>
+                        <h1 class="pt-4 text-xl gradient-text inter-700 pb-4">Admin Controls</h1>
+                        <h1 class="text-base text-white inter-700 pb-2">Post Type:</h1>
                         <select id="postType" name="postType">
                             <option value="regular">Regular Post</option>
                             <option value="announcement">Announcement</option>
                         </select>
-
-                        <h1 class="text-base gradient-text inter-700">Announcement From:</h1>
+                        <div class="p-2"></div>
+                        <h1 class="text-base text-white inter-700 pb-2">Announcement From:</h1>
                         <select id="postCategory" name="postCategory">
                             <option value="university">University</option>
                             <option value="ssg">Supreme Student Government</option>

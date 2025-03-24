@@ -64,6 +64,18 @@ if ($view_result) {
     $insert_stmt->close();
 }
 
+$group_name = "Global"; // Default for global posts
+if (!empty($post['group_id'])) {
+    $group_stmt = $conn->prepare("SELECT name FROM member_groups WHERE id = ?");
+    $group_stmt->bind_param("i", $post['group_id']);
+    $group_stmt->execute();
+    $group_result = $group_stmt->get_result();
+    if ($group_row = $group_result->fetch_assoc()) {
+        $group_name = htmlspecialchars($group_row['name']);
+    }
+    $group_stmt->close();
+}
+
 $defaultProfilePicture = "../uploads/profile_pictures/default.svg";
 $authorProfilePicture = !empty($post['profile_picture']) ? "../uploads/profile_pictures/" . $post['profile_picture'] : $defaultProfilePicture;
 
@@ -230,7 +242,10 @@ foreach ($comment_tree as $comment) {
                     $post_date = new DateTime($post['created_at']);
                     $formatted_post_date = $post_date->format('M d, Y, h:i A');     
                 ?>
-                <div class="text-sm text-muted inter-700"><?php echo $formatted_post_date; ?></div>
+                <div class="flex flex-col" style="align-items: flex-end;">
+                    <p class="text-sm text-muted inter-300">in <?php echo $group_name; ?> </p>
+                    <p class="text-sm text-muted inter-700 "><?php echo $formatted_post_date; ?></p> 
+                </div>
             </div>
             <div class="comments-section pt-2" id="comments-section">
                 <div class="comment-container" style="margin-top: 1rem; position: relative;">
