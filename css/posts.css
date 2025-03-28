@@ -460,6 +460,7 @@ textarea.comment-textarea {
     text-decoration: none;
     display: block;
 }
+
 .tag-box:hover {
     background-color: var(--text-dark-muted);
 }
@@ -469,6 +470,8 @@ textarea.comment-textarea {
     grid-column: 3 / 4; 
     background: var(--base-bg-one);
     height: 100%;
+    position: fixed;
+    overflow-y: scroll;
 }
 
 .post-user-profile {
@@ -703,4 +706,45 @@ img.responsive-image {
 .pinned-icon {
     color: var(--chiase-color-light);
     font-size: 0.9rem;
+}
+
+.group-card {
+    color: var(--text-light);
+    padding: 1rem;
+    transition: 0.3s;
+    /* border: 1px solid var(--border-main-dark); Set border width */
+    display: flex;
+    flex-direction: row;
+    gap: 0.765rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--base-bg-three);
+    border-radius: 1rem;
+    position: relative;
+    text-decoration: none; 
+    cursor: pointer; 
+}
+
+.group-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.group-card:hover {
+    transform: translateY(-2px);
+    background-color: var(--base-bg-four); 
+}
+
+.group-card-desc {
+    margin: 0;
+    word-wrap: break-word;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
 }

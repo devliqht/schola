@@ -73,6 +73,36 @@
                     ?>
                 </div>
             </div>
+            <div class="pup-wrapper" style="position: fixed; width: 280px;">
+                <h3 class="text-lg gradient-text inter-700 py-4">Your Groups</h3>
+                <div class="flex flex-col gap-4">
+                    <?php 
+                        $conn = establish_connection();
+                        $group_query = "SELECT mg.*, u.username as creator_username
+                                        FROM group_members gm
+                                        JOIN member_groups mg ON gm.group_id = mg.id
+                                        JOIN users u ON mg.creator_id = u.id
+                                        WHERE gm.user_id = ?
+                        ";
+                        $group_stmt = $conn->prepare($group_query);
+                        $group_stmt->bind_param("i", $_SESSION['id']);
+                        $group_stmt->execute();
+                        $groups = $group_stmt->get_result();
+                        $defaultProfilePicture = "../uploads/profile_pictures/default.svg";
+                    ?>
+                    <?php while ($group = $groups->fetch_assoc()): ?>
+                        <?php $groupProfilePicture = !empty($group['group_picture']) ? "../uploads/group_pictures/" . $group['group_picture'] : $defaultProfilePicture; ?>
+                        <div class="group-card">
+                        <a href="group.php?id=<?php echo $group['id']; ?>" class="group-link"></a>
+                            <img class="header-account-picture" src="<?php echo $groupProfilePicture ?>" />
+                            <div class="flex flex-col">
+                                <h2 class="text-base gradient-text inter-600"><?= $group['name']; ?></h2>
+                                <p class="group-card-desc text-sm inter-300 text-white"><?= $group['description']; ?></p>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
+            </div>
             <!-- <div class="flex flex-col p-4 recent-posts-sidebar">
                 <h1 class="gradient-text inter-700 text-xl tracking-tight pb-2">Recent Posts</h1>
                 <?php 
