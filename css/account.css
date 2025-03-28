@@ -1,7 +1,7 @@
 .account-details {
     display: flex;
     flex-direction: row;
-    background: var(--base-bg-three);
+    background: var(--base-bg-two);
     border-radius: 1rem;
 }
 
@@ -84,7 +84,6 @@
     height: 128px; 
     width: 128px; 
     overflow: hidden; 
-    border: 1px solid var(--border-main-dark);
     border-radius: 1rem;
 }
 
@@ -111,19 +110,10 @@
     object-fit: cover; 
 }
 
-.acc-bg {
-    height: auto;
-    width: 120px;
-    background-color: #e1e1e1;
-    opacity: 0.8;
-    background-image:  linear-gradient(#ffffff 2px, transparent 2px), linear-gradient(90deg, #ffffff 2px, transparent 2px), linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, #e1e1e1 1px);
-    background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
-    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
-}
-
 .acc-info {
-    border-bottom: 1px solid rgb(114, 114, 114);
-    padding-bottom: 8px;
+    padding: 12px;
+    background: var(--base-bg-four);
+    border-radius: 1rem;
 }
 
 .level-container {

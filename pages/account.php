@@ -50,8 +50,7 @@
             <nav class="breadcrumb">
                 <?php echo get_breadcrumbs(); ?>
             </nav>
-            <h1 class="text-xl gradient-text inter-700">My Account</h1>
-            <hr />
+            <h1 class="text-xl gradient-text inter-700 pb-4">My Account</h1>
             <div class="account-details p-4">
                 <div class="flex flex-col gap-4">
                     <div class="account-picture">

@@ -16,7 +16,7 @@ function render_sidebar() {
     $links = [
         "home.php"    => ["icon" => "fa-house", "label" => "Home"],
         "connect.php" => ["icon" => "fa-users", "label" => "Connect"],
-        "groups.php"  => ["icon" => "fa-layer-group", "label" => "Your Groups"],
+        "groups.php"  => ["icon" => "fa-layer-group", "label" => "Groups"],
         "tags.php"    => ["icon" => "fa-tags", "label" => "Tags"],
         "calendar.php" => ["icon" => "fa-calendar", "label" => "Calendar"],
     ];
@@ -29,6 +29,7 @@ function render_sidebar() {
     $adminLinks = [
         "admin.php" => ["icon" => "fa-users", "label" => "Manage Users"],
         "create-events.php" => ["icon" => "fa-sliders", "label" => "Manage Events"],
+        "active-users.php" => ["icon" => "fa-user", "label" => "Active Users"],
     ];
 
     $sidebarHTML = <<<HTML
