@@ -54,3 +54,26 @@
     background: linear-gradient(to bottom, #EEEEEE, #CCCCCC, #d1d1d1);
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+::-webkit-scrollbar {
+    width: 6px; 
+    height: 6px; 
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(150, 150, 150, 0.5); 
+    border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(150, 150, 150, 0.8); 
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(150, 150, 150, 0.5) transparent;
+}

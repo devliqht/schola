@@ -4,6 +4,7 @@ require_once '../api/db_connection.php';
 require_once '../components/render-header.php';
 require_once '../components/render-sidebar.php';
 require_once '../components/get-breadcrumbs.php';
+require_once '../components/render-pup.php';
 require_once '../components/render-post.php';
 
 $conn = establish_connection();
@@ -88,6 +89,7 @@ $posts_result = $posts_query->get_result();
             <?php endif; ?>
 
         </div>
+        <?php render_pup(); ?>
     </div>
     <script src="../js/search.js"></script>
     <script src="../js/formatTime.js"></script>

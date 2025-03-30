@@ -471,7 +471,8 @@ textarea.comment-textarea {
     background: var(--base-bg-one);
     height: 100%;
     position: fixed;
-    overflow-y: scroll;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .post-user-profile {
@@ -769,4 +770,27 @@ img.responsive-image {
 .status-text {
     font-size: 0.75rem;
     color: var(--text-light-muted);
+}
+
+.date-box {
+    min-width: 60px; 
+    text-align: center;
+}
+
+.date-box span:first-child {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.date-box span:last-child {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.pup-event-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    max-width: 160px;
 }
