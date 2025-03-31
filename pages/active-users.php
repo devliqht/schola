@@ -4,6 +4,7 @@ require_once '../api/update_user_activity.php';
 require_once '../api/db_connection.php';
 require_once '../components/render-header.php';
 require_once '../components/render-sidebar.php';
+require_once '../components/render-pup.php';
 require_once '../components/get-breadcrumbs.php';
 require_once '../components/format-date.php';
 
@@ -42,6 +43,32 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg";
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../vendor/fontawesome-free-6.7.2-web/css/all.min.css">
     <link rel="icon" type="image/png" href="../assets/logo.png">
+    <style>
+        .active-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .active-item {
+            display: flex;
+            flex-direction: row;
+            border-radius: 1rem;
+            padding: 1rem;
+            color: var(--text-light);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+            text-decoration: none; 
+            cursor: pointer; 
+            gap: 0.675rem;
+        }
+        </style>
 </head>
 <body>
 <?php if (isset($_SESSION['role']) && !empty($_SESSION['role'])): ?>
@@ -53,13 +80,13 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg";
                 <?php echo get_breadcrumbs(); ?>
             </nav>
             <h2 class="text-2xl gradient-text inter-700">Active Users</h2>
-            <div class="flex flex-col gap-4 pt-4">
+            <div class="active-container">
                 <?php while ($user = $users->fetch_assoc()): ?>
                     <?php 
                     $profilePicture = !empty($user['profile_picture']) ? "../uploads/profile_pictures/" . $user['profile_picture'] : $defaultProfilePicture;
                     $status = $user['is_active'] ? "Active now" : "Last active " . formatRelativeTime($user['last_active']);
                     ?>
-                    <div class="flex flex-row gap-4 align-center">
+                    <div class="active-item">
                         <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Profile Picture"/>
                         <div class="flex flex-col">
                             <h2 class="text-base gradient-text inter-600"><?php echo htmlspecialchars($user['full_name']); ?></h2>
@@ -75,6 +102,7 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg";
                 <?php endwhile; ?>
             </div>
         </div>
+        <?php render_pup(); ?>
     </div>
 <?php else: ?>
     <?php header("Location: ../index.php"); ?>

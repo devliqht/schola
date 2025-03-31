@@ -4,6 +4,7 @@ require_once '../api/db_connection.php';
 require_once '../components/render-header.php';
 require_once '../components/render-sidebar.php';
 require_once '../components/get-breadcrumbs.php';
+require_once '../components/format-date.php';
 
 $conn = establish_connection();
 if ($conn->connect_error) {
@@ -60,7 +61,8 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; // Set a def
 
             <h2 class="gradient-text inter-700 text-xl pb-4">Connect with Users</h2>
             <div class="users-grid">
-                <?php while ($user = $result->fetch_assoc()): ?>
+                <?php while ($user = $result->fetch_assoc()): 
+                    ?>
                     <div class="user-card">
                         <a href="profile.php?id=<?php echo $user['id']; ?>" class="group-link"></a>
                         <?php 
