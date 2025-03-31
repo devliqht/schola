@@ -63,7 +63,7 @@ $events_result = $conn->query("SELECT * FROM events ORDER BY event_date ASC");
             <?php echo get_breadcrumbs(); ?>
         </nav>
             <h2 class="gradient-text text-xl inter-700 pb-4">Manage Events</h2> 
-            <form action="../validation/createmethod="POST">
+            <form method="POST">
                 <label class="inter-400 text-base text-white">Event Title:</label>
                 <input type="text" name="title" required>
                 
