@@ -9,6 +9,21 @@
     require_once '../components/render-pup.php';
     require_once '../components/get-breadcrumbs.php';
     require_once '../components/render-announcements.php';
+
+    $conn = establish_connection();
+    $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; 
+    $user_query = "SELECT profile_picture from users where id = ?";
+    $user_result = $conn->prepare($user_query);
+    $user_result->bind_param("i", $_SESSION['id']);
+    $user_result->execute();
+    $user_result = $user_result->get_result();
+    
+    if ($user_result->num_rows > 0) {
+        $user_data = $user_result->fetch_assoc();
+        $profilePicture = "../uploads/profile_pictures/" . $user_data['profile_picture'];
+    } else {
+        $profilePicture = $defaultProfilePicture;
+    }
 ?>
 <!DOCTYPE html>
 <html data-theme="<?= htmlspecialchars($theme); ?>">
@@ -35,6 +50,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../vendor/fontawesome-free-6.7.2-web/css/all.min.css">
     <link rel="icon" type="image/png" href="../assets/logo.png">
+    <style>
+        
+    </style>
     </head>
 <body>
     <?php if (isset($_SESSION['role']) && !empty($_SESSION['role'])): ?>
@@ -42,14 +60,16 @@
         <div class="grid-container">
             <?php render_sidebar(); ?>
             <div class="main-content animate__animated animate__fadeIn animate__faster">
-                <nav class="breadcrumb">
-                    <?php echo get_breadcrumbs(); ?>
-                </nav>
 
-                <div class="flex flex-row gap-4 justify-between align-center pb-4">
-                    <h2 class="text-xl text-white inter-700">Welcome <span class="gradient-text"><?= $_SESSION['full_name']; ?></span></h2>
-                </div>
-
+                <div class="flex flex-col w-full pt-2">
+                <h2 class="text-xl text-white inter-700">Welcome <span class="gradient-text"><?= $_SESSION['full_name']; ?></span></h2>
+                <form action="create-post.php" id="post-form">
+                    <div class="flex flex-row gap-4 align-center">
+                            <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Pfp"/>
+                            <input type="text" placeholder="What's on your mind, <?php echo $_SESSION['username']; ?>?"/>
+                        </div>
+                    </div>
+                </form>    
                 <div class="discussions-wrapper">
                     <?php 
                         $conn = establish_connection();
@@ -77,7 +97,10 @@
             </div>
             <?php render_pup(); ?>
         </div>
+        <?php render_navbar(); ?>
     <script>
+        const form = document.getElementById("post-form");
+
         function openModal() {
             document.getElementById("postModal").style.display = "flex";
         }
@@ -85,6 +108,13 @@
         function closeModal() {
             document.getElementById("postModal").style.display = "none";
         }
+
+        form.addEventListener('keypress', function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                form.submit();
+            }
+        });
     </script>
         <script src="../js/search.js"></script>
         <script src="../js/formatTime.js"></script>

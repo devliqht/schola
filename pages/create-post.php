@@ -84,6 +84,7 @@ $groups = $groups_stmt->get_result();
             </form>
         </div>
     </div>
+    <?php render_navbar(); ?>
     <script>
        tinymce.init({
         selector: '#postContent',

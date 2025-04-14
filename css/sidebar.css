@@ -146,6 +146,58 @@
     display: none;
 }
 
+.bottom-nav {
+    display: none; 
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: calc(100% - 2rem);
+    background-color: var(--base-bg-one); 
+    border-top: 1px solid var(--border-color);
+    z-index: 1000; 
+    padding: 0.675rem;
+}
+
+.bottom-nav-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bottom-nav-list li {
+    flex: 1;
+    text-align: center;
+}
+
+.bottom-nav-list a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.75rem; 
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+    transition: color 0.2s ease;
+    padding: 0.675rem;
+    border-radius: 1rem;
+}
+
+.bottom-nav-list a i {
+    font-size: 1.25rem; 
+    margin-bottom: 0.25rem;
+}
+
+.bottom-nav-list a.active-link {
+    color: var(--interaction-dark);
+}
+
+.bottom-nav-list a:hover {
+    color: var(--interaction-dark-hover);
+}
+
 @media (max-width: 1024px) {
     .right-sidebar {
         position: fixed;

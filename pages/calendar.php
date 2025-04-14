@@ -101,6 +101,7 @@ function getNavLink($offset) {
             </div>
         </div>
         <?php render_pup(); ?>
+        <?php render_navbar(); ?>
         </div>
         <script src="../js/search.js"></script>
         <script src="../js/formatTime.js"></script>

@@ -9,7 +9,6 @@
     require_once '../validation/leveling-system.php';
     require_once '../components/render-achievement.php';
 
-    // Check if user is logged in
     if (!isset($_SESSION['role']) || empty($_SESSION['role'])) {
         header("Location: ../index.php");
         exit();
@@ -32,13 +31,11 @@
     $defaultProfilePicture = "../uploads/profile_pictures/default.svg"; 
     $profilePicture = !empty($row['profile_picture']) ? "../uploads/profile_pictures/" . $row['profile_picture'] : $defaultProfilePicture;
 
-    // Fetch user posts
     $postQuery = $conn->prepare("SELECT * FROM posts WHERE author_id = ? ORDER BY created_at DESC");
     $postQuery->bind_param("i", $user_id);
     $postQuery->execute();
     $postRes = $postQuery->get_result();
 
-    // Fetch user comments
     $commentQuery = $conn->prepare("SELECT c.*, p.title FROM comments c JOIN posts p ON c.post_id = p.id WHERE c.user_id = ? ORDER BY c.created_at DESC");
     $commentQuery->bind_param("i", $user_id);
     $commentQuery->execute();
@@ -172,6 +169,7 @@
                 </div>
             </div>     
         </div>
+        <?php render_navbar(); ?>
     </div>
     <script src="../js/search.js"></script>
     <script src="../js/formatTime.js"></script>

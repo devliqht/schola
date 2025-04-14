@@ -88,6 +88,7 @@ This is a school project, but I hope to implement something like this later in t
             </div>
         </div>
     </div>
+    <?php render_navbar(); ?>
     <script src="../js/search.js"></script>
     <script src="../js/formatTime.js"></script>
     <script src="../js/sidebar.js"></script>

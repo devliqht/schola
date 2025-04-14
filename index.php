@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/utilities/reset.css" />
     <link rel="stylesheet" href="css/utilities/fonts.css" />
     <link rel="stylesheet" href="css/utilities/util-text.css" />
+    <link rel="stylesheet" href="css/utilities/utility.css" />
     <link rel="stylesheet" href="css/utilities/util-padding.css" />
     <link rel="stylesheet" href="css/utilities/inputs.css" />
     <link rel="stylesheet" href="css/index.css" />
@@ -61,6 +62,7 @@
                 </div>
             </div>
         </form>
+        <p class="text-xs inter-300" style="color: rgb(54, 54, 54);">© Schola. Created by Matt Cabarrubias</p>
         </div>
         <div class="grid-item item2">
 

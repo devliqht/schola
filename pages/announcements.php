@@ -108,6 +108,7 @@
         </div>
         <?php render_pup(); ?>
     </div>
+    <?php render_navbar(); ?>
     <script>
         function openModal() {
             document.getElementById("postModal").style.display = "flex";

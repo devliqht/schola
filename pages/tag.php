@@ -91,6 +91,7 @@ $posts_result = $posts_query->get_result();
         </div>
         <?php render_pup(); ?>
     </div>
+    <?php render_navbar(); ?>
     <script src="../js/search.js"></script>
     <script src="../js/formatTime.js"></script>
     <script src="../js/sidebar.js"></script>

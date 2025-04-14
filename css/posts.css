@@ -398,6 +398,7 @@ textarea.comment-textarea {
     overflow-x: hidden;
     background-color: var(--base-bg-two);
     transition: 0.1s all;
+    padding: 1rem;
 }
 
 .recent-discussion:hover {

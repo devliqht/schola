@@ -74,6 +74,7 @@ $role = $_SESSION['role'] ?? 'user';
             </div>
         </div>
     </div>
+    <?php render_navbar(); ?>
     <script>
         let cropper = null;
 

@@ -5,8 +5,6 @@ function update_user_activity($user_id) {
     if (!$user_id) return;
 
     $conn = establish_connection();
-
-    // Update the last_active timestamp to the current time
     $stmt = $conn->prepare("UPDATE users SET last_active = UTC_TIMESTAMP() WHERE id = ?");
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
@@ -22,7 +20,6 @@ function update_user_activity($user_id) {
     $conn->close();
 }
 
-// Call this on every page load for the logged-in user
 if (isset($_SESSION['id'])) {
     update_user_activity($_SESSION['id']);
 }

@@ -78,6 +78,7 @@ if (!$post) {
             </form>
         </div>
     </div>
+    <?php render_navbar(); ?>
     <script>
        tinymce.init({
         selector: '#postContent',

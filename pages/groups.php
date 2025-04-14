@@ -135,7 +135,7 @@ $defaultGroupPicture = "../uploads/group_pictures/default_group.svg";
 <?php else: ?>
     <?php header("Location: ../index.php"); ?>
 <?php endif; ?>
-
+<?php render_navbar(); ?>
 <script>
     document.querySelectorAll('.edit-btn').forEach(button => {
         button.addEventListener('click', function(event) {

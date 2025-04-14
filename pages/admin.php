@@ -113,6 +113,7 @@
             </div>
         </div>
     </div>
+    <?php render_navbar(); ?>
 <?php else: ?>
     <?php header("Location: ../index.php"); ?>
 <?php endif; ?>

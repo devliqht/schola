@@ -72,6 +72,7 @@ if (!$tags_query) {
         </div>
         <?php render_pup(); ?>
     </div>
+    <?php render_navbar(); ?>
     <script src="../js/search.js"></script>
     <script src="../js/formatTime.js"></script>
     <script src="../js/sidebar.js"></script>

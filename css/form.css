@@ -35,7 +35,7 @@ form {
     font-family: "Inter", serif;
     font-optical-sizing: auto;
     font-weight: 400;
-    width: calc(100% - 20px); 
+    width: 100%;
     max-width: 100%;
     color: var(--text-light);
     cursor: pointer;
@@ -57,7 +57,7 @@ input, textarea, select {
     font-family: "Inter", serif;
     font-optical-sizing: auto;
     font-weight: 400;
-    width: calc(100% - 20px); 
+    width: 100%;
     max-width: 100%;
     color: var(--text-light);
     transition: 0.3s all var(--smooth-anim);

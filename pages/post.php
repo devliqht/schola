@@ -242,7 +242,7 @@ foreach ($comment_tree as $comment) {
                     $post_date = new DateTime($post['created_at']);
                     $formatted_post_date = $post_date->format('M d, Y, h:i A');     
                 ?>
-                <div class="flex flex-col" style="align-items: flex-end;">
+                <div class="flex flex-col" style="align-items: flex-end; align-self: self-end">
                     <p class="text-sm text-muted inter-300">in <?php echo $group_name; ?> </p>
                     <p class="text-sm text-muted inter-700 "><?php echo $formatted_post_date; ?></p> 
                 </div>
@@ -357,6 +357,7 @@ foreach ($comment_tree as $comment) {
                 </div>
             </div>
         </div>
+        <?php render_navbar(); ?>
         <div id="deleteModal" class="modal">
             <div class="modal-content">
                 <h1 class="gradient-text text-2xl inter-700">Are you sure you want to delete this post?</h1>

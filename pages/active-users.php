@@ -104,6 +104,7 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg";
         </div>
         <?php render_pup(); ?>
     </div>
+    <?php render_navbar(); ?>
 <?php else: ?>
     <?php header("Location: ../index.php"); ?>
 <?php endif; ?>

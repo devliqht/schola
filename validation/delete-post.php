@@ -1,11 +1,15 @@
 <?php
 require_once '../api/config.php';
-include '../api/db_connection.php';
+require_once '../api/db_connection.php';
+
+// var_dump($_POST);
+// exit();
 
 $conn = establish_connection();
 $post_id = intval($_POST['post_id']);
 $user_id = $_SESSION['id'];
 $user_role = $_SESSION['role'];
+
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION['id'])) {
     $query = "SELECT author_id FROM posts WHERE id = ?";

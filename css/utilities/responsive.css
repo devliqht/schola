@@ -63,11 +63,13 @@
         border-radius: 0;
         padding: 0.785rem;
         padding-top: 1.1rem;
+        padding-bottom: 2rem;
     }
 
     .main-content.profile {
         padding: 0.785rem;
         padding-top: 1.1rem;
+        padding-bottom: 2rem;
         padding-right: 0.785rem;
         grid-column: 1;
     }
@@ -75,6 +77,10 @@
     .container {
         padding: 0;
         border-radius: 0;
+    }
+
+    .recent-discussion {
+        padding: 1rem;
     }
 
     .header-nav-links {
@@ -264,7 +270,13 @@
     .groups-grid {
         grid-template-columns: 1fr;
     }
+    .bottom-nav {
+        display: block;
+    }
 
+    input, textarea, select, #submit {
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {

@@ -117,3 +117,44 @@ HTML;
     echo $sidebarHTML;
 }
 ?>
+
+<?php
+function render_navbar() {
+    ?>
+    <nav class="bottom-nav">
+    <ul class="bottom-nav-list">
+        <li>
+            <a href="home.php" class="<?php echo isActive('home.php', basename($_SERVER['PHP_SELF'])); ?>">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+        </li>
+        <li>
+            <a href="posts.php" class="<?php echo isActive('posts.php', basename($_SERVER['PHP_SELF'])); ?>">
+                <i class="fa-solid fa-comments"></i>
+                <span>Posts</span>
+            </a>
+        </li>
+        <li>
+            <a href="announcements.php" class="<?php echo isActive('announcements.php', basename($_SERVER['PHP_SELF'])); ?>">
+                <i class="fa-solid fa-bullhorn"></i>
+                <span>Announce</span>
+            </a>
+        </li>
+        <li>
+            <a href="groups.php" class="<?php echo isActive('groups.php', basename($_SERVER['PHP_SELF'])); ?>">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Groups</span>
+            </a>
+        </li>
+        <li>
+            <a href="connect.php" class="<?php echo isActive('connect.php', basename($_SERVER['PHP_SELF'])); ?>">
+                <i class="fa-solid fa-users"></i>
+                <span>Connect</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<?php
+}
+?>
