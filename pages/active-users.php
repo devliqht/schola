@@ -111,6 +111,8 @@ $defaultProfilePicture = "../uploads/profile_pictures/default.svg";
     <script src="../js/search.js"></script>
     <script src="../js/formatTime.js"></script>
     <script src="../js/sidebar.js"></script>
+    <script src="../js/notifications.js"></script>
+
 </body>
 </html>
 <?php $conn->close(); ?>

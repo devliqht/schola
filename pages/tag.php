@@ -14,7 +14,6 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $tag_id = intval($_GET['id']);
 
-// Fetch tag name
 $tag_query = $conn->prepare("SELECT name FROM tags WHERE id = ?");
 $tag_query->bind_param("i", $tag_id);
 $tag_query->execute();
@@ -94,6 +93,7 @@ $posts_result = $posts_query->get_result();
     <?php render_navbar(); ?>
     <script src="../js/search.js"></script>
     <script src="../js/formatTime.js"></script>
+    <script src="../js/notifications.js"></script>
     <script src="../js/sidebar.js"></script>
 </body>
 </html>

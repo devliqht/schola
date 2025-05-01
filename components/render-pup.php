@@ -40,8 +40,8 @@ function render_pup() {
             ?>
             <?php while ($event = $events->fetch_assoc()): 
                     $event_date = DateTime::createFromFormat('Y-m-d', $event['event_date']);
-                    $day = $event_date->format('d'); // Extract day
-                    $month = $event_date->format('M'); // Extract abbreviated month
+                    $day = $event_date->format('d'); 
+                    $month = $event_date->format('M'); 
                 ?>
                 
                 <div class="group-card">

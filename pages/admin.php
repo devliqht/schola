@@ -120,6 +120,8 @@
 <script src="../js/search.js"></script>
 <script src="../js/formatTime.js"></script>
 <script src="../js/sidebar.js"></script>
+<script src="../js/notifications.js"></script>
+
 <script>
     function showEditForm(id, username, name, role, course) {
         document.getElementById('edit_user_id').value = id;

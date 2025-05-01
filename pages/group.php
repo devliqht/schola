@@ -150,7 +150,8 @@ $groupProfilePicture = !empty($group['group_picture']) ? "../uploads/group_pictu
 <?php endif; ?>
     <script src="../js/search.js"></script>
     <script src="../js/formatTime.js"></script>
-    <script src="../js/sidebar.js"></script>
+        <script src="../js/notifications.js"></script>
+        <script src="../js/sidebar.js"></script>
 </body>
 </html>
 <?php $conn->close(); ?>
