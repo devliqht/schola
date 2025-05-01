@@ -1,6 +1,8 @@
 <?php
 require_once '../api/config.php';
 require_once '../api/db_connection.php';
+require_once '../validation/leveling-system.php';
+require_once '../api/send-notification.php';
 
 $conn = establish_connection();
 
@@ -17,7 +19,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION['id'])) {
         $query = "INSERT INTO comments (post_id, user_id, content) VALUES (?, ?, ?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("iis", $post_id, $user_id, $content);
-        $stmt->execute();
+
+        if ($stmt->execute()) {
+            $comment_id = $conn->insert_id;
+            
+            // Notify subscribers about the new comment
+            notify_post_subscribers($conn, $post_id, $comment_id, $user_id, $content);
+            
+            addPoints($_SESSION['id'], 'comment');
+            header("Location: ../pages/post.php?id=" . $post_id);
+            exit();
+        }
     }
 }
 // var_dump($_SESSION);

@@ -118,7 +118,8 @@
     </script>
         <script src="../js/search.js"></script>
         <script src="../js/formatTime.js"></script>
-        <script src="../js/sidebar.js"></script>
+        <script src="../js/sidebar.js"></script>    
+        <script src="../js/notifications.js"></script>
     <?php else: ?>
     <?php  
         header("Location: ../index.php");    

@@ -173,21 +173,27 @@ foreach ($comment_tree as $comment) {
                         </div>
                     </div>
                 </div>
-                <div class="tooltip-container">
-                    <button class="text-black clear-button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                    <div class="tooltip">
-                        <?php if ($_SESSION['id'] == $post['author_id'] || $_SESSION['role'] == 'admin'): ?>
-                        <button class="tooltip-option edit-comment">Edit Post</button>
-                        <form action="../validation/delete-comment.php" method="POST" class="tooltip-form">
-                            <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
-                            <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-                            <button type="submit" class="tooltip-option delete-comment">Delete Post</button>
-                        </form>
-                        <?php else: ?>
-                        <p class="text-xs text-white">No actions available.</p>
-                        <?php endif; ?>
+                <div class="flex flex-row gap-4">
+                    <button class="interaction inter-600 text-sm notify-button" id="notify-button" data-post-id="<?php echo $post_id; ?>">
+                            <i class="fa-regular fa-bell"></i> Notify me
+                    </button>
+                    <div class="tooltip-container">
+                        <button class="text-black clear-button"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <div class="tooltip">
+                            <?php if ($_SESSION['id'] == $post['author_id'] || $_SESSION['role'] == 'admin'): ?>
+                            <button class="tooltip-option edit-comment">Edit Post</button>
+                            <form action="../validation/delete-comment.php" method="POST" class="tooltip-form">
+                                <input type="hidden" name="comment_id" value="<?php echo $comment['id']; ?>">
+                                <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                                <button type="submit" class="tooltip-option delete-comment">Delete Post</button>
+                            </form>
+                            <?php else: ?>
+                            <p class="text-xs text-white">No actions available.</p>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
+                
             </div>
             <div class="flex flex-col" style="color: var(--text-light);">
                 <h1 class="text-2xl inter-600 pb-2"><?= $post['title']; ?></h1>
@@ -229,7 +235,12 @@ foreach ($comment_tree as $comment) {
                         <p class="inter-600 text-sm"><?php echo $comment_count; ?> Comments</p>
                     </a>
                     <div class="flex flex-row interaction text-sm align-center">
-                        <i class="fa-regular fa-share-from-square pr-1"></i>
+                        <div class="tooltip-container">
+                            <i class="fa-regular fa-share-from-square pr-1" onclick="sharePost()"></i>
+                            <div class="tooltip" id="shareTooltip">
+                                <p class="text-xs text-white">Link copied successfully!</p>
+                            </div>
+                        </div>
                     </div>
                     <?php if ($_SESSION['id'] == $post['author_id'] || $_SESSION['role'] == "admin"): ?>
                         <a href="edit-post.php?id=<?php echo $post['id']; ?>" class="interaction inter-600 decoration-none text-sm text-black flex flex-row align-center">
@@ -514,6 +525,19 @@ foreach ($comment_tree as $comment) {
             });
         }
 
+        function sharePost() {
+            const currentUrl = window.location.href;
+            navigator.clipboard.writeText(currentUrl).then(() => {
+                const tooltip = document.getElementById('shareTooltip');
+                tooltip.classList.add('active');
+                setTimeout(() => {
+                    tooltip.classList.remove('active');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy link: ', err);
+            });
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const mainCommentTextarea = document.querySelector('.add-comment-form .comment-textarea');
             if (mainCommentTextarea) {
@@ -586,5 +610,6 @@ foreach ($comment_tree as $comment) {
     <script src="../js/search.js"></script>
     <script src="../js/formatTime.js"></script>
     <script src="../js/sidebar.js"></script>
+    <script src="../js/notifications.js"></script>
 </body>
 </html>

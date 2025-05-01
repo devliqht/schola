@@ -1,6 +1,7 @@
 <?php 
 function render_header() {
     ?>
+    
     <header class="header px-4"> 
         <div class="flex flex-row align-center" style="gap: 0.4rem;">
             <div class="sidebar-toggle-wrapper">
@@ -35,7 +36,22 @@ function render_header() {
         <div class="flex flex-row align-center gap-4">
             <div class="flex flex-row" style="gap: 0.4rem;">
                 <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-plus"></i> <span class="disappear-768px">Create</span></button></a>
-                <a href="create-post.php" ><button class="interaction inter-600 text-sm"><i class="fa-solid fa-bell"></i> </button></a>
+                <div class="notification-container">
+                    <button class="interaction inter-600 text-sm notification-bell" id="notification-bell">
+                        <i class="fa-solid fa-bell"></i>
+                        <span class="notification-count" id="notification-count"></span>
+                    </button>
+                    <div class="notification-modal" id="notification-modal">
+                        <div class="notification-modal-content">
+                            <div class="notification-modal-header">
+                                <h2 class="text-lg gradient-text inter-700">Notifications</h2>
+                                <button class="close-notifications" id="close-notifications">×</button>
+                            </div>
+                            <div class="notification-list" id="notification-list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="header-account-container">
                 <img class="header-account-picture" src="<?php echo $profilePicture; ?>" alt="Profile Picture">

@@ -1,6 +1,7 @@
 <?php
 require_once '../api/config.php';
 require_once '../api/db_connection.php';
+require_once '../validation/leveling-system.php';
 
 $conn = establish_connection();
 
@@ -46,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->execute()) {    
         $new_post_id = $stmt->insert_id;
         $stmt->close();
+        addPoints($_SESSION['id'], 'post');
 
         foreach ($tags as $tag) {
             $tag = trim($tag);

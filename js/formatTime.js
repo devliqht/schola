@@ -6,10 +6,6 @@ function formatRelativeTime(dateString) {
     if (isNaN(postDate.getTime())) return "Invalid date";
     const diff = Math.floor((now.getTime() - postDate.getTime()) / 1000);
 
-    console.log("Input Timestamp:", dateString);
-    console.log("Post Date (UTC):", postDate.toISOString());
-    console.log("Current Time (UTC):", now.toISOString());
-    console.log("Time Difference (seconds):", diff);
 
     if (diff < 60) return "• just now"; 
     if (diff < 3600) return `• ${Math.floor(diff / 60)}min ago`;

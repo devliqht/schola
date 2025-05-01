@@ -14,6 +14,7 @@ $conn = establish_connection();
 $month = isset($_GET['month']) ? intval($_GET['month']) : date('m');
 $year = isset($_GET['year']) ? intval($_GET['year']) : date('Y');
 
+
 // Get the first day of the month and total days
 $firstDay = strtotime("$year-$month-01");
 $daysInMonth = date('t', $firstDay);
