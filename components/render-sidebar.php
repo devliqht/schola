@@ -96,9 +96,10 @@ HTML;
     <ul class="quick-links">
 HTML;
         foreach ($adminLinks as $file => $data) {
+            $activeClass = isActive($file, $current_page);
             $sidebarHTML .= <<<HTML
             <li class="inter-300 text-sm p-1">
-                <a href="{$file}" class="{isActive($file, $current_page)}">
+                <a href="{$file}" class="{$activeClass}">
                     <i class="fa-solid {$data['icon']}"></i> <span class="link-label inter-300 text-sm">{$data['label']}</span>
                 </a>
             </li>
