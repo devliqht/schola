@@ -368,6 +368,7 @@
     border-bottom: 1px solid var(--border-main-dark);
     cursor: pointer;
     transition: background-color 0.2s;
+    color: var(--text-light);
 }
 
 .notification-item:hover {
