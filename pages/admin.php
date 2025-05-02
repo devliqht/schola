@@ -52,14 +52,14 @@
                 </thead>
                 <tbody>
                     <?php while($row = $result->fetch_assoc()): ?>
-                        <tr class="inter-300">
-                            <td><?php echo $row['id']; ?></td>
-                            <td><?php echo $row['full_name']; ?></td>
+                        <tr class="inter-300" style="text-align: center;">
+                            <td><h1 class="text-xl gradient-text"><?php echo $row['id']; ?></h1></td>
+                            <td><h3 class="text-lg"><?php echo $row['full_name']; ?></h3></td>
                             <td class="inter-300"><a href="profile.php?id=<?php echo $row['id']; ?>" class="text-white decoration-none text-base">@<?php echo $row['username']; ?></a></td>
                             <td class="text-capitalize"><?php echo $row['role']; ?></td>
                             <td>
-                                <button class="action-button" onclick="showEditForm(<?php echo $row['id']; ?>, '<?php echo $row['username']; ?>', '<?php echo $row['full_name']; ?>', '<?php echo $row['role']; ?>', '<?php echo $row['course']; ?>')" class="btn bg-blue text-white p-1">Edit</button>
-                                <button class="action-button" onclick="showDeleteModal(<?php echo $row['id']; ?>)" class="btn bg-red text-white p-1">Delete</button>
+                                <button class="interaction" onclick="showEditForm(<?php echo $row['id']; ?>, '<?php echo $row['username']; ?>', '<?php echo $row['full_name']; ?>', '<?php echo $row['role']; ?>', '<?php echo $row['course']; ?>')" class="btn bg-blue text-white p-1">Edit</button>
+                                <button class="interaction" onclick="showDeleteModal(<?php echo $row['id']; ?>)" class="btn bg-red text-white p-1">Delete</button>
                             </td>
                         </tr>
                     <?php endwhile; ?>

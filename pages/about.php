@@ -76,13 +76,25 @@ This is a school project, but I hope to implement something like this later in t
                 <h1 class="text-xl text-white inter-600">Code</h1>
                 <ul class="text-white inter-300 text-muted" >
                     <li class="text-base inter-300 pt-2">You can check the github repo for Schola <a href="https://github.com/devliqht/schola">here.</a></li>
-                        <li class="text-base inter-300 pt-2">Lines of code written: 7,768</li>
+                        <li class="text-base inter-300 pt-2">Lines of code written: <span class="text-2xl gradient-text">9,442</span></li>
                 </ul>
+
+                <hr class="w-full" style="margin: 1rem 0 1rem 0;"/>
+
+                <h1 class="text-xl text-white inter-600">History and SQL</h1>
+                <h2 class="text-lg py-2 text-white inter-300">First Revision vs Latest Revision</h2>
+                <img src="../assets/first_revision.png"/>
+                <img src="../assets/latest_revision.png"/>
+
+                <hr class="w-full" style="margin: 1rem 0 1rem 0;"/>
+
+                <img src="../assets/sql.png"/>
 
                 <hr class="w-full" style="margin: 1rem 0 1rem 0;"/>
                 <h1 class="text-xl text-white inter-600">Acknowledgements</h1>
                 <ul class="text-white inter-300 text-muted" style="list-style: disc inside;">
                     <li class="text-base inter-300 pt-2">Sir Christian Maderazo</li>
+                    <li class="text-base inter-300 pt-2">Fr. Fillo Peter</li>
                 </ul>
 
             </div>

@@ -61,7 +61,7 @@
 
     .main-content {
         border-radius: 0;
-        padding: 0.785rem;
+        padding: 1rem;
         padding-top: 1.1rem;
         padding-bottom: 2rem;
     }
@@ -210,7 +210,7 @@
     }
 
     .user-table {
-        display: block;
+        display: flex;
         width: 100%;
     }
 
@@ -218,6 +218,7 @@
         display: none; 
     }
 
+    .user-table,
     .user-table tbody,
     .user-table tr,
     .user-table td {
