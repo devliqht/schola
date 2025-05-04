@@ -1,6 +1,5 @@
 <?php 
     require_once '../api/config.php';
-    require_once '../api/db_connection.php';
     require_once '../components/render-header.php';
     require_once '../components/render-sidebar.php';
     require_once '../components/get-breadcrumbs.php';

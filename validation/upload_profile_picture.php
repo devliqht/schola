@@ -1,6 +1,6 @@
 <?php
-require_once '../api/config.php';
-    require '../api/db_connection.php'; 
+    require_once '../api/config.php';
+    require_once '../api/db_connection.php'; 
     require '../components/resize-and-crop.php'; 
 
     $user_id = $_SESSION['id']; 

@@ -56,7 +56,7 @@
     </head>
 <body>
     <?php if (isset($_SESSION['role']) && !empty($_SESSION['role'])): ?>
-        <?php  render_header();?>
+        <?php render_header();?>
         <div class="grid-container">
             <?php render_sidebar(); ?>
             <div class="main-content animate__animated animate__fadeIn animate__faster">
