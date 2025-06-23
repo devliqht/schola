@@ -1,6 +1,6 @@
 # Schola - School Forum App
 
-![Login](assets/05-02-25_login.png)
+![Login](assets/cover.png)
 
 Schola is a forum application designed for schools, providing a platform for students, teachers, and staff to interact, share information, and participate in discussions. It features forum interactions, user profiles, a leveling system, and more.
 
